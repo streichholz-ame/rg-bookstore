@@ -3,9 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.2'
 
-gem 'audit', '~> 0.7.3'
 gem 'aasm', '~> 5.2'
 gem 'activeadmin', '~> 2.9'
+gem 'audit', '~> 0.7.3'
 gem 'bootstrap-sass'
 gem 'brakeman', '~> 3.3', '>= 3.3.2'
 gem 'bullet', '~> 6.1', '>= 6.1.4'
