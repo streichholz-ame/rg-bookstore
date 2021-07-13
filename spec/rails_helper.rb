@@ -32,5 +32,5 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
-  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} })
+  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} ShopShop})
 end
