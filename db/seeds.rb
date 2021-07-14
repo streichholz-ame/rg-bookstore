@@ -3,7 +3,7 @@ require 'ffaker'
 def generate_categories
   Category.new(id: 1, name: 'Mobile development').save!
   Category.new(id: 2, name: 'Photo').save!
-  Category.new(id: 3, name: 'Web disign').save!
+  Category.new(id: 3, name: 'Web design').save!
 end
 
 def generate_book
@@ -23,5 +23,12 @@ def generate_book
   book.save!
 end
 
+def generate_author
+  author = Author.new(name: FFaker::Book.author)
+  author.save!
+end
+
+
 generate_categories
 20.times { generate_book}
+20.times { generate_author }
