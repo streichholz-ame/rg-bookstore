@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
   
-  include Pagy::Backend
-
-  def all_books
+  def index
     @books = Book.all
+    @categories = Category.all
   end
+
 end

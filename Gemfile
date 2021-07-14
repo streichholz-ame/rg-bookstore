@@ -18,7 +18,7 @@ gem 'haml', '~> 5.2', '>= 5.2.1'
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 gem 'i18n', '~> 0.7.0'
 gem 'jbuilder', '~> 2.7'
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 3.1.0'
 gem 'mini_magick', '~> 4.11'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'omniauth-facebook', '~> 8.0'
@@ -34,6 +34,7 @@ gem 'sass-rails'
 gem 'shrine', '~> 3.4'
 gem 'sprockets', '=3.7.1'
 gem 'turbolinks', '~> 5'
+gem 'sprockets-rails', '~> 2.1', '>= 2.1.3'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -54,7 +55,7 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '~> 3.35', '>= 3.35.3'
+  gem 'capybara', '>= 2.5.0'
   gem 'capybara-screenshot', '~> 1.0', '>= 1.0.25'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rubocop-rspec', '~> 2.4'

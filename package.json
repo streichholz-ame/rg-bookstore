@@ -2,10 +2,8 @@
   "name": "rg_booktore",
   "private": true,
   "dependencies": {
-    "@rails/ujs": "^6.0.0",
-    "turbolinks": "^5.2.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/actioncable": "^6.0.0"
+    "bootstrap": "^3.3.7",
+    "bootstrap-sass": "3.3.7"
   },
   "version": "0.1.0"
 }
