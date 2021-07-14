@@ -2,16 +2,8 @@
   =t('sorting.newest')
   %i.fa.fa-angle-down.dropdown-icon.pull-right
 %ul.dropdown-menu
-  %li
-    %a{href: "#"} 
-      =t('sorting.newest')
-  %li
-    %a{href: "#"}
-      =t('sorting.popular')
-  %li
-    %a{href: "#"} 
-      =t('sorting.price_asc')
-  %li
-    %a{href: "#"} 
-      =t('sorting.price_desc')
+  - SortingService::SORTING_METHODS.each do |key, value|
+    %li
+      = link_to t("sorting.#{key.to_s}"), params[:category_id]
+
       

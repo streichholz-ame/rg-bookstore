@@ -5,32 +5,19 @@
       .dropdown.width-240
         = render 'sorting_menu'
     %ul.list-inline.pt-10.mb-25.mr-240
-      %li.mr-35
-        %a.filter-link{href: "#"}
-          All
-          %span.badge.general-badge 
-            = @books.count
-      - @categories.each do |category|
-        %li.mr-35
-          %a.filter-link{href: "#"}
-            = category.name
-            %span.badge.general-badge 
-              = @books.where(category_id: category).count
+      = render 'filter_menu'
   .dropdowns.mb-25.visible-xs
     %p.lead.small.mb-10 Filter by category
     .dropdown
       %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        Newest first
+        All
         %i.fa.fa-angle-down.dropdown-icon.pull-right
       %ul.dropdown-menu
-        %li
-          %a{href: "#"} Newest first
-        %li
-          %a{href: "#"} Popular first
-        %li
-          %a{href: "#"} Price: Low to hight
-        %li
-          %a{href: "#"} Price: Hight to low
+        %li 
+          %a{ href: "#" } All
+        - @categories.each do |category|
+          %li.mr-35
+            = link_to category.name, class: 'filter-link'
     %p.lead.small.mb-10 Sort by
     .dropdown
       %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
@@ -46,6 +33,7 @@
         %li
           %a{href: "#"} Price: Hight to low
   .mb-120
+    = pagy_nav(@pagy).html_safe
     .row
       = render 'book'
     .text-center

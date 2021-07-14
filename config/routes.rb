@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root to: 'homepage#index'
 
-  resources :books, only: [:index, :show]
+  resources :catalog, :controller => 'catalog', only: :index
+
+  resources :books, only: :show
 
   resources :categories do
     resources :books, :index
