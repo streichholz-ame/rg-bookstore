@@ -2,6 +2,7 @@ require_relative 'boot'
 
 require 'rails/all'
 # Pick the frameworks you want:
+require 'presenter'
 require 'active_model/railtie'
 require 'active_job/railtie'
 require 'active_record/railtie'
@@ -22,8 +23,10 @@ Bundler.require(*Rails.groups)
 
 module RgBooktore
   class Application < Rails::Application
+    config.autoload_paths << Rails.root.join('app/presenters')
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -32,5 +35,7 @@ module RgBooktore
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    
+
   end
 end

@@ -2,10 +2,10 @@
   = link_to catalog_index_path, class: 'filter-link' do
     = t('filter.show_all')
     %span.badge.general-badge 
-      = Book.all.count
-- @categories.each do |category|
+      = Book.count
+- @catalog_presenter.categories.each do |category|
   %li.mr-35
-    = link_to catalog_index_path, class: 'filter-link' do
+    = link_to catalog_category_path(category), class: 'filter-link' do
       = category.name
       %span.badge.general-badge 
         = Book.where(category_id: category).count

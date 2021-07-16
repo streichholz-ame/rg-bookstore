@@ -6,6 +6,6 @@
       %h2.h1=t('homepage.welcome')
       .mb-res-50
         %p= t('homepage.about')
-      %button.btn.btn-default= t('homepage.get_started')
+      = link_to t('homepage.get_started'), catalog_index_path, class: 'btn btn-default'
 
   = render 'best_sellers'

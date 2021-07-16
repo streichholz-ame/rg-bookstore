@@ -13,7 +13,8 @@
   %h1.mt-res-0 
     = @current_book.name
   %p.lead.small 
-    = @current_book.authors.first.name
+    - @current_book.authors.each do |author|
+      = author.name
   .row
     .col-xs-12.col-md-4
       %p.h1.in-gold-500.mt-10 

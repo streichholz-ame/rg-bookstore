@@ -246,6 +246,7 @@ GEM
     parser (3.0.2.0)
       ast (~> 2.4.1)
     pg (1.2.3)
+    presenter-rails (1.0.0)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -451,6 +452,7 @@ DEPENDENCIES
   omniauth-facebook (~> 8.0)
   pagy (~> 4.10, >= 4.10.1)
   pg (>= 0.18, < 2.0)
+  presenter-rails
   pry-rails (~> 0.3.9)
   puma (~> 4.1)
   pundit (~> 2.1)

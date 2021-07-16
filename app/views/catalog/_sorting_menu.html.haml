@@ -4,6 +4,5 @@
 %ul.dropdown-menu
   - SortingService::SORTING_METHODS.each do |key, value|
     %li
-      = link_to t("sorting.#{key.to_s}"), params[:category_id]
-
+      = link_to t("sorting.#{key.to_s}"), params[:id]#, catalog_category_path(sort: key)
       

@@ -24,9 +24,9 @@
             %a{type: "button", 'data-toggle': "collapse", href: "#menu", 'aria-expanded': "false", 'aria-controls': "menu"} 
               = t('header.shop')
             %ul#menu.collapse.list-unstyled.pl-30.mb-10{'aria-expanded': "false"}
-              - @categories.each do |category|
+              - @catalog_presenter.categories.each do |category|
                 %li
-                  = link_to category.name, root_path, class: 'collapse-link'
+                  = link_to category.name, catalog_category_path(category), class: 'collapse-link'
           %li
             = link_to t('header.my_account') 
       .hidden-xs
@@ -37,9 +37,9 @@
             %a.dropdown-toggle{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"} 
               =t('header.shop')
             %ul.dropdown-menu
-              - @categories.each do |category|
+              - @catalog_presenter.categories.each do |category|
                 %li
-                  = link_to category.name, root_path
+                  = link_to category.name, catalog_category_path(category)
               %li.divider{role: "separator"}
               %li
                 = link_to t('header.log_out')
