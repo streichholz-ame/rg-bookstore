@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :books, only: :show
 
-  resources :categories, :controller => 'catalog' do #path: 'catalog/categories'
+  resources :categories, :controller => 'catalog' do
     member do
       get 'catalog', to: 'catalog#index'
     end

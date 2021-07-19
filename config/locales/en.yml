@@ -3,6 +3,10 @@ en:
     welcome: 'Welcome to our amazing Bookstore!'
     about: 'We pore through hundreds of new books each month and select the five best we can find to share with our members.'
     get_started: 'Get Started'
+    buy_now: 'Buy Now'
+    previous: 'Previous'
+    next: 'Next'
+    best_sellers: 'Best Sellers'
   header:
     bookstore: 'Bookstore'
   footer:
@@ -19,3 +23,24 @@ en:
     title_desc: 'Title: Z-A'
   filter: 
     show_all: 'All books'
+  book_page: 
+    back: 'Back to results'
+    description: 'Description'
+    read_more: 'Read More'
+    hide_read_more: 'Hide Read More'
+    year: 'Year of publication'
+    dimensions: 'Dimensions'
+    materials: 'Materials'
+    price: "€%{price}"
+  catalog: 
+    title: 'Сatalog'
+    view_more: 'View More'
+    filter: 'Filter by category'
+    sort: 'Sort by'
+  cart: 
+    add: 'Add to Cart'
+  review: 
+    write: 'Write a Review'
+    score: 'Score'
+    post: 'Post'
+    verified_reviewer: 'Verified Reviewer'

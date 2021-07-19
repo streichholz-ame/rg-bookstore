@@ -1,3 +1,13 @@
-// Place all the styles related to the books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.span#description {
+  display: inline;
+  .a {
+    display: inline;
+  }
+}
+
+.span#full_description {
+  display: none;
+  .a {
+    display: none;
+  }
+}

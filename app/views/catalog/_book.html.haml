@@ -14,9 +14,7 @@
         %p.title 
           = book.name
         %p.font-16.in-gold-500 
-          $ 
-          = book.price
+          = t('book_page.price', price: book.price)
         %span.divider-sm
         %p.lead.small 
-          - book.authors.each do |author|
-            = author.name 
+          = @catalog_presenter.author_name(book)

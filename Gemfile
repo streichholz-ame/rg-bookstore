@@ -43,6 +43,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'lefthook', '~> 0.7.6'
   gem 'pry-rails', '~> 0.3.9'
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -63,6 +64,7 @@ group :test do
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
   gem 'simplecov'
   gem 'site_prism', '~> 3.7', '>= 3.7.1'
+  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

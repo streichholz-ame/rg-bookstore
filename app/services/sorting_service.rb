@@ -16,17 +16,18 @@ class SortingService
   end
 
   def call
-    @books_by_category = show_books_by_categories
     sort_books
   end
 
+  private
+
   def sort_books
-    params[:sort] = :newest unless SORTING_METHODS.include?(params[:sort]&.to_sym)
-    
-    @books_by_category.order(SORTING_METHODS.key(params[:sort]))
+    check_sort_params
+    books.order(SORTING_METHODS[params[:sort].to_sym])
   end
 
-  def show_books_by_categories
-    params[:id].nil? ? books : books.where(category_id: params[:id])
+  def check_sort_params
+    return if SORTING_METHODS.include?(params[:sort]&.to_sym)
+    params[:sort] = :newest
   end
 end

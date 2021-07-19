@@ -112,6 +112,12 @@ GEM
     concurrent-ruby (1.1.9)
     content_disposition (1.0.0)
     crass (1.0.6)
+    database_cleaner (2.0.1)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -125,6 +131,11 @@ GEM
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.8.1)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faraday (1.5.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -435,7 +446,9 @@ DEPENDENCIES
   byebug
   capybara (>= 2.5.0)
   capybara-screenshot (~> 1.0, >= 1.0.25)
+  database_cleaner
   devise (~> 4.8)
+  factory_bot_rails
   fasterer
   ffaker
   font-awesome-rails

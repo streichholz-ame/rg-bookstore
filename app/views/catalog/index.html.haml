@@ -1,5 +1,6 @@
 %main.container
-  %h1.general-title-margin Сatalog
+  %h1.general-title-margin
+    = t('catalog.title')
   .hidden-xs.clearfix
     .dropdowns.pull-right
       .dropdown.width-240
@@ -7,35 +8,22 @@
     %ul.list-inline.pt-10.mb-25.mr-240
       = render 'filter_menu'
   .dropdowns.mb-25.visible-xs
-    %p.lead.small.mb-10 Filter by category
+    %p.lead.small.mb-10 
+      = t('catalog.filter')
     .dropdown
       %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        All
+        = t('filter.show_all')
         %i.fa.fa-angle-down.dropdown-icon.pull-right
       %ul.dropdown-menu
-        %li 
-          %a{ href: "#" } All
-        - @catalog_presenter.categories.each do |category|
-          %li.mr-35
-            = link_to catalog_category_path(category), class: 'filter-link' do
-              = category.name
-    %p.lead.small.mb-10 Sort by
+        = render 'filter_menu'
+    %p.lead.small.mb-10
+      = t('catalog.sort')
     .dropdown
-      %a.dropdown-toggle.lead.small{href: "#", 'data-toggle': "dropdown", role: "button", 'aria-haspopup': "true", 'aria-expanded': "false"}
-        Newest first
-        %i.fa.fa-angle-down.dropdown-icon.pull-right
-      %ul.dropdown-menu
-        %li
-          %a{href: "#"} Newest first
-        %li
-          %a{href: "#"} Popular first
-        %li
-          %a{href: "#"} Price: Low to hight
-        %li
-          %a{href: "#"} Price: Hight to low
+      = render 'sorting_menu'
   .mb-120
     = pagy_nav(@pagy).html_safe
     .row
       = render 'book'
     .text-center
-      %button.btn.btn-primary View More
+      %button.btn.btn-primary 
+        = t('catalog.view_more')

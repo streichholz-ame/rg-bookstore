@@ -10,41 +10,49 @@
       %a.img-link{href: "#"}
         %img{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
 .col-sm-6
-  %h1.mt-res-0 
-    = @current_book.name
-  %p.lead.small 
-    - @current_book.authors.each do |author|
-      = author.name
+  %h1.mt-res-0= @current_book.name
+  %p.lead.small= @book_presenter.author_name
   .row
     .col-xs-12.col-md-4
       %p.h1.in-gold-500.mt-10 
-        €
-        = @current_book.price
+        = t('book_page.price', price: @current_book.price)
     .col-xs-5.col-md-3
       .input-group.general-position
-        %a.input-link{href: "#"}
+        = link_to '#', class: 'input-link', id: 'minus' do
           %i.fa.fa-minus.line-height-40
-        %input.form-control.quantity-input{type: "text"}
-        %a.input-link{href: "#"}
+        = text_field_tag 'book_count', '', class: 'form-control quantity-input book-count-input', value: 1
+        = link_to '#', class: 'input-link', id: 'plus' do
           %i.fa.fa-plus.line-height-40
     .col-xs-7.col-md-5
-      %button.btn.btn-default.pull-right.general-position Add to Cart
+      %button.btn.btn-default.pull-right.general-position= t('cart.add')
   .general-info-wrap.divider-lg
-    %p Description
-    %p.lead.small.line-height-2
-      = @current_book.description
-      %a.in-gold-500.ml-10{href: "#"} Read More
+    %p= t('book_page.description')
+    %p#book-description.lead.small.line-height-2
+      %span#description
+        = @book_presenter.description
+        %span#read-more-link
+          = link_to '#', class: 'in-gold-500 ml-10' do
+            = t('book_page.read_more')
+      %span#full_description
+        = @book_presenter.full_description
+        %span#hide-read-more-link
+          = link_to '#', class: 'in-gold-500 ml-10' do
+            = t('book_page.hide_read_more')            
   .general-info-wrap.divider-lg
     .clearfix
-      %p.pull-left Year of publication
+      %p.pull-left 
+        = t('book_page.year')
       %p.lead.small.pull-right 
         = @current_book.publication_year
   .general-info-wrap.divider-lg
     .clearfix
-      %p.pull-left Dimensions
-      %p.lead.small.pull-right = "H: #{@current_book.height}\" x W: #{@current_book.width}\" x D: #{@current_book.depth}"
+      %p.pull-left 
+        = t('book_page.dimensions')
+      %p.lead.small.pull-right 
+        = @book_presenter.dimensions
   .general-info-wrap.divider-lg
     .clearfix
-      %p.pull-left Materials
+      %p.pull-left 
+        = t('book_page.materials')
       %p.lead.small.pull-right 
         = @current_book.material
