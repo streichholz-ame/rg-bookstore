@@ -4,7 +4,7 @@ require 'simplecov'
 
 SimpleCov.start do
   add_filter '/spec/'
-  minimum_coverage 95
+  minimum_coverage 90
   add_filter 'app/admin'
 end
 
@@ -32,5 +32,16 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
-  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} ShopShop})
+  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} })
+
+  config.include FactoryBot::Syntax::Methods
+end
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
