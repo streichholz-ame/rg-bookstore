@@ -3,10 +3,22 @@ orbs:
   ruby: circleci/ruby@0.1.2
 jobs:
   build:
+    working_directory: ~/repo
     docker:
-      - image: circleci/ruby:2.7.2
+      - image: circleci/ruby:2.5.3-node-browsers
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: circleci/postgres:9.6-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: rg_booktore_test
+          DATABASE_URL: "postgres://ubuntu@localhost:5432/rg_booktore_test"
     steps:
       - checkout
+      
       - restore_cache:
           keys:
             - gem-cache-v1-{{ checksum "Gemfile.lock" }}
