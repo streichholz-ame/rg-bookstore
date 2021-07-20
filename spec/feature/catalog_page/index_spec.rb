@@ -1,5 +1,4 @@
 describe 'Catalog Page', type: :feature do
-  
   let!(:book) { create(:book) }
 
   before { visit(catalog_index_path) }

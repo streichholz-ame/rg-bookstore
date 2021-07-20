@@ -18,9 +18,7 @@ require 'yaml'
 require 'i18n'
 require 'capybara/poltergeist'
 require 'webdrivers'
-require "selenium-webdriver" 
-
-
+require 'selenium-webdriver'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

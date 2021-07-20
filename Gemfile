@@ -62,10 +62,10 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rubocop-rspec', '~> 2.4'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
   gem 'simplecov'
   gem 'site_prism', '~> 3.7', '>= 3.7.1'
-  gem 'selenium-webdriver'
   gem 'webdrivers'
 end
 
