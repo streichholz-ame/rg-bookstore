@@ -16,6 +16,11 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'yaml'
 require 'i18n'
+require 'capybara/poltergeist'
+require 'webdrivers'
+require "selenium-webdriver" 
+
+
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -38,6 +43,9 @@ RSpec.configure do |config|
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
+Capybara.default_driver = :selenium_chrome
+
+Capybara.javascript_driver = :poltergeist
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|

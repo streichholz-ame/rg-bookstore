@@ -10,7 +10,7 @@ def generate_book
   book = Book.new(
     category_id: rand(1..3),
     name: FFaker::Book.title,
-    description: FFaker::Book.description,
+    description: FFaker::Lorem.paragraphs,
     price: rand(12.99..99.99).round(2),
     height: 9,
     width: 6,

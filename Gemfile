@@ -43,6 +43,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'lefthook', '~> 0.7.6'
+  gem 'poltergeist'
   gem 'pry-rails', '~> 0.3.9'
 end
 
@@ -58,13 +59,14 @@ end
 
 group :test do
   gem 'capybara', '>= 2.5.0'
-  gem 'capybara-screenshot', '~> 1.0', '>= 1.0.25'
   gem 'database_cleaner'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rubocop-rspec', '~> 2.4'
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
   gem 'simplecov'
   gem 'site_prism', '~> 3.7', '>= 3.7.1'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

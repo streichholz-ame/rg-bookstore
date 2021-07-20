@@ -8,7 +8,11 @@ en:
     next: 'Next'
     best_sellers: 'Best Sellers'
   header:
+    home: 'Home'
     bookstore: 'Bookstore'
+    shop: 'Shop'
+    orders: 'Orders'
+    settings: 'Settings'
   footer:
     home: 'Home'
     shop: 'Shop'

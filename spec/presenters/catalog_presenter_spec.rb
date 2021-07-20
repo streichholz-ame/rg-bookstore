@@ -4,9 +4,9 @@ RSpec.describe CatalogPresenter do
   let(:catalog) { described_class.new(sort: '') }
   let!(:category1) { create(:category) }
   let!(:category2) { create(:category) }
-  let!(:book1) { create(:book, name: 'aaa', category: category1, price: 2) }
-  let!(:book2) { create(:book, name: 'zzz', category: category2, price: 1) }
-  let!(:book3) { create(:book, name: 'azaz', category: category2, price: 1) }
+  let!(:book1) { create(:book, :with_author, category: category1) }
+  let!(:book2) { create(:book, :with_author, category: category2) }
+  let!(:book3) { create(:book, :with_author, category: category2) }
   let(:books) { Book.all }
   let(:categories) { Category.all }
 
@@ -29,6 +29,12 @@ RSpec.describe CatalogPresenter do
   describe 'count by category' do
     it 'show number of books' do
       expect(catalog.books_by_category_count(category2)).to eq(2)
+    end
+  end
+
+  describe 'author_name' do
+    it 'return book author' do
+      expect(catalog.author_name(book1)).to eq(book1.authors.map(&:name).join(', '))
     end
   end
 end

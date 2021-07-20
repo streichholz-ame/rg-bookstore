@@ -11,4 +11,10 @@ FactoryBot.define do
 
     category
   end
+
+  trait :with_author do
+    after(:create) do |book|
+      create(:author, books: [book])
+    end
+  end
 end
