@@ -1,6 +1,6 @@
 class CatalogController < ApplicationController
   before_action :filter_books
-  
+
   def index
     @catalog_presenter = CatalogPresenter.new(params: params)
     @sorted_books = SortingService.new(@filtered_books, params).call
@@ -12,5 +12,4 @@ class CatalogController < ApplicationController
   def filter_books
     @filtered_books = params[:id].nil? ? Book.all : Book.where(category_id: params[:id])
   end
-  
 end

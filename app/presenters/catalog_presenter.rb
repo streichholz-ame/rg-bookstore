@@ -1,5 +1,4 @@
 class CatalogPresenter < ApplicationPresenter
-
   NEW_BOOKS_COUNT = 3
   BEST_SELLERS_COUNT = 4
 
@@ -16,12 +15,10 @@ class CatalogPresenter < ApplicationPresenter
   end
 
   def author_name(book)
-    book.authors.map { |author| author.name }.join(', ')
+    book.authors.map(&:name).join(', ')
   end
 
-  def books_count
-    books.count
-  end
+  delegate :count, to: :books, prefix: true
 
   def books_by_category_count(category)
     books.where(category_id: category).count

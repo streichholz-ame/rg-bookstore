@@ -23,8 +23,8 @@ gem 'mini_magick', '~> 4.11'
 gem 'omniauth', '~> 2.0', '>= 2.0.4'
 gem 'omniauth-facebook', '~> 8.0'
 gem 'pagy', '~> 4.10', '>= 4.10.1'
-gem 'presenter-rails'
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'presenter-rails'
 gem 'puma', '~> 4.1'
 gem 'pundit', '~> 2.1'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
@@ -34,16 +34,16 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'sass-rails'
 gem 'shrine', '~> 3.4'
 gem 'sprockets', '=3.7.1'
-gem 'turbolinks', '~> 5'
 gem 'sprockets-rails', '~> 2.1', '>= 2.1.3'
+gem 'turbolinks', '~> 5'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails'
   gem 'lefthook', '~> 0.7.6'
   gem 'pry-rails', '~> 0.3.9'
-  gem "factory_bot_rails"
 end
 
 group :development do
@@ -59,12 +59,12 @@ end
 group :test do
   gem 'capybara', '>= 2.5.0'
   gem 'capybara-screenshot', '~> 1.0', '>= 1.0.25'
+  gem 'database_cleaner'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rubocop-rspec', '~> 2.4'
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
   gem 'simplecov'
   gem 'site_prism', '~> 3.7', '>= 3.7.1'
-  gem 'database_cleaner'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

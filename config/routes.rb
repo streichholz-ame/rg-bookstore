@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root to: 'homepage#index'
 
-  resources :catalog, :controller => 'catalog', only: :index 
+  resources :catalog, controller: 'catalog', only: :index
 
   resources :books, only: :show
 
-  resources :categories, :controller => 'catalog' do
+  resources :categories, controller: 'catalog' do
     member do
       get 'catalog', to: 'catalog#index'
     end

@@ -14,3 +14,12 @@ Style/FrozenStringLiteralComment:
 
 Layout/LineLength:
   Max: 120
+
+Metrics/MethodLength:
+  Exclude: 
+    - 'db/*.rb'
+    - 'db/**/*.rb'
+    
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'

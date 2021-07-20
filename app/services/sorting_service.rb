@@ -1,5 +1,4 @@
 class SortingService
-
   attr_reader :books, :params
 
   SORTING_METHODS = {
@@ -8,7 +7,7 @@ class SortingService
     title_desc: 'name DESC',
     price_asc: 'price ASC',
     price_desc: 'price DESC'
-  }
+  }.freeze
 
   def initialize(books, params)
     @books = books
@@ -28,6 +27,7 @@ class SortingService
 
   def check_sort_params
     return if SORTING_METHODS.include?(params[:sort]&.to_sym)
+
     params[:sort] = :newest
   end
 end
