@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CatalogPresenter do
-  let(:catalog) { described_class.new(sort: '') }
+  let(:catalog) { described_class.new }
   let!(:category1) { create(:category) }
   let!(:category2) { create(:category) }
   let!(:book1) { create(:book, :with_author, category: category1) }

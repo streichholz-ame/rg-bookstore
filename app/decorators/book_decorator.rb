@@ -18,5 +18,4 @@ class BookDecorator < ApplicationDecorator
   def author_name
     book.authors.map(&:name).join(', ')
   end
-
 end

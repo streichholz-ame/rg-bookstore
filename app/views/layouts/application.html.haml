@@ -10,5 +10,7 @@
 
 %body
   = render 'partials/header'
+  %p.notice= notice 
+  %p.alert= alert
   = yield 
   = render 'partials/footer'

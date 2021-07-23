@@ -33,10 +33,10 @@ gem 'sass', '~> 3.7', '>= 3.7.4'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'sass-rails'
 gem 'shrine', '~> 3.4'
+gem 'simple_form'
 gem 'sprockets', '=3.7.1'
 gem 'sprockets-rails', '~> 2.1', '>= 2.1.3'
 gem 'turbolinks', '~> 5'
-gem 'simple_form'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 

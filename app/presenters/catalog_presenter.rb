@@ -27,5 +27,4 @@ class CatalogPresenter
   def books_by_category_count(category)
     books.where(category_id: category).count
   end
-
 end

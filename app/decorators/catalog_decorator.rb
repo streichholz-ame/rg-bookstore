@@ -1,8 +1,8 @@
 class CatalogDecorator < ApplicationDecorator
+  delegate_all
+
   NEW_BOOKS_COUNT = 3
   BEST_SELLERS_COUNT = 4
-
-  delegate_all
 
   def best_sellers
     books.last(BEST_SELLERS_COUNT)
@@ -21,5 +21,4 @@ class CatalogDecorator < ApplicationDecorator
   def books_by_category_count(category)
     books.where(category_id: category).count
   end
-
 end
