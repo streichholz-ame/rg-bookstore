@@ -1,0 +1,11 @@
+%main.container.general-main-wrap
+  .text-center
+    %h3.general-login-title Set new password
+  %form.general-form
+    .form-group.mb-30
+      %label.control-label.input-label{for: "password"} Type a new Password
+      %input#password.form-control{name:"password", type: "password", placeholder: "Type a new Password"}
+    .form-group.mb-40
+      %label.control-label.input-label{for: "confirmPassword"} Confirm Password
+      %input#confirmPassword.form-control{name:"password", type: "password", placeholder: "Confirm Password"}
+    %button.btn.btn-default.center-block.mb-20 Change

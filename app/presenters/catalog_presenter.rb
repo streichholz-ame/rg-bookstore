@@ -1,4 +1,4 @@
-class CatalogPresenter < ApplicationPresenter
+class CatalogPresenter
   NEW_BOOKS_COUNT = 3
   BEST_SELLERS_COUNT = 4
 
@@ -8,6 +8,10 @@ class CatalogPresenter < ApplicationPresenter
 
   def categories
     Category.all
+  end
+
+  def best_sellers
+    books.last(BEST_SELLERS_COUNT)
   end
 
   def carousel_newest_books
@@ -23,4 +27,5 @@ class CatalogPresenter < ApplicationPresenter
   def books_by_category_count(category)
     books.where(category_id: category).count
   end
+
 end

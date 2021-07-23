@@ -13,6 +13,9 @@ en:
     shop: 'Shop'
     orders: 'Orders'
     settings: 'Settings'
+    log_out: 'Log Out'
+    sign_in: 'Sign In'
+    sign_up: 'Sign Up'
   footer:
     home: 'Home'
     shop: 'Shop'
@@ -44,6 +47,7 @@ en:
   cart: 
     add: 'Add to Cart'
   review: 
+    header: 'Review (%{count})'
     write: 'Write a Review'
     score: 'Score'
     post: 'Post'

@@ -12,21 +12,15 @@
               %img.img-shadow.general-thumbnail-img{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
           .col-sm-7
             .mb-60
-              %h1 
-                = book.name
-              %p.lead 
-                = book.description
-              %p.lead.small 
-                = @catalog_presenter.author_name(book)
+              %h1= book.name
+              %p.lead= book.description
+              %p.lead.small= @catalog_presenter.author_name(book)
               .general-align
-                %button.btn.btn-primary 
-                  = t('homepage.buy_now')
+                %button.btn.btn-primary= t('homepage.buy_now')
     %a.left.carousel-control{href: "#slider", role: "button", 'data-slide': "prev"}
       %span.icon-prev{'aria-hidden': "true"}
-      %span.sr-only 
-        = t('homepage.previous')
+      %span.sr-only= t('homepage.previous')
     %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
       %span.icon-next{'aria-hidden': "true"}
-      %span.sr-only 
-        = t('homepage.next')
+      %span.sr-only= t('homepage.next')
       
