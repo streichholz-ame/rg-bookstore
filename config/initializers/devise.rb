@@ -26,6 +26,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'test@example.com'
   config.scoped_views = true
+  config.allow_unconfirmed_access_for = nil
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 

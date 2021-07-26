@@ -10,11 +10,14 @@
       .form-group.mb-30
         = f.label :email, t('devise.enter_email'), class: 'control-label input-label'
         = f.email_field :email, placeholder: "Enter Email", autofocus: true, autocomplete: "email", class: 'form-control', id: 'email'
+        = resource.errors.messages[:email].to_sentence
       .form-group.mb-30
         = f.label :password, t('devise.enter_password'), class: 'control-label input-label'
         = f.password_field :password, placeholder: "Password", autocomplete: "new-password", class: 'form-control', id: 'password'
+        = resource.errors.messages[:password].to_sentence
       .form-group.mb-30
         = f.label :password_confirmation, t('devise.confirm_password'), class: 'control-label input-label'
         = f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password", class: 'form-control', id: 'confirm-password'
+        = resource.errors.messages[:password_confirmation].to_sentence
       .text-center
-        = f.submit t('devise.sign_up'), class: 'btn btn-default mb-20'
+        = f.submit t('devise.sign_up'), class: 'btn btn-default mb-20', id: 'sign-up-btn'

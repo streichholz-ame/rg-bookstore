@@ -6,6 +6,7 @@
     %p.general-login-text= t('devise.or')
   .general-form
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = render "devise/shared/error_messages", resource: resource
       .form-group.mb-30
         = f.label :email, t('devise.enter_email'), class: 'control-label input-label', autocomplete: 'email'
         = f.email_field :email, placeholder: "Enter Email", autofocus: true, autocomplete: "email", class: 'form-control', id: 'email'
@@ -15,13 +16,12 @@
         = link_to t('devise.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
       .form-group.checkbox.text-center.mb-30
         %label.checkbox-label
-          = f.check_box :remember_me, class: 'checkbox-input'
-          %span.checkbox-icon
+          = f.check_box :remember_me, class: 'checkbox-input' do
             %i.fa.fa-check
           - if devise_mapping.rememberable?
             = f.label :remember_me, t('devise.remember_me'), class: 'checkbox-text remember-me'
       .text-center
-        = f.submit t('devise.back'), class: 'btn btn-default mb-20'
+        = f.submit t('devise.back'), class: 'btn btn-default mb-20', id: 'sign-in-btn'
     %p.general-sign-text.text-center
       = t('devise.no_account')
       = link_to t('header.sign_up'), new_user_registration_path, class: 'in-gold-500'

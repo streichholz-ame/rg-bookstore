@@ -16,6 +16,7 @@ en:
     log_out: 'Log Out'
     sign_in: 'Sign In'
     sign_up: 'Sign Up'
+    my_account: 'My Account'
   footer:
     home: 'Home'
     shop: 'Shop'
