@@ -2,9 +2,12 @@
   .text-center
     %h1.mb-30 Forgot your password?
     %p.general-password-text We'll email you instructions on how to reset it
-  %form.general-form
-    .form-group.mb-25
-      %input#email.form-control{name:"email", type: "email", placeholder: "Enter your email"}
-    %button.btn.btn-default.center-block.mb-20 Email Instructions
-    .text-center
-      %a.in-gold-500.mb-20{href: "#"} Cancel
+  .general-form
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = render "devise/shared/error_messages", resource: resource
+      .form-group.mb-25
+        = f.email_field :email, placeholder: "Enter your email", autofocus: true, autocomplete: "email", class: 'form-control', id: 'email', type: 'email'
+      = f.submit t('authorization.email_instructions'), class: 'btn btn-default center-block mb-20', id: 'forgot-password-btn'
+      .text-center
+        = link_to 'user/sign_in', class: 'in-gold-500 mb-20' do
+          = t('authorization.cancel')

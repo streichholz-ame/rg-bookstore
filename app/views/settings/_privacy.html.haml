@@ -1,0 +1,13 @@
+.row.mb-60
+  .col-sm-5
+    %p.in-gold-500.font-18.mb-25= t('account_settings.settings.email')
+    = form_tag change_email_path(current_user), method: :put, class: 'general-form-md' do
+      .form-group.mb-35
+        = label_tag :email, t('account_settings.settings.enter_email'), for: 'email', class: 'control-label input-label'
+        = email_field_tag :email, '', class: 'form-control', id: 'email', type: 'email', name: 'email', placeholder: "Enter your email"
+      .general-text-align
+        = submit_tag t('account_settings.save'), class: 'btn btn-default mb-35'
+  .col-sm-5.col-sm-offset-1
+    = render 'change_password'
+  .col-sm-12
+    = render 'destroy_account'

@@ -2,16 +2,6 @@
 
 en:
   devise:
-    or: 'or'
-    sign_up: 'Sign Up'
-    log_in: 'Log In'
-    enter_email: 'Enter Email'
-    enter_password: 'Password'
-    forgot_password: 'Forgot password?'
-    remember_me: 'Remember me'
-    back: 'Back to Store'
-    no_account: 'Don’t have an Account?'
-    confirm_passsword: 'Confirm Password'
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."

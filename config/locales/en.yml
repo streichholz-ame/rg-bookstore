@@ -14,7 +14,7 @@ en:
     orders: 'Orders'
     settings: 'Settings'
     log_out: 'Log Out'
-    sign_in: 'Sign In'
+    sign_in: 'Log In'
     sign_up: 'Sign Up'
     my_account: 'My Account'
   footer:
@@ -53,3 +53,54 @@ en:
     score: 'Score'
     post: 'Post'
     verified_reviewer: 'Verified Reviewer'
+  authorization:
+    enter_email: 'Enter Email'
+    enter_password: 'Password'
+    or: 'or'
+    sign_up: 'Sign Up'
+    confirm_password: 'Confirm Password'
+    log_in: 'Log In'
+    forgot_password: 'Forgot password?'
+    no_account: 'Don’t have an Account?'
+    back: 'Back to Store'
+    remember_me: 'Remember me'
+    email_instructions: 'Email Instructions'
+    cancel: 'Cancel'
+    set_new_password: 'Set new password'
+    new_password: 'Type a new Password'
+    change: 'Change'
+  account_settings: 
+    header: 'Settings'
+    save: 'Save'
+    address: 'Address'
+    privacy: 'Privacy'
+    addresses: 
+      billing_address: 'Billing Address'
+      shipping_address: Shipping Address
+      first_name: 
+        header: 'First Name'
+        description: 'Please enter your first name'
+      last_name: 'Last Name'
+      city: 'City' 
+      zip: 'Zip'
+      country: 'Country'
+      phone: 'Phone'
+    settings: 
+      email: 'Email'
+      enter_email: 'Enter Email'
+      password: 'Password'
+      old_password: 'Old Password'
+      new_password: 'New Password'
+      confirm_password: 'Confirm Password'
+      remove_account:
+        header: 'Remove Account'
+        request: 'Please Remove My Account'
+        confirmation: 'I understand that all data will be lost'
+  flash: 
+    destroy_success: 'Your account was successfully destroyed.'
+    destroy_error: 'Error occured. Account was not deleted.'
+    change_password_success: 'Your password was successfully changed.'
+    change_password_error: 'Error occured. Your password was not changed.'
+    change_email_success: 'Yur email was successfully updated.'
+    change_email_error: 'Your email was not changed.'
+      

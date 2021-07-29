@@ -1,0 +1,24 @@
+.form-group.has-error
+  %label.control-label.input-label{for: "firstName"}= t('account_settings.addresses.first_name.header')
+  %input#firstName.form-control{name:"fname", type: "text", placeholder: "First Name"}
+  %span.help-block= t('account_settings.addresses.first_name.description')
+.form-group
+  %label.control-label.input-label{for: "lastName"}= t('account_settings.last_name')
+  %input#lastName.form-control{name:"lname", type: "text", placeholder: "Last Name"}
+.form-group
+  %label.control-label.input-label{for: "address"}= t('account_settings.address')
+  %input#address.form-control{name: "address", type: "text", placeholder: "Address"}
+.form-group
+  %label.control-label.input-label{for: "city"}= t('account_settings.city')
+  %input#city.form-control{name: "city", type: "text", placeholder: "City"}
+.form-group
+  %label.control-label.input-label{for: "zip"}= t('account_settings.zip')
+  %input#zip.form-control{name: "zip", type: "text", placeholder: "Zip"}
+.form-group
+  %label.control-label.input-label{for: "сountry"}= t('account_settings.country')
+  %input#country.form-control{name: "country", type: "text", placeholder: "Select a country"}
+.form-group.mb-60
+  %label.control-label.input-label{for: "phone"}= t('account_settings.phone')
+  %input#phone.form-control{name: "phone", type: "tel", placeholder: "Example +355 66 123 4567"}
+.text-center.general-text-align
+  %button.btn.btn-default= t('account_settings.save')

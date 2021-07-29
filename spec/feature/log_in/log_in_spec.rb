@@ -44,7 +44,7 @@ RSpec.describe 'Log In', type: :feature do
   end
 
   scenario 'when click forgot password' do
-    find('a', text: I18n.t('devise.forgot_password')).click
+    find('a', text: I18n.t('authorization.forgot_password')).click
     expect(page).to have_current_path new_user_password_path
   end
 

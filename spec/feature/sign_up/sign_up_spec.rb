@@ -45,7 +45,7 @@ RSpec.describe 'Sign Up', type: :feature do
     fill_in 'user[password]', with: short_password
     fill_in 'user[password_confirmation]', with: short_password
     click_on('sign-up-btn')
-    expect(page).to have_content('is too short ')
+    expect(page).to have_content('is too short')
   end
 
   scenario 'sign up with correct input' do
@@ -53,8 +53,8 @@ RSpec.describe 'Sign Up', type: :feature do
     fill_in 'user[password]', with: valid_password
     fill_in 'user[password_confirmation]', with: valid_password
     click_on('sign-up-btn')
-    expect(page).to have_content I18n.t('devise.registrations.signed_up_but_unconfirmed')
+    expect(page).to have_content I18n.t('devise.registrations.signed_up')
   end
 
-  scenario 'sign ip via facebook'
+  scenario 'sign usigned_up_but_unconfirmedp via facebook'
 end

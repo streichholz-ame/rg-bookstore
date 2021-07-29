@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
-
   get '/users' => redirect('users/sign_up')
 
   resources :catalog, controller: 'catalog', only: :index
@@ -13,4 +12,8 @@ Rails.application.routes.draw do
       get 'catalog', to: 'catalog#index'
     end
   end
+
+  resources :settings
+  resources :accounts
+  resources :change_emails
 end

@@ -1,0 +1,10 @@
+%p.in-gold-500.font-18.mb-25= t('account_settings.settings.remove_account.header')
+= form_tag account_path(current_user), method: :delete do
+  .general-settings-btn
+    = submit_tag t('account_settings.settings.remove_account.request'), class: 'btn btn-default mb-20', disabled: true, id: 'destroy-account-btn'
+  .form-group.checkbox.general-settings-checkbox
+    %label.checkbox-label
+      %input.checkbox-input#destroy-account-checkbox{type: "checkbox", hidden: "true"}
+      %span.checkbox-icon
+        %i.fa.fa-check
+      %span.checkbox-text= t('account_settings.settings.remove_account.confirmation')
