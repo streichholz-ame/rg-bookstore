@@ -8,15 +8,14 @@
       %a.tab-link{href: "#privacy", 'aria-controls': "privacy", role: "tab", 'data-toggle': "tab"}= t('account_settings.privacy')
   .tab-content
     #address.tab-pane.fade.in.active.general-main-wrap{role: "tabpanel"}
-      %form
-        .hidden-xs.hidden-sm
-          .row
-            .col-md-5
-              %h3.general-subtitle.mt-0= t('account_settings.addresses.billing_address')
-              = render 'billing_address'
-            .col-md-5.col-md-offset-1
-              %h3.general-subtitle.mt-0= t('account_settings.addresses.shipping_address')
-              = render 'shipping_address'
+      .hidden-xs.hidden-sm
+        .row
+          .col-md-5
+            %h3.general-subtitle.mt-0= t('account_settings.addresses.billing_address')
+            = render 'billing_address'
+          .col-md-5.col-md-offset-1
+            %h3.general-subtitle.mt-0= t('account_settings.addresses.shipping_address')
+            = render 'shipping_address'
         .row
           .col-md-5.mb-40
             .visible-xs.visible-sm

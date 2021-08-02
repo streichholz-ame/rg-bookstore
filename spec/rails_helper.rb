@@ -20,6 +20,7 @@ require 'capybara/poltergeist'
 require 'webdrivers'
 require 'selenium-webdriver'
 
+
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -38,6 +39,10 @@ RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} })
 
   config.include FactoryBot::Syntax::Methods
+
+  config.include Warden::Test::Helpers
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
@@ -51,3 +56,4 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+

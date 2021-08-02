@@ -6,7 +6,7 @@
         = label_tag :email, t('account_settings.settings.enter_email'), for: 'email', class: 'control-label input-label'
         = email_field_tag :email, '', class: 'form-control', id: 'email', type: 'email', name: 'email', placeholder: "Enter your email"
       .general-text-align
-        = submit_tag t('account_settings.save'), class: 'btn btn-default mb-35'
+        = submit_tag t('account_settings.save'), class: 'btn btn-default mb-35', name: 'submit-email'
   .col-sm-5.col-sm-offset-1
     = render 'change_password'
   .col-sm-12

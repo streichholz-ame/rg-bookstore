@@ -77,9 +77,7 @@ en:
     addresses: 
       billing_address: 'Billing Address'
       shipping_address: Shipping Address
-      first_name: 
-        header: 'First Name'
-        description: 'Please enter your first name'
+      first_name: 'First Name'
       last_name: 'Last Name'
       city: 'City' 
       zip: 'Zip'
@@ -96,11 +94,18 @@ en:
         header: 'Remove Account'
         request: 'Please Remove My Account'
         confirmation: 'I understand that all data will be lost'
+  hints: 
+    first_name: 'Please enter your first name'
+    last_name: 'Please enter your last name'
+    city: 'Please enter your city'
+    zip: 'Please enter your zip'
+    country: 'Please choose your country from the following'
+    phone: 'Please enter your phone'
   flash: 
     destroy_success: 'Your account was successfully destroyed.'
     destroy_error: 'Error occured. Account was not deleted.'
     change_password_success: 'Your password was successfully changed.'
     change_password_error: 'Error occured. Your password was not changed.'
-    change_email_success: 'Yur email was successfully updated.'
+    change_email_success: 'Your email was successfully updated.'
     change_email_error: 'Your email was not changed.'
       

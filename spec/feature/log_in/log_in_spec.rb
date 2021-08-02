@@ -53,7 +53,6 @@ RSpec.describe 'Log In', type: :feature do
     fill_in 'user[password]', with: user.password
     click_on('sign-in-btn')
     expect(page).to have_selector 'a', text: I18n.t('header.my_account')
-    expect(page).to have_current_path root_path
   end
 
   scenario 'when sign in via facebook'
