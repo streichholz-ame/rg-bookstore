@@ -20,7 +20,6 @@ require 'capybara/poltergeist'
 require 'webdrivers'
 require 'selenium-webdriver'
 
-
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
@@ -56,4 +55,3 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-

@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
     else
       flash[:error] = I18n.t('flash.change_password_error')
     end
-    sign_in(current_account, bypass: true)
+    bypass_sign_in(current_user)
     redirect_to settings_path
   end
 

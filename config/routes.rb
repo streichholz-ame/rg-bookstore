@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   resources :settings
   resources :accounts
   resources :change_emails
+  resources :addresses
+  resources :billing_addresses, controller: 'addresses', type: 'billing'
+  resources :shipping_addresses, controller: 'addresses', type: 'shipping'
 end

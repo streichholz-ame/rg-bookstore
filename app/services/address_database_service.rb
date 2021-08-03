@@ -1,5 +1,5 @@
 class AddressDatabaseService
-  attr_reader :params :current_user, :form, :billing, :shipping
+  attr_reader :params :current_user, :form
 
   def initialize(params, current_user)
     @params = params

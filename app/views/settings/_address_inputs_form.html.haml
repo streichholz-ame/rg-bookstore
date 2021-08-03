@@ -1,30 +1,30 @@
-= f.hidden_field :address_type, value: address_type
+= f.hidden_field :type, value: type
 = f.hidden_field :user_id, value: current_user.id 
-  .form-group
-    = f.label :first_name, t('account_settings.addresses.first_name'), class: 'control-label input-label', for: "firstName"
-    = f.text_field :first_name, placeholder: "First Name", name: 'fname', class: 'form-control'
-    %span.help-block= t('account_settings.hints.first_name')
-  .form-group
-    = f.label :last_name, t('account_settings.addresses.last_name'), class: 'control-label input-label', for: "lastName"
-    = f.text_field :last_name, placeholder: "Last Name", name: 'lname', class: 'form-control'
-    %span.help-block= t('account_settings.hints.last_name')
-  .form-group
-    = f.label :address, t('account_settings.addresses.address'), class: 'control-label input-label', for: "address"
-    = f.text_field :address, placeholder: "Address", name: 'address', class: 'form-control'
-    %span.help-block= t('account_settings.hints.address')
-  .form-group
-    = f.label :city, t('account_settings.addresses.city'), class: 'control-label input-label', for: "city"
-    = f.text_field :city, placeholder: "City", name: 'city', class: 'form-control'
-    %span.help-block= t('account_settings.hints.city')
-  .form-group
-    = f.label :zip, t('account_settings.addresses.zip'), class: 'control-label input-label', for: "zip"
-    = f.text_field :zip, placeholder: "Zip", name: 'zip', class: 'form-control'
-    %span.help-block= t('account_settings.hints.zip')
-  .form-group
-    = f.label :country, t('account_settings.addresses.country'), class: 'control-label input-label', for: "country"
-    = f.select(:country, @address_presenter.countries_for_select, :prompt => 'Select'), name: 'country', class: 'form-control'
-    %span.help-block= t('account_settings.hints.country')
-  .form-group.mb-60
-    = f.label :phone, t('account_settings.addresses.phone'), class: 'control-label input-label', for: "phone"
-    = f.text_field :phone, placeholder: "Phone", name: 'phone', class: 'form-control'
-    %span.help-block= t('account_settings.hints.phone')
+.form-group
+  = f.label :first_name, t('account_settings.addresses.first_name'), class: 'control-label input-label', for: "firstName"
+  = f.text_field :first_name, placeholder: "First Name", name: 'fname', class: 'form-control'
+  %span.help-block.hint= t('hints.first_name')
+.form-group
+  = f.label :last_name, t('account_settings.addresses.last_name'), class: 'control-label input-label', for: "lastName"
+  = f.text_field :last_name, placeholder: "Last Name", name: 'lname', class: 'form-control'
+  %span.help-block.hint= t('hints.last_name')
+.form-group
+  = f.label :address, t('account_settings.addresses.address'), class: 'control-label input-label', for: "address"
+  = f.text_field :address, placeholder: "Address", name: 'address', class: 'form-control'
+  %span.help-block.hint= t('hints.address')
+.form-group
+  = f.label :city, t('account_settings.addresses.city'), class: 'control-label input-label', for: "city"
+  = f.text_field :city, placeholder: "City", name: 'city', class: 'form-control'
+  %span.help-block.hint= t('hints.city')
+.form-group
+  = f.label :zip, t('account_settings.addresses.zip'), class: 'control-label input-label', for: "zip"
+  = f.text_field :zip, placeholder: "Zip", name: 'zip', class: 'form-control'
+  %span.help-block.hint= t('hints.zip')
+.form-group.select-country-form
+  = f.label :country, t('account_settings.addresses.country'), class: 'control-label input-label', for: "country"
+  = f.select :country, options_for_select(@address_presenter.countries_for_select), name: 'country'
+  %span.help-block.hint= t('hints.country')
+.form-group.mb-60
+  = f.label :phone, t('account_settings.addresses.phone'), class: 'control-label input-label', for: "phone"
+  = f.text_field :phone, placeholder: "Phone", name: 'phone', class: 'form-control'
+  %span.help-block.hint= t('hints.phone')
