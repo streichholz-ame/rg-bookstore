@@ -8,11 +8,9 @@
           %li
             = link_to t('footer.shop'), catalog_index_path, class: 'nav-link'
           %li
-            %a.nav-link{href: "#"} 
-              = t('footer.orders')
+            = link_to t('footer.orders'), root_path, class: 'nav-link'
           %li
-            %a.nav-link{href: "#"} 
-              = t('footer.settings') 
+            = link_to t('footer.settings'), settings_path, class: 'nav-link'
       .col-sm-3
         %p.general-nav-mail support@bookstore.com
         %p.general-nav-number (555)-555-5555
