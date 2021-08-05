@@ -1,0 +1,39 @@
+= f.hidden_field :type, value: type
+.form-group
+  = f.label :first_name, t('account_settings.addresses.first_name'), class: 'control-label input-label', for: "firstName"
+  = f.input :first_name, placeholder: "First Name", class: 'form-control'
+  = f.error :first_name
+  -#, value: @address_presenter.current_value(current_user, type, :first_name)
+  %span.help-block.hint
+  -#= resource.errors.messages[:password].to_sentence
+.form-group
+  = f.label :last_name, t('account_settings.addresses.last_name'), class: 'control-label input-label', for: "lastName"
+  = f.input :last_name, placeholder: "Last Name", class: 'form-control'
+  -#, value: @address_presenter.current_value(current_user, type, :last_name)
+  %span.help-block.hint= t('hints.last_name')
+.form-group
+  = f.label :address, t('account_settings.addresses.address'), class: 'control-label input-label', for: "address"
+  = f.input :address, placeholder: "Address", class: 'form-control'
+  -#, value: @address_presenter.current_value(current_user, type, :address)
+  %span.help-block.hint= t('hints.address')
+.form-group
+  = f.label :city, t('account_settings.addresses.city'), class: 'control-label input-label', for: "city"
+  = f.input :city, placeholder: "City", class: 'form-control'
+  -#, value: @address_presenter.current_value(current_user, type, :city)
+  %span.help-block.hint= t('hints.city')
+.form-group
+  = f.label :zip, t('account_settings.addresses.zip'), class: 'control-label input-label', for: "zip"
+  = f.input :zip, placeholder: "Zip", class: 'form-control'
+  -#, value: @address_presenter.current_value(current_user, type, :zip)
+  %span.help-block.hint= t('hints.zip')
+.form-group.select-country-form
+  = f.label :country, t('account_settings.addresses.country'), class: 'control-label input-label', for: "country"
+  = f.input :zip
+  -#, options_for_select(@address_presenter.countries_for_select), name: 'country'
+  -#, prompt: @address_presenter.current_value(current_user, type, :country)
+  %span.help-block.hint= t('hints.country')
+.form-group.mb-60
+  = f.label :phone, t('account_settings.addresses.phone'), class: 'control-label input-label', for: "phone"
+  = f.input :phone, placeholder: "Phone", class: 'form-control'
+  -#, value: @address_presenter.current_value(current_user, type, :phone)
+  %span.help-block.hint= t('hints.phone')

@@ -48,7 +48,7 @@
                 %li
                   = link_to t('header.orders')
                 %li
-                  = link_to t('header.settings'), settings_path
+                  = link_to t('header.settings'), edit_address_path(current_user)
                 %li
                   = link_to t('header.log_out'), destroy_user_session_path, method: :delete
           - else

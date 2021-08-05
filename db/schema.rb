@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_07_27_135952) do
     t.integer "zip"
     t.string "country"
     t.string "phone"
+    t.string "type"
     t.string "addressable_type"
     t.bigint "addressable_id"
     t.datetime "created_at", precision: 6, null: false

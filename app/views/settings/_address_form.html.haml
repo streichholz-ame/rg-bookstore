@@ -1,5 +1,0 @@
-= form_for :address_form, as: "#{locals[:addressable_type]}_form", url: addresses_path, method: :post do |f|
-  = hidden_field_tag 'type', locals[:addressable_type]
-  = render partial: 'address_inputs_form', locals: { f: f, type: locals[:addressable_type], address_form: 'address_form' }
-  .text-center.general-text-align
-    = submit_tag t('account_settings.save'), class: 'btn btn-default'

@@ -1,0 +1,5 @@
+= simple_form_for(@presenter.billing, validate: true,  defaults: { input_html: { class: "form-control" }}, url: addresses_path, html: { method: :post, id: "BillingAddress" }) do |f|
+  = hidden_field_tag 'type', type
+  = render partial: 'address_inputs_form', locals: { f: f, type: "#{type.capitalize}Address" }
+  .text-center.general-text-align
+    = submit_tag t('account_settings.save'), class: 'btn btn-default'

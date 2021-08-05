@@ -3,4 +3,5 @@ FactoryBot.define do
     billing_address
     shipping_address
   end
+
 end

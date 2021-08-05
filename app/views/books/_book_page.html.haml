@@ -11,7 +11,7 @@
         %img{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
 .col-sm-6
   %h1.mt-res-0= @current_book.name
-  %p.lead.small= @book_presenter.author_name
+  %p.lead.small= @book_decorator.author_name
   .row
     .col-xs-12.col-md-4
       %p.h1.in-gold-500.mt-10 
@@ -29,12 +29,12 @@
     %p= t('book_page.description')
     %p#book-description.lead.small.line-height-2
       %span#description
-        = @book_presenter.description
+        = @book_decorator.description
         %span#read-more-link
           = link_to '#', class: 'in-gold-500 ml-10' do
             = t('book_page.read_more')
       %span#full_description
-        = @book_presenter.full_description
+        = @book_decorator.full_description
         %span#hide-read-more-link
           = link_to '#', class: 'in-gold-500 ml-10' do
             = t('book_page.hide_read_more')            
@@ -49,7 +49,7 @@
       %p.pull-left 
         = t('book_page.dimensions')
       %p.lead.small.pull-right 
-        = @book_presenter.dimensions
+        = @book_decorator.dimensions
   .general-info-wrap.divider-lg
     .clearfix
       %p.pull-left 

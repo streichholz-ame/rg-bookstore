@@ -40,6 +40,7 @@ en:
     dimensions: 'Dimensions'
     materials: 'Materials'
     price: "€%{price}"
+    dimentions_description: '"H: %{height}\" x W: %{width}\" x D: %{depth}"'
   catalog: 
     title: 'Сatalog'
     view_more: 'View More'
@@ -108,4 +109,6 @@ en:
     change_password_error: 'Error occured. Your password was not changed.'
     change_email_success: 'Your email was successfully updated.'
     change_email_error: 'Your email was not changed.'
+    change_address_success: 'Your address was successfully changed'
+    change_address_error: 'Your address was not changed.'
       

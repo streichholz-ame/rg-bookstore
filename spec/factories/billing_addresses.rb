@@ -7,6 +7,7 @@ FactoryBot.define do
     zip { FFaker::AddressUS.zip_code }
     country { FFaker::Address.country }
     phone { FFaker::PhoneNumberUA.international_mobile_phone_number }
-    addressable_type { :billing_address }
+    addressable {}
+    type { 'BillingAddress' }
   end
 end
