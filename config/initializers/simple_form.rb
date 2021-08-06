@@ -29,6 +29,7 @@ SimpleForm.setup do |config|
     # Calculates placeholders automatically from I18n
     # You can also pass a string as f.input placeholder: "Placeholder"
     b.use :placeholder
+    config.input_mappings = { /country/ => :string }
 
     ## Optional extensions
     # They are disabled unless you pass `f.input EXTENSION_NAME => true`

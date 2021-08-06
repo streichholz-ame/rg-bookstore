@@ -6,7 +6,7 @@ class ChangeEmailsController < ApplicationController
     else
       flash[:error] = I18n.t('flash.change_email_error')
     end
-    redirect_to settings_path
+    redirect_to edit_address_path(current_user)
   end
 
   private

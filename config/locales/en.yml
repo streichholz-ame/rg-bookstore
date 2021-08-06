@@ -99,6 +99,7 @@ en:
     first_name: 'Please enter your first name'
     last_name: 'Please enter your last name'
     city: 'Please enter your city'
+    address: 'Please enter your address'
     zip: 'Please enter your zip'
     country: 'Please choose your country from the following'
     phone: 'Please enter your phone'

@@ -1,26 +1,29 @@
 class AddressPresenter
   attr_reader :current_user
+
   def initialize(current_user)
     @current_user = current_user
   end
-  HAS_ERROR = '.has-error'.freeze
 
-  def current_value(current_user, address_type, address_field)
-    #address_type == 'BillingAddress' ? billing(current_user, address_field) : shipping(current_user, address_field)
+  def fill_field(type, field)
+    return '' unless current_user.addresses.exists?(type: type)
+
+    type == 'BillingAddress' ? billing_address(field) : shipping_address(field)
   end
-  
-  def billing
+
+  def billing_form
     AddressForm.new
-    #form = current_user.billing_address || AddressForm.new
-    #form[address_field]
   end
 
-  def shipping(current_user, address_field)
-    form = current_user.shipping_address || AddressForm.new
-    form[address_field]
+  def shipping_form
+    AddressForm.new
   end
 
-  def countries_for_select
-    ISO3166::Country.countries.sort_by(&:name)
+  def billing_address(field)
+    current_user.billing_address[field]
+  end
+
+  def shipping_address(field)
+    current_user.shipping_address[field]
   end
 end

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #resources :settings
+  # resources :settings
   resources :accounts
   resources :change_emails
   resources :addresses

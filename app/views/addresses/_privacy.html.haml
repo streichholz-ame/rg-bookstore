@@ -1,12 +1,11 @@
 .row.mb-60
   .col-sm-5
     %p.in-gold-500.font-18.mb-25= t('account_settings.settings.email')
-    = form_tag change_email_path(current_user), method: :put, class: 'general-form-md' do
+    = simple_form_for @current_user, validate: true, defaults: { input_html: { class: 'general-form-md' }}, url: change_email_path(current_user), html: { method: :put, id: "email" } do |f|
       .form-group.mb-35
-        = label_tag :email, t('account_settings.settings.enter_email'), for: 'email', class: 'control-label input-label'
-        = email_field_tag :email, '', class: 'form-control', id: 'email', type: 'email', name: 'email', placeholder: "Enter your email"
+        = f.input :email, placeholder: "Enter your email", label: t('account_settings.settings.enter_email'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: current_user.email }
       .general-text-align
-        = submit_tag t('account_settings.save'), class: 'btn btn-default mb-35', name: 'submit-email'
+        = f.submit t('account_settings.save'), class: 'btn btn-default mb-35', name: 'submit-email'
   .col-sm-5.col-sm-offset-1
     = render 'change_password'
   .col-sm-12

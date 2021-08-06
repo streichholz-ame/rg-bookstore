@@ -1,13 +1,12 @@
 class AddressForm
-
   include ActiveModel::Model
-  include Virtus
+  include Virtus.model
 
   NAMES_AND_CITY_VALIDATION = /\A[a-zA-Z]+\z/.freeze
   ZIP_VALIDATION = /\A\d+\z/.freeze
   PHONE_VALIDATION = /\A\+\d+\z/.freeze
   ADDRESS_VALIDATION = /\A[a-zA-Z ,-]+\z/.freeze
-  ADDRESS_TYPES = %w[ShippingAddress BillingAddress]
+  ADDRESS_TYPES = %w[ShippingAddress BillingAddress].freeze
 
   attribute :addressable_id, Integer
 
@@ -34,10 +33,6 @@ class AddressForm
   end
 
   def save_address(params, current_user)
-    #params[:addressable] = current_user
     current_user.addresses.find_or_initialize_by(type: params[:type]).update(params)
-#    return unless address_form.valid?
-
-#    current_address.update(address_form.attributes.without(:addressable_id))
   end
 end

@@ -5,7 +5,7 @@ describe 'Privacy Settings Page', type: :feature do
 
   before :each do
     login_as(user)
-    visit(settings_path)
+    visit(edit_address_path(user))
     click_on('a', text: I18n.t('account_settings.privacy'))
   end
 
