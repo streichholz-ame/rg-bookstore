@@ -29,7 +29,8 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
 
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
     user_name: Rails.application.credentials[:SENDMAIL_USERNAME],
     password: Rails.application.credentials[:SENDMAIL_PASSWORD],
     domain: 'example.com',
