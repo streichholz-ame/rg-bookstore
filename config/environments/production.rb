@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { host: 'www.example.com' }
+  config.action_mailer.default_url_options = { host: 'https://bookstore-streichholz.herokuapp.com/' }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -28,6 +28,17 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
+
+  ActionMailer::Base.smtp_settings = {
+    user_name: Rails.application.credentials[:SENDMAIL_USERNAME],
+    password: Rails.application.credentials[:SENDMAIL_PASSWORD],
+    domain: 'example.com',
+    address: 'smtp.gmail.com',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+  
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'

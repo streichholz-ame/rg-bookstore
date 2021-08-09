@@ -9,8 +9,10 @@ RSpec.describe 'Address Settings Page', type: :feature do
   end
 
   context 'shipping address' do
+    let(:shipping_address) { create(:shipping_address, addressable: user) }
 
     scenario 'create new address' do
+      find('input')
     end
 
     scenario 'edit existing address'

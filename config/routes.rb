@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
-  get '/users' => redirect('users/sign_up')
+  get '/users', to: redirect('users/sign_up')
 
   resources :catalog, controller: 'catalog', only: :index
   resources :books, only: :show
@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :settings
   resources :accounts
   resources :change_emails
   resources :addresses
