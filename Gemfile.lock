@@ -503,6 +503,7 @@ DEPENDENCIES
   aasm (~> 5.2)
   activeadmin (~> 2.9)
   audit (~> 0.7.3)
+  bcrypt
   bootsnap (>= 1.4.2)
   bootstrap-sass
   brakeman (~> 3.3, >= 3.3.2)

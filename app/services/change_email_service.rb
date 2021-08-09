@@ -13,6 +13,6 @@ class ChangeEmailService
   private
 
   def update_email
-    current_user.update(email_form.attributes.without(:id))
+    current_user.update(email_form.attributes)
   end
 end

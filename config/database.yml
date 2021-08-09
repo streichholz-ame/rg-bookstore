@@ -16,5 +16,4 @@ test:
 production:
   <<: *default
   database: rg_booktore_production
-  username: rg_booktore
-  password: <%= ENV['RG_BOOKTORE_DATABASE_PASSWORD'] %>
+  adapter: postgresql

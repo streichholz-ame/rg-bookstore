@@ -15,13 +15,13 @@ describe 'Privacy Settings Page', type: :feature do
     let(:another_email) { FFaker::Internet.email }
 
     scenario 'successfully' do
-      fill_in 'email', with: another_email
+      fill_in 'user_email', with: another_email
       find('input[type="submit"][name="submit-email"]').click
       expect(page).to have_content success_flash_message
     end
 
     scenario 'with error' do
-      fill_in 'email', with: ''
+      fill_in 'user_email', with: ''
       find('input[type="submit"][name="submit-email"]').click
       expect(page).to have_content error_flash_message
     end
@@ -34,25 +34,25 @@ describe 'Privacy Settings Page', type: :feature do
     let(:success_flash_message) { I18n.t('flash.change_password_success') }
 
     scenario 'successfully' do
-      fill_in 'old_password', with: user.password
-      fill_in 'new_password', with: another_password
-      fill_in 'confirm_password', with: another_password
+      fill_in 'user_old_password', with: user.password
+      fill_in 'user_new_password', with: another_password
+      fill_in 'user_confirm_password', with: another_password
       find('input[type="submit"][name="submit-password"]').click
       expect(page).to have_content success_flash_message
     end
 
     scenario 'wrong old password' do
-      fill_in 'old_password', with: another_password2
-      fill_in 'new_password', with: another_password
-      fill_in 'confirm_password', with: another_password
+      fill_in 'user_old_password', with: another_password2
+      fill_in 'user_new_password', with: another_password
+      fill_in 'user_confirm_password', with: another_password
       find('input[type="submit"][name="submit-password"]').click
       expect(page).to have_content error_flash_message
     end
 
     scenario 'wrong confirmation password' do
-      fill_in 'old_password', with: user.password
-      fill_in 'new_password', with: another_password
-      fill_in 'confirm_password', with: another_password2
+      fill_in 'user_old_password', with: user.password
+      fill_in 'user_new_password', with: another_password
+      fill_in 'user_confirm_password', with: another_password2
       find('input[type="submit"][name="submit-password"]').click
       expect(page).to have_content error_flash_message
     end

@@ -5,9 +5,7 @@ RSpec.describe ChangePasswordService do
   let(:new_password) { FFaker::Lorem.word }
   let(:another_password) { FFaker::Lorem.word }
   let(:success_params) { { old_password: user.password, new_password: new_password, confirm_password: new_password } }
-  let(:not_success_params) do
-    { old_password: user.password, new_password: new_password, confirm_password: another_password }
-  end
+  let(:wrong_params) { { old_password: user.password, new_password: new_password, confirm_password: another_password } }
 
   context 'when password valid' do
     let(:change_password) { described_class.new(user, success_params) }
@@ -18,10 +16,10 @@ RSpec.describe ChangePasswordService do
   end
 
   context 'when password not valid' do
-    let(:change_password) { described_class.new(user, not_success_params) }
+    let(:change_password) { described_class.new(user, wrong_params) }
 
     it 'change password' do
-      expect(change_password.call).to eq(nil)
+      expect { change_password.call }.to_not change{user.password}
     end
   end
 end
