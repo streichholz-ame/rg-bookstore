@@ -26,10 +26,21 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   config.action_mailer.delivery_method = :smtp
-  host = 'https://bookstore-streichholz.herokuapp.com/'
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.smtp_settings = {
+    user_name: Rails.application.credentials[:SENDMAIL_USERNAME],
+    password: Rails.application.credentials[:SENDMAIL_PASSWORD],
+    domain: 'example.com',
+    address: 'smtp.gmail.com',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   config.action_mailer.default_url_options = { host: 'https://bookstore-streichholz.herokuapp.com/' }
   
 
