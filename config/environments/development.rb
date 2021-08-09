@@ -32,6 +32,8 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
+  config.assets.js_compressor = :uglifier
+  config.assets.compile = false
 
   config.action_mailer.raise_delivery_errors = true
 

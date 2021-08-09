@@ -44,6 +44,7 @@ gem 'sprockets', '=3.7.1'
 gem 'sprockets-rails', '~> 2.1', '>= 2.1.3'
 gem 'turbolinks', '~> 5'
 gem 'virtus'
+gem 'uglifier', '>= 1.3.0'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 
