@@ -138,14 +138,6 @@ GEM
     database_cleaner-core (2.0.1)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    devise (4.8.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-    devise-token_authenticatable (1.1.0)
-      devise (>= 4.0.0, < 5.0.0)
     diff-lcs (1.4.4)
     docile (1.4.0)
     down (5.2.2)
@@ -284,7 +276,9 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
-    orm_adapter (0.5.0)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     pagy (4.10.1)
     parallel (1.20.1)
     parser (3.0.2.0)
@@ -476,8 +470,6 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    warden (1.2.9)
-      rack (>= 2.0.9)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -513,8 +505,6 @@ DEPENDENCIES
   client_side_validations-simple_form
   country-select (~> 1.2, >= 1.2.1)
   database_cleaner
-  devise (~> 4.8)
-  devise-token_authenticatable
   draper
   factory_bot_rails
   fasterer
@@ -530,6 +520,7 @@ DEPENDENCIES
   listen (~> 3.2)
   mini_magick (~> 4.11)
   omniauth-facebook (~> 8.0)
+  omniauth-rails_csrf_protection (~> 1.0)
   pagy (~> 4.10, >= 4.10.1)
   pg (>= 0.18, < 2.0)
   poltergeist
