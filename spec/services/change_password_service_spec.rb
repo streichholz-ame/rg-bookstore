@@ -19,7 +19,7 @@ RSpec.describe ChangePasswordService do
     let(:change_password) { described_class.new(user, wrong_params) }
 
     it 'change password' do
-      expect { change_password.call }.to_not change{user.password}
+      expect { change_password.call }.to_not change { user.password }
     end
   end
 end

@@ -80,8 +80,6 @@ RSpec.describe 'Address Settings Page', type: :feature do
         expect(page).to have_field 'address_form[phone]', with: ''
       end
     end
-
-    
   end
 
   context 'billing address' do

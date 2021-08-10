@@ -33,14 +33,14 @@ RSpec.describe AccountsController, type: :controller do
     it 'successfully' do
       put :update,
           params: { id: user.id, user: { old_password: user.password, new_password: user.password,
-                    confirm_password: user.password } }
+                                         confirm_password: user.password } }
       expect(subject).to set_flash[:success]
     end
 
     it 'failed' do
       put :update,
           params: { id: user.id, user: { old_password: user.password, new_password: valid_attributes[:password],
-                    confirm_password: user.password } }
+                                         confirm_password: user.password } }
       expect(subject).to set_flash[:error]
     end
   end

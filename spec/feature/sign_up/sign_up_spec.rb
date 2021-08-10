@@ -55,6 +55,4 @@ RSpec.describe 'Sign Up', type: :feature do
     click_on('sign-up-btn')
     expect(page).to have_content I18n.t('devise.registrations.signed_up')
   end
-
-  scenario 'sign usigned_up_but_unconfirmedp via facebook'
 end

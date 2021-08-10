@@ -11,13 +11,13 @@ RSpec.describe ChangeEmailsController, type: :controller do
     end
 
     it 'successfully' do
-      put :update, params: { id: user.id, email: new_email }
+      put :update, params: { id: user.id, user: { email: new_email } }
       expect(user.email).to eq(new_email)
       expect(subject).to set_flash[:success]
     end
 
     it 'failed' do
-      put :update, params: { id: user.id, email: '' }
+      put :update, params: { id: user.id, user: { email: '' } }
       expect(subject).to set_flash[:error]
     end
   end

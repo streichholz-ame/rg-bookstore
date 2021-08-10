@@ -21,5 +21,5 @@ class AccountsController < ApplicationController
 
   def permitted_params
     params.require(:user).permit(:old_password, :new_password, :confirm_password)
-  end 
+  end
 end

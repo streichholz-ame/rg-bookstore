@@ -4,7 +4,7 @@ RSpec.describe AddressPresenter do
   let(:user) { create(:user) }
   let(:billing_address) { create(:billing_address, addressable: user) }
   let(:shipping_address) { create(:shipping_address, addressable: user) }
-  let(:presenter) { described_class.new(user)}
+  let(:presenter) { described_class.new(user) }
 
   context 'when address dont exist' do
     it '#billing_form' do
@@ -13,8 +13,8 @@ RSpec.describe AddressPresenter do
     end
 
     it '#shipping_form' do
-    expect(presenter).to receive(:shipping_form).and_return(AddressForm.new)
-    presenter.shipping_form
+      expect(presenter).to receive(:shipping_form).and_return(AddressForm.new)
+      presenter.shipping_form
     end
   end
 
@@ -29,6 +29,4 @@ RSpec.describe AddressPresenter do
       expect(presenter.shipping_address('name')).to eq(shipping_address[:name])
     end
   end
-  
-
 end
