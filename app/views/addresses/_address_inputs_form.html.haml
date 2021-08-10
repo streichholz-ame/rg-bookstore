@@ -1,22 +1,15 @@
 = f.hidden_field :type, value: type
 .form-group
-  = f.input :first_name, placeholder: "First Name", label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :first_name) }
-  = f.hint I18n.t('hints.first_name')
+  = f.input :first_name, placeholder: I18n.t('hints.first_name'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :first_name) }
 .form-group
-  = f.input :last_name, placeholder: "Last Name", label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :last_name) }
-  = f.hint I18n.t('hints.last_name')
+  = f.input :last_name, placeholder: I18n.t('hints.last_name'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :last_name) }
 .form-group
-  = f.input :address, placeholder: "Address", label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :address) }
-  = f.hint I18n.t('hints.address')
+  = f.input :address, placeholder: I18n.t('hints.address'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :address) }
 .form-group
-  = f.input :city, placeholder: "City", label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :city) }
-  = f.hint I18n.t('hints.city')
+  = f.input :city, placeholder: I18n.t('hints.city'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :city) }
 .form-group
-  = f.input :zip, placeholder: "Zip", label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :zip) }
-  = f.hint I18n.t('hints.zip')
+  = f.input :zip, placeholder: I18n.t('hints.zip'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :zip) }
 .form-group.select-country-form
-  = f.input :country, input_html: { class: 'form-control', value: @presenter.fill_field(type, :country) }
-  = f.hint I18n.t('hints.country')
+  = f.input :country, placeholder: I18n.t('hints.country'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :country) }
 .form-group.mb-60
-  = f.input :phone, placeholder: "Phone", label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :phone) }
-  = f.hint I18n.t('hints.phone')
+  = f.input :phone, placeholder: I18n.t('hints.phone'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_field(type, :phone) }

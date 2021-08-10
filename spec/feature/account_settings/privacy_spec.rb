@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Privacy Settings Page', type: :feature do
+RSpec.describe 'Privacy Settings Page', type: :feature do
   let(:user) { create(:user) }
 
   before :each do
