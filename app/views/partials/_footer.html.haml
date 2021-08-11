@@ -3,15 +3,20 @@
     .row
       .col-sm-9
         %ul.list-inline.general-align.mb-25
-          %li
-            = link_to t('footer.home'), root_path, class: 'nav-link'
-          %li
-            = link_to t('footer.shop'), catalog_index_path, class: 'nav-link'
           - if user_signed_in?
+            %li
+              = link_to t('footer.home'), root_path, class: 'nav-link'
+            %li
+              = link_to t('footer.shop'), catalog_index_path, class: 'nav-link'
             %li
               = link_to t('footer.orders'), root_path, class: 'nav-link'
             %li
               = link_to t('footer.settings'), edit_address_path(current_user), class: 'nav-link'
+          - else
+            %li
+              = link_to t('footer.home'), root_path, class: 'nav-link'
+            %li
+              = link_to t('footer.shop'), catalog_index_path, class: 'nav-link'
       .col-sm-3
         %p.general-nav-mail support@bookstore.com
         %p.general-nav-number (555)-555-5555
