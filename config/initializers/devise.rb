@@ -1,6 +1,5 @@
 # frozen_string_literal: true
-
-require 'omniauth-facebook'
+require "omniauth-facebook"
 
 # Assuming you have not yet modified this file, each configuration option below
 # is set to its default value. Note that some are commented out while others
@@ -275,7 +274,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
 
-  config.omniauth :facebook, Rails.application.credentials[:APP_ID], Rails.application.credentials[:APP_SECRET]
+  config.omniauth :facebook, Rails.application.credentials[:APP_ID], Rails.application.credentials[:APP_SECRET], callback_url: "http://localhost:3000/auth/facebook/callback"
+  
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

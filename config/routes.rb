@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root to: 'homepage#index'
 
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  match 'auth/:provider/callback', to: 'sessions#create', via: %i[get post]
+  match 'auth/:provider/callback', to: 'sessions#create', via: %i[post]
   match 'auth/failure', to: redirect('/'), via: %i[get post]
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: %i[get post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: %i[post]
   get '/users', to: redirect('users/sign_up')
 
   resources :catalog, controller: 'catalog', only: :index

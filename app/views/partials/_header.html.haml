@@ -27,8 +27,7 @@
               - @header_presenter.categories.each do |category|
                 %li
                   = link_to category.name, catalog_category_path(category), class: 'collapse-link'
-          %li
-            = link_to t('header.my_account') 
+          
       .hidden-xs
         %ul.nav.navbar-nav
           %li
