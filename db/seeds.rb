@@ -25,7 +25,10 @@ def generate_book
 end
 
 def generate_author
-  author = Author.new(name: FFaker::Book.author)
+  author = Author.new(
+    first_name: FFaker::Name.first_name,
+    last_name: FFaker::Name.last_namefirst_name,
+    description: FFaker::Lorem.sentence)
   author.save!
 end
 

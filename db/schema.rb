@@ -58,7 +58,9 @@ ActiveRecord::Schema.define(version: 2021_08_10_143707) do
   end
 
   create_table "authors", force: :cascade do |t|
-    t.string "name"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

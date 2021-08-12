@@ -112,4 +112,10 @@ en:
     change_email_error: 'Your email was not changed.'
     change_address_success: 'Your address was successfully changed'
     change_address_error: 'Your address was not changed.'
-      
+  admin:
+    price: "€%{price}"
+    users: "Users: %{count}"
+    books: "Books: %{count}"
+    categories: "Categories: %{count}"
+    authors: "Authors: %{count}"
+    edit: 'Edit information'

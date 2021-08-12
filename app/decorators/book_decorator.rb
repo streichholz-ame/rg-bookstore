@@ -16,6 +16,12 @@ class BookDecorator < ApplicationDecorator
   end
 
   def author_name
-    book.authors.map(&:name).join(', ')
+    book_authors.map {|author| author }.join(', ')
+  end
+
+  def book_authors
+    book.authors.map do |author|
+      "#{author.first_name}" "#{author.last_name}"
+    end        
   end
 end

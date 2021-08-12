@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'homepage#index'
 
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
   match 'users/auth/:provider/callback', to: 'sessions#create', via: %i[post]
   match 'users/auth/failure', to: redirect('/'), via: %i[get post]

@@ -25,7 +25,7 @@ RSpec.describe BookDecorator do
 
   describe 'author' do
     it 'return book author' do
-      expect(book_decorator.author_name).to eq(book.authors.map(&:name).join(', '))
+      expect(book_decorator.author_name).to eq(book.authors.map {|author| "#{author.first_name}" "#{author.last_name}"}.map {|author| author }.join(', '))
     end
   end
 end

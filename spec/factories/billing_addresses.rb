@@ -4,7 +4,7 @@ FactoryBot.define do
     last_name { FFaker::Name.last_name }
     address { 'Khreschatyk' }
     city { 'Kyiv' }
-    zip { 0o01001 }
+    zip { 01001 }
     country { 'Ukraine' }
     phone { '+3803333333' }
     addressable { 'user' }

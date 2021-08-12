@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Address Settings Page', type: :feature do
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
 
   before :each do
     login_as(user)

@@ -54,6 +54,4 @@ RSpec.describe 'Log In', type: :feature do
     click_on('sign-in-btn')
     expect(page).to have_selector 'a', text: I18n.t('header.my_account')
   end
-
-  scenario 'when sign in via facebook'
 end

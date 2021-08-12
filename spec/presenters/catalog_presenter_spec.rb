@@ -34,7 +34,7 @@ RSpec.describe CatalogPresenter do
 
   describe 'author_name' do
     it 'return book author' do
-      expect(catalog.author_name(book1)).to eq(book1.authors.map(&:name).join(', '))
+      expect(catalog.author_name(book1)).to eq(book1.authors.map {|author| "#{author.first_name}" "#{author.last_name}"}.map {|author| author }.join(', '))
     end
   end
 end
