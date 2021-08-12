@@ -1,6 +1,5 @@
 class AddressesController < ApplicationController
   def edit
-    binding.pry
     @presenter = AddressPresenter.new(current_user)
   end
 
