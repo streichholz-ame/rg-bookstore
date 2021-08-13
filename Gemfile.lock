@@ -542,7 +542,7 @@ DEPENDENCIES
   listen (~> 3.2)
   mini_magick (~> 4.11)
   omniauth-facebook (~> 8.0)
-  omniauth-rails_csrf_protection (~> 0.1.2)
+  omniauth-rails_csrf_protection
   pagy (~> 4.10, >= 4.10.1)
   pg (>= 0.18, < 2.0)
   poltergeist
