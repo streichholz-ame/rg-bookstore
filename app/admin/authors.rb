@@ -1,8 +1,8 @@
 ActiveAdmin.register Author do
-  permit_params :name
+  permit_params :first_name, :last_name, :description
 
-  filter :name
-
+  filter :first_name
+  filter :last_name
 
   index do
     selectable_column
@@ -17,7 +17,8 @@ ActiveAdmin.register Author do
 
   show do
     attributes_table do
-      row :name
+      row :first_name
+      row :last_name
       row :description
     end
   end

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Address Settings Page', type: :feature do
-  let(:user) { create(:user) }
+  let!(:user) { create(:user) }
 
-  before :each do
+  before do
     login_as(user)
     visit(edit_address_path(user))
   end

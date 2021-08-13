@@ -6,11 +6,10 @@ describe Admin::CategoriesController, type: :controller do
   render_views
 
   let(:page) { Capybara::Node::Simple.new(response.body) } 
-  let(:admin) { create(:admin_user, email: 'admin@example.com', password: 'password', password_confirmation: 'password') } 
+  let(:admin) { create(:admin_user) } 
   let!(:category) { create(:category) }
   let(:valid_attributes) { attributes_for(:category) }
   let(:invalid_attributes) { attributes_for(:category, name: '') }
-  gem 'rails-controller-testing'
   before { sign_in admin }
 
   describe "GET index" do

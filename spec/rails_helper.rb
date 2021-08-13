@@ -14,6 +14,7 @@ require 'rspec/rails'
 require 'capybara'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'capybara/active_admin/rspec'
 require 'yaml'
 require 'i18n'
 require 'capybara/poltergeist'
@@ -35,6 +36,8 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
+  config.include Rails.application.routes.url_helpers
+
   config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} })
 
   config.include FactoryBot::Syntax::Methods
@@ -42,6 +45,8 @@ RSpec.configure do |config|
   config.include Warden::Test::Helpers
 
   config.include Devise::Test::ControllerHelpers, type: :controller
+
+  config.include Capybara::DSL
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
