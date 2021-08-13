@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   devise_for :users,
              controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
-  match 'users/auth/:provider/callback', to: 'sessions#create', via: %i[post]
+  post 'users/auth/:provider/callback', to: 'sessions#create'
   match 'users/auth/failure', to: redirect('/'), via: %i[get post]
-  match 'signout', to: 'sessions#destroy', as: 'signout', via: %i[post]
+  post 'signout', to: 'sessions#destroy', as: 'signout'
   get '/users', to: redirect('users/sign_up')
 
   resources :catalog, controller: 'catalog', only: :index

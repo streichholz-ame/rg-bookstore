@@ -1,14 +1,15 @@
 ActiveAdmin.register Book do
   decorate_with BookDecorator
-  
-  permit_params :category_id, :name, :description, :photo, :price, :publication_year, :height, :width, :depth, :material, author_ids: []
+
+  permit_params :category_id, :name, :description, :photo, :price, :publication_year, :height, :width, :depth,
+                :material, author_ids: []
 
   filter :name
   filter :category
 
   index do
     selectable_column
-    
+
     column :name do |book|
       link_to book.name, resource_path(book)
     end
@@ -44,7 +45,9 @@ ActiveAdmin.register Book do
       f.input :photo, as: :file
       f.input :category, as: :select
       f.input :name
-      f.input :authors, as: :check_boxes, collection: Author.all.map { |author| ["#{author.first_name} #{author.last_name}", author.id] }
+      f.input :authors, as: :check_boxes, collection: Author.all.map { |author|
+                                                        ["#{author.first_name} #{author.last_name}", author.id]
+                                                      }
       f.input :description
       f.input :price
       f.input :publication_year
@@ -55,13 +58,4 @@ ActiveAdmin.register Book do
     end
     actions
   end
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:category_id, :name, :description, :photo, :price, :publication_year, :height, :width, :depth, :material]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
 end

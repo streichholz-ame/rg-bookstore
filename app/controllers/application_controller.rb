@@ -9,9 +9,9 @@ class ApplicationController < ActionController::Base
     @header_presenter = HeaderPresenter.new
   end
 
-  def new_session_path(scope)
+  def new_session_path(_scope)
     new_user_session_path
   end
-  
+
   include Pagy::Backend
 end

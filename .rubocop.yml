@@ -13,7 +13,9 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Layout/LineLength:
-  Max: 120
+  Max: 150
+  Exclude: 
+    - 'config/initializers/*.rb'
 
 Metrics/MethodLength:
   Exclude: 
@@ -22,12 +24,9 @@ Metrics/MethodLength:
     
 Metrics/BlockLength:
   Exclude:
+    - 'app/admin/*.rb'
     - 'spec/**/*.rb'
     - 'config/environments/*.rb'
-    - 'config/initializers/*.rb'
-
-Layout/LineLength:
-  Exclude: 
     - 'config/initializers/*.rb'
 
 Rails/BulkChangeTable: 

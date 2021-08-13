@@ -28,7 +28,8 @@ def generate_author
   author = Author.new(
     first_name: FFaker::Name.first_name,
     last_name: FFaker::Name.last_namefirst_name,
-    description: FFaker::Lorem.sentence)
+    description: FFaker::Lorem.sentence
+  )
   author.save!
 end
 
@@ -47,4 +48,7 @@ generate_categories
 20.times { generate_book }
 20.times { generate_author }
 generate_book_authors
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password',
+                    password_confirmation: 'password')
+end

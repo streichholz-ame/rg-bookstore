@@ -19,13 +19,13 @@ class CatalogPresenter
   end
 
   def author_name(book)
-    book_authors(book).map {|author| author }.join(', ')
+    book_authors(book).map { |author| author }.join(', ')
   end
 
   def book_authors(book)
     book.authors.map do |author|
-      "#{author.first_name}" "#{author.last_name}"  
-    end        
+      "#{author.first_name}" "#{author.last_name}"
+    end
   end
 
   delegate :count, to: :books, prefix: true

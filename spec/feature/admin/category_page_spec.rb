@@ -7,7 +7,7 @@ RSpec.describe 'Admin category Page', type: feature do
   let(:blank_field_message) { "can't be blank" }
 
   before do
-    login_as(admin, :scope => :admin_user)
+    login_as(admin, scope: :admin_user)
     visit admin_categories_path
   end
 

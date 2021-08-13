@@ -4,14 +4,14 @@ require 'capybara/active_admin/rspec'
 describe Admin::AdminUsersController, type: :controller do
   render_views
 
-  let(:page) { Capybara::Node::Simple.new(response.body) } 
-  let!(:admin) { create(:admin_user, email: FFaker::Internet.email) } 
-  let!(:admin_user) { create(:admin_user) } 
+  let(:page) { Capybara::Node::Simple.new(response.body) }
+  let!(:admin) { create(:admin_user, email: FFaker::Internet.email) }
+  let!(:admin_user) { create(:admin_user) }
   let(:valid_attributes) { attributes_for(:admin_user, email: FFaker::Internet.email) }
   let(:invalid_attributes) { attributes_for(:admin_user, email: '') }
   before { sign_in admin }
 
-  describe "GET index" do
+  describe 'GET index' do
     it 'returns http success' do
       get :index
       expect(response).to have_http_status(:success)
@@ -20,7 +20,7 @@ describe Admin::AdminUsersController, type: :controller do
       get :index
       expect(assigns(:admin_users)).to include(admin_user)
     end
-    it "should render the expected columns" do
+    it 'should render the expected columns' do
       get :index
       expect(page).to have_content(admin_user.email)
     end
@@ -29,14 +29,14 @@ describe Admin::AdminUsersController, type: :controller do
       let(:filters_sidebar) { page.find('#filters_sidebar_section') }
       let(:matching_admin_user) { create(:admin_user, email: 'another_admin@example.com') }
       let(:non_matching_admin_user) { create(:admin_user, email: 'example@example.com') }
-      
-      it "filter Email exists" do
+
+      it 'filter Email exists' do
         get :index
         expect(filters_sidebar).to have_css('label[for="q_email"]', text: 'Email')
         expect(filters_sidebar).to have_css('input[name="q[email_contains]"]')
       end
-      
-      it "filter Email works" do
+
+      it 'filter Email works' do
         get :index, params: { q: { email_contains: 'another' } }
         expect(assigns(:admin_users)).to include(matching_admin_user)
         expect(assigns(:admin_users)).not_to include(non_matching_admin_user)
@@ -44,7 +44,7 @@ describe Admin::AdminUsersController, type: :controller do
     end
   end
 
-  describe "GET new" do
+  describe 'GET new' do
     it 'returns http success' do
       get :new
       expect(response).to have_http_status(:success)
@@ -53,27 +53,27 @@ describe Admin::AdminUsersController, type: :controller do
       get :new
       expect(assigns(:admin_user)).to be_a_new(AdminUser)
     end
-    it "should render the form elements" do
+    it 'should render the form elements' do
       get :new
       expect(page).to have_field('Email')
     end
   end
 
-  describe "POST create" do
-    context "with valid params" do
-      it "creates a new AdminUser" do
-        expect {
+  describe 'POST create' do
+    context 'with valid params' do
+      it 'creates a new AdminUser' do
+        expect do
           post :create, params: { admin_user: valid_attributes }
-        }.to change(AdminUser, :count).by(1)
+        end.to change(AdminUser, :count).by(1)
       end
 
-      it "assigns a newly created admin_user as @admin_user" do
+      it 'assigns a newly created admin_user as @admin_user' do
         post :create, params: { admin_user: valid_attributes }
         expect(assigns(:admin_user)).to be_a(AdminUser)
         expect(assigns(:admin_user)).to be_persisted
       end
 
-      it "redirects to the created admin_user" do
+      it 'redirects to the created admin_user' do
         post :create, params: { admin_user: valid_attributes }
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(admin_admin_user_path(AdminUser.last))
@@ -87,13 +87,13 @@ describe Admin::AdminUsersController, type: :controller do
       end
     end
 
-    context "with invalid params" do
+    context 'with invalid params' do
       it 'invalid_attributes return http success' do
         post :create, params: { admin_user: invalid_attributes }
         expect(response).to have_http_status(:success)
       end
 
-      it "assigns a newly created but unsaved admin_user as @admin_user" do
+      it 'assigns a newly created but unsaved admin_user as @admin_user' do
         post :create, params: { admin_user: invalid_attributes }
         expect(assigns(:admin_user)).to be_a_new(AdminUser)
       end
@@ -106,7 +106,7 @@ describe Admin::AdminUsersController, type: :controller do
     end
   end
 
-  describe "GET edit" do
+  describe 'GET edit' do
     before do
       get :edit, params: { id: admin_user.id }
     end
@@ -116,12 +116,12 @@ describe Admin::AdminUsersController, type: :controller do
     it 'assigns the person' do
       expect(assigns(:admin_user)).to eq(admin_user)
     end
-    it "should render the form elements" do
+    it 'should render the form elements' do
       expect(page).to have_field('Email', with: admin_user.email)
     end
   end
 
-  describe "PUT update" do
+  describe 'PUT update' do
     context 'with valid params' do
       before do
         put :update, params: { id: admin_user.id, admin_user: valid_attributes }
@@ -133,10 +133,10 @@ describe Admin::AdminUsersController, type: :controller do
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(admin_admin_user_path(admin_user))
       end
-      it "should update the admin_user" do
+      it 'should update the admin_user' do
         admin_user.reload
 
-        expect(admin_user.email).to  eq(valid_attributes[:email])
+        expect(admin_user.email).to eq(valid_attributes[:email])
       end
     end
     context 'with invalid params' do
@@ -152,7 +152,7 @@ describe Admin::AdminUsersController, type: :controller do
     end
   end
 
-  describe "GET show" do
+  describe 'GET show' do
     before do
       get :show, params: { id: admin_user.id }
     end
@@ -162,19 +162,19 @@ describe Admin::AdminUsersController, type: :controller do
     it 'assigns the admin_user' do
       expect(assigns(:admin_user)).to eq(admin_user)
     end
-    it "should render the form elements" do
+    it 'should render the form elements' do
       expect(page).to have_content(admin_user.email)
     end
   end
 
-  describe "DELETE #destroy" do
-    it "destroys the requested select_option" do
-      expect {
+  describe 'DELETE #destroy' do
+    it 'destroys the requested select_option' do
+      expect do
         delete :destroy, params: { id: admin_user.id }
-      }.to change(AdminUser, :count).by(-1)
+      end.to change(AdminUser, :count).by(-1)
     end
 
-    it "redirects to the field" do
+    it 'redirects to the field' do
       delete :destroy, params: { id: admin_user.id }
       expect(response).to redirect_to(admin_admin_users_path)
     end

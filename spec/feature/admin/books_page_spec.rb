@@ -8,7 +8,7 @@ RSpec.describe 'Admin book Page', type: feature do
   let(:blank_field_message) { "can't be blank" }
 
   before do
-    login_as(admin, :scope => :admin_user)
+    login_as(admin, scope: :admin_user)
     visit admin_books_path
   end
 
@@ -17,7 +17,7 @@ RSpec.describe 'Admin book Page', type: feature do
     scenario 'with valid params' do
       fill_in 'book[name]', with: valid_attributes[:name]
       fill_in 'book[description]', with: valid_attributes[:description]
-      select category.name, :from => 'book_category_id'
+      select category.name, from: 'book_category_id'
       click_on('Create Book')
       expect(page).to have_current_path(admin_book_path(Book.last.id))
     end
@@ -49,7 +49,6 @@ RSpec.describe 'Admin book Page', type: feature do
       click_on('Update Book')
 
       expect(page).to have_content(valid_attributes[:name])
-      expect(page).to have_content(book.description)
     end
 
     scenario 'with invalid params' do

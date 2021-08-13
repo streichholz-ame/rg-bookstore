@@ -13,13 +13,13 @@ class CatalogDecorator < ApplicationDecorator
   end
 
   def author_name(book)
-    book_authors(book).map {|str| "\"#{str}\""}.join(',')
+    book_authors(book).map { |str| "\"#{str}\"" }.join(',')
   end
 
   def book_authors(book)
     book.authors.map do |author|
       "#{author.first_name}" "#{author.last_name}"
-    end        
+    end
   end
 
   delegate :count, to: :books, prefix: true
