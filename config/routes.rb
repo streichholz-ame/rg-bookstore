@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   resources :addresses
   resources :billing_addresses, controller: 'addresses'
   resources :shipping_addresses, controller: 'addresses'
+  resources :reviews
 end

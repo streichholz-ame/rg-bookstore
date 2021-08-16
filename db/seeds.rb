@@ -48,7 +48,5 @@ generate_categories
 20.times { generate_book }
 20.times { generate_author }
 generate_book_authors
-if Rails.env.development?
-  AdminUser.create!(email: 'admin@example.com', password: 'password',
+AdminUser.create!(email: 'admin@example.com', password: 'password',
                     password_confirmation: 'password')
-end
