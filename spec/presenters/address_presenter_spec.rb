@@ -20,12 +20,12 @@ RSpec.describe AddressPresenter do
 
   context 'when address exist' do
     it '#billing_address' do
-      presenter.fill_field(billing_address.type, billing_address[:name])
+      presenter.fill_fields(billing_address.type, billing_address[:name])
       expect(presenter.billing_address('name')).to eq(billing_address[:name])
     end
 
     it '#shipping_address' do
-      presenter.fill_field(shipping_address.type, shipping_address[:name])
+      presenter.fill_fields(shipping_address.type, shipping_address[:name])
       expect(presenter.shipping_address('name')).to eq(shipping_address[:name])
     end
   end

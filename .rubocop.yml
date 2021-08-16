@@ -13,9 +13,7 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Layout/LineLength:
-  Max: 150
-  Exclude: 
-    - 'config/initializers/*.rb'
+  Max: 100
 
 Metrics/MethodLength:
   Exclude: 

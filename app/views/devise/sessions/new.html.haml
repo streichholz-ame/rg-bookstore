@@ -6,13 +6,13 @@
     %p.general-login-text= t('authorization.or')
   .general-form
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
+      = render 'devise/shared/error_messages', resource: resource
       .form-group.mb-30
         = f.label :email, t('authorization.enter_email'), class: 'control-label input-label', autocomplete: 'email'
-        = f.email_field :email, placeholder: "Enter Email", autofocus: true, autocomplete: "email", class: 'form-control', id: 'email'
+        = f.email_field :email, placeholder: t('authorization.enter_email'), autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email'
       .form-group.mb-30
         = f.label :password, t('authorization.enter_password'), class: 'control-label input-label', autocomlete: 'current-password'
-        = f.password_field :password, placeholder: "Password", autocomplete: "password", class: 'form-control', id: 'password'
+        = f.password_field :password, placeholder: t('authorization.enter_password'), autocomplete: 'password', class: 'form-control', id: 'password'
         = link_to t('authorization.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
       .form-group.checkbox.text-center.mb-30
         %label.checkbox-label

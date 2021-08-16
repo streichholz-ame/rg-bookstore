@@ -4,14 +4,14 @@
   .general-form
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
       = f.hidden_field :reset_password_token
-      = render "devise/shared/error_messages", resource: resource
+      = render 'devise/shared/error_messages', resource: resource
       .form-group.mb-25
         = f.label :password, t('authorization.new_password'), class: 'control-label input-label'
-        = f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-control', id: 'password'
+        = f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'form-control', id: 'password'
         = resource.errors.messages[:password].to_sentence
       .form-group.mb-25
         = f.label :password_confirmation, t('authorization.new_password'), class: 'control-label input-label'
-        = f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class: 'form-control', id: 'confirmPassword'
+        = f.password_field :password_confirmation, autofocus: true, autocomplete: 'new-password', class: 'form-control', id: 'confirmPassword'
         = resource.errors.messages[:password_confirmation].to_sentence
       = f.submit t('authorization.change'), class: 'btn btn-default center-block mb-20'
         

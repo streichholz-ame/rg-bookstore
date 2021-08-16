@@ -5,10 +5,13 @@ class AddressPresenter
     @current_user = current_user
   end
 
-  def fill_field(type, field)
-    return '' unless current_user.addresses.exists?(type: type)
+  def fill_fields(type, field)
+    return unless current_user.addresses.exists?(type: type)
 
-    type == 'BillingAddress' ? billing_address(field) : shipping_address(field)
+    case type
+    when BillingAddress.name then billing_address(field)
+    when ShippingAddress.name then shipping_address(field)
+    end
   end
 
   def billing_form
