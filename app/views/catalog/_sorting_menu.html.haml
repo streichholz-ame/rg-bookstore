@@ -1,8 +1,0 @@
-%a.dropdown-toggle.lead.small{href: '#', 'data-toggle': 'dropdown', role: 'button', 'aria-haspopup': 'true', 'aria-expanded': 'false'}
-  =t("sorting.#{params[:sort]}")
-  %i.fa.fa-angle-down.dropdown-icon.pull-right
-%ul.dropdown-menu
-  - SortingService::SORTING_METHODS.each do |key, value|
-    %li
-      = link_to t("sorting.#{key.to_s}"), params[:id] ? catalog_category_path(sort: key) : catalog_index_path(sort: key) 
-      
