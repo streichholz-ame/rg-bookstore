@@ -7,12 +7,12 @@ class ChangePasswordService
   end
 
   def call
-    change_password if passwords_valid(current_password)
+    change_password if passwords_valid
   end
 
   private
 
-  def passwords_valid(current_password)
+  def passwords_valid
     current_password == params[:old_password] && params[:new_password] == params[:confirm_password]
   end
 

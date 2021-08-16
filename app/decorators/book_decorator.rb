@@ -12,7 +12,8 @@ class BookDecorator < ApplicationDecorator
   end
 
   def dimensions
-    I18n.t('book_page.dimentions_description', height: book.height, width: book.width, depth: book.depth)
+    I18n.t('book_page.dimentions_description', height: book.height, width: book.width,
+                                               depth: book.depth)
   end
 
   def author_name

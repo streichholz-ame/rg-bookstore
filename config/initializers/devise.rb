@@ -16,7 +16,6 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '720fcafa61b7720e461bf6f46171ad243ef413266e210dcaf458d002aa056389b6f5fb2925cd6a7ee4ac77f8992fc7b2b0f9988dd03c872ca897332f9e0ecd9a'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -128,7 +127,6 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '8d1e84332d1e2634614dcc2c4ae71a0740343e35a37b73abc729e55ce69d03824b6287c5ba9c296284d4f9609e1cbd76c615e34c1a3bde0937237b4e80f40d27'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -275,7 +273,8 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
 
-  config.omniauth :facebook, Rails.application.credentials[:APP_ID], Rails.application.credentials[:APP_SECRET], callback_url: 'https://bookstore-streichholz.herokuapp.com/users/auth/facebook/callback'
+  config.omniauth :facebook, Rails.application.credentials[:facebook_id],
+                  Rails.application.credentials[:facebook_secret]
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

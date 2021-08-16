@@ -38,7 +38,8 @@ RSpec.configure do |config|
 
   config.include Rails.application.routes.url_helpers
 
-  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} })
+  config.include(Shoulda::Matchers::ActionController,
+                 { type: :model, file_path: %r{spec/controllers} })
 
   config.include FactoryBot::Syntax::Methods
 
