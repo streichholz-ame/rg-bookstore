@@ -13,7 +13,11 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Layout/LineLength:
-  Max: 100
+  Max: 120
+  Exclude: 
+  - 'config/initializers/simple_form_bootstrap.rb'
+  - 'app/models/user.rb'
+  - 'config/initializers/simple_form.rb'
 
 Metrics/MethodLength:
   Exclude: 
