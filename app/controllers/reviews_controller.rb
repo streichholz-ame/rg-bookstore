@@ -3,14 +3,16 @@ class ReviewsController < ApplicationController
     review_service = ReviewService.new(review_params)
     @review_form = review_service.review_form
     if review_service.save_review
-      flash[:success] = 'success'
+      flash[:success] = t('flash.review')
     else
-      flash[:error] = @comment_form.errors.full_messages.to_sentence
-    end 
+      flash[:error] = @review_form.errors.full_messages.to_sentence
+    end
     redirect_to book_path(params[:book_id])
   end
 
+  private
+
   def review_params
-    params.permit(:title, :review_text, :rating, :current_user, :current_book)
+    params.require(:review).permit(:title, :review_text, :rating, :user_id, :book_id)
   end
 end

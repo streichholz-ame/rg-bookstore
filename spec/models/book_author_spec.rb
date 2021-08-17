@@ -6,7 +6,7 @@ RSpec.describe BookAuthor, type: :model do
     it { is_expected.to have_db_index(:author_id) }
   end
 
-  context 'with assosiations' do
+  context 'with associations' do
     it { is_expected.to belong_to(:book) }
     it { is_expected.to belong_to(:author) }
   end

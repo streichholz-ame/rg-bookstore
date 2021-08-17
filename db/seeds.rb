@@ -49,4 +49,4 @@ generate_categories
 20.times { generate_author }
 generate_book_authors
 AdminUser.create!(email: 'admin@example.com', password: 'password',
-                    password_confirmation: 'password')
+                  password_confirmation: 'password')

@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe HeaderPresenter do
   let(:header) { described_class.new }
   let!(:category1) { create(:category) }

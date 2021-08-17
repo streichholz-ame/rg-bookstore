@@ -9,8 +9,10 @@ class ReviewService
     create_review if review_form.valid?
   end
 
+  private
+
   def create_review
-    Review.create(review_attributes)
+    Review.create(review_attributes).save!
   end
 
   def review_attributes

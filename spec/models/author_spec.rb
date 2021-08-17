@@ -7,7 +7,7 @@ RSpec.describe Author, type: :model do
     it { is_expected.to have_db_column(:description).of_type(:string) }
   end
 
-  context 'with assosiations' do
+  context 'with associations' do
     it { is_expected.to have_many(:book_authors).dependent(:destroy) }
     it { is_expected.to have_many(:books).through(:book_authors) }
   end

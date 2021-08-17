@@ -41,6 +41,8 @@ en:
     materials: 'Materials'
     price: "€%{price}"
     dimentions_description: '"H: %{height}\" x W: %{width}\" x D: %{depth}"'
+    no_reviews: 'No reviews yet, be the first'
+    not_authorized: 'You should be authorized to leave a review'
   catalog: 
     title: 'Сatalog'
     view_more: 'View More'
@@ -54,6 +56,8 @@ en:
     score: 'Score'
     post: 'Post'
     verified_reviewer: 'Verified Reviewer'
+    title: 'Title'
+    text: 'Please write your review here (up to 500 symbols)...'
   authorization:
     enter_email: 'Enter Email'
     enter_password: 'Password'
@@ -112,6 +116,7 @@ en:
     change_email_error: 'Your email was not changed.'
     change_address_success: 'Your address was successfully changed'
     change_address_error: 'Your address was not changed.'
+    review: 'Thanks for Review. It will be published as soon as Admin will approve it.'
   admin:
     price: "€%{price}"
     users: "Users: %{count}"
@@ -119,3 +124,13 @@ en:
     categories: "Categories: %{count}"
     authors: "Authors: %{count}"
     edit: 'Edit information'
+    review: 
+      title: 'Title'
+      date: 'Date'
+      user: 'User'
+      review: 'Review'
+      status: 'Status'
+      approve: 'Approve'
+      reject: 'Reject'
+      approved: 'Approved'
+      rejected: 'Rejected'
