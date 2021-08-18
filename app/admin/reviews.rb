@@ -21,6 +21,7 @@ ActiveAdmin.register Review do
     column t('admin.review.status') do |review|
       status_tag(review.status)
     end
+    column t('admin.review.score'), :rating
 
     column do |review|
       (link_to t('admin.review.approve'),
