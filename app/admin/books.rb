@@ -42,7 +42,7 @@ ActiveAdmin.register Book do
 
   form html: { multipart: true } do |f|
     f.inputs I18n.t('admin.edit') do
-      f.input :photo, as: :file
+      f.input :image, as: :file
       f.input :category, as: :select
       f.input :name
       f.input :authors, as: :check_boxes, collection: Author.all.map { |author|
