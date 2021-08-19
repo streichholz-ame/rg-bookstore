@@ -71,6 +71,7 @@ group :test do
   gem 'capybara', '>= 2.5.0'
   gem 'capybara_active_admin'
   gem 'database_cleaner'
+  gem "fakefs", require: "fakefs/safe"
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rubocop-rspec', '~> 2.4'
