@@ -50,7 +50,7 @@ ActiveAdmin.register Book do
       f.input :name
       f.input :authors, as: :check_boxes, collection: Author.all.map { |author|
                                                         ["#{author.first_name} #{author.last_name}", author.id]
-                                                      }                                                  
+                                                      }
       f.input :description
       f.input :price
       f.input :publication_year
