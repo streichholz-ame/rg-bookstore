@@ -1,0 +1,9 @@
+.col-xs-5.col-md-3
+  .input-group.general-position
+    = link_to '#', class: 'input-link', id: 'minus' do
+      %i.fa.fa-minus.line-height-40
+    = text_field_tag 'book_count', '', class: 'form-control quantity-input book-count-input', value: 1
+    = link_to '#', class: 'input-link', id: 'plus' do
+      %i.fa.fa-plus.line-height-40
+.col-xs-7.col-md-5
+  %button.btn.btn-default.pull-right.general-position= t('cart.add')
