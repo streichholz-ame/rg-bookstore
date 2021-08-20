@@ -1,7 +1,7 @@
 ActiveAdmin.register Book do
   decorate_with BookDecorator
 
-  permit_params :category_id, :name, :description, :photo, :price, :publication_year, :height, :width, :depth,
+  permit_params :category_id, :name, :description, :image, :price, :publication_year, :height, :width, :depth,
                 :material, author_ids: []
 
   filter :name
@@ -25,6 +25,7 @@ ActiveAdmin.register Book do
 
   show do
     attributes_table do
+      row :image
       row :name
       row :author_name
       row :description
@@ -42,12 +43,14 @@ ActiveAdmin.register Book do
 
   form html: { multipart: true } do |f|
     f.inputs I18n.t('admin.edit') do
-      f.input :image, as: :file
+      f.inputs 'book cover' do
+        f.input :image, required: true, as: :file
+      end
       f.input :category, as: :select
       f.input :name
       f.input :authors, as: :check_boxes, collection: Author.all.map { |author|
                                                         ["#{author.first_name} #{author.last_name}", author.id]
-                                                      }
+                                                      }                                                  
       f.input :description
       f.input :price
       f.input :publication_year
