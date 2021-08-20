@@ -1,0 +1,44 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.7.2-node-browsers
+        environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+      - image: circleci/postgres:9.6-alpine
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: rg_booktore_test
+          DATABASE_URL: "postgres://ubuntu@localhost:5432/rg_booktore_test"
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-
+      - run:
+          name: Install dependencies
+          command: |
+            gem install bundler -v 2.2.14
+            bundle install
+      - save_cache:
+          key: gem-cache-v1-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: Run rubocop
+          command: bundle exec rubocop
+      - run:
+          name: Run fasterer
+          command: bundle exec fasterer
+      - run:
+          name: Run tests
+          command: bundle exec rspec
+      - store_artifacts:
+          path: coverage
+          
