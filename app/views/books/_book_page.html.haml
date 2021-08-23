@@ -17,15 +17,7 @@
     .col-xs-12.col-md-4
       %p.h1.in-gold-500.mt-10 
         = t('book_page.price', price: @current_book.price)
-    .col-xs-5.col-md-3
-      .input-group.general-position
-        = link_to '#', class: 'input-link', id: 'minus' do
-          %i.fa.fa-minus.line-height-40
-        = text_field_tag 'book_count', '', class: 'form-control quantity-input book-count-input', value: 1
-        = link_to '#', class: 'input-link', id: 'plus' do
-          %i.fa.fa-plus.line-height-40
-    .col-xs-7.col-md-5
-      %button.btn.btn-default.pull-right.general-position= t('cart.add')
+    = render partial: 'add_book_form', locals: { book_id: @current_book.id }
   .general-info-wrap.divider-lg
     %p= t('book_page.description')
     %p#book-description.lead.small.line-height-2

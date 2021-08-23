@@ -32,7 +32,7 @@
               %td
                 %p.font-16= t('cart.summary.subtotal')
               %td
-                %p.font-16= t('cart.summary.subtotal_price')
+                %p.font-16= t('book_page.price', price: @cart_presenter.subtotal_order_price(current_order))
             %tr
               %td
                 %p.font-16= t('cart.summary.coupon')
@@ -42,6 +42,6 @@
               %td
                 %strong.font-18= t('cart.summary.total')
               %td
-                %strong.font-18= t('cart.summary.total_price')
+                %strong.font-18= t('book_page.price', price: @cart_presenter.subtotal_order_price(current_order))
           %button.btn.btn-default.mb-20.visible-xs-inline-block= t('cart.checkout')
   %button.btn.btn-default.mb-20.hidden-xs.center-block= t('cart.checkout')

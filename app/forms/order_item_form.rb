@@ -1,4 +1,4 @@
-class OrderItenForm
+class OrderItemForm
   include ActiveModel::Model
   include Virtus.model
 

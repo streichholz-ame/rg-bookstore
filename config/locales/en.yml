@@ -49,7 +49,21 @@ en:
     filter: 'Filter by category'
     sort: 'Sort by'
   cart: 
+    title: 'Cart'
     add: 'Add to Cart'
+    checkout: 'Checkout'
+    product: 'Product'
+    price: 'Price'
+    quantity: 'Quantity'
+    subtotal: 'SubTotal'
+    enter_coupon: 'Enter Your Coupon Code'
+    apply_coupon: 'Apply Coupon'
+    summary: 
+      title: 'Order Summary'
+      subtotal: 'Subtotal:'
+      coupon: 'Coupon:'
+      coupon_sum: '€0.00'
+      total: 'Order Total:'
   review: 
     header: 'Review (%{count})'
     write: 'Write a Review'
