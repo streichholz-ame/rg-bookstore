@@ -155,8 +155,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-guests (0.7.0)
-      devise
     diff-lcs (1.4.4)
     docile (1.4.0)
     down (5.2.2)
@@ -567,7 +565,6 @@ DEPENDENCIES
   country-select (~> 1.2, >= 1.2.1)
   database_cleaner
   devise (~> 4.8)
-  devise-guests (~> 0.7.0)
   draper
   factory_bot_rails
   fakefs
