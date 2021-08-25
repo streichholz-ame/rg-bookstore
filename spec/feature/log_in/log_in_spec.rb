@@ -44,7 +44,7 @@ RSpec.describe 'Log In', type: :feature do
   end
 
   scenario 'when click forgot password' do
-    find('a', text: I18n.t('devise.forgot_password')).click
+    find('a', text: I18n.t('authorization.forgot_password')).click
     expect(page).to have_current_path new_user_password_path
   end
 
@@ -53,8 +53,5 @@ RSpec.describe 'Log In', type: :feature do
     fill_in 'user[password]', with: user.password
     click_on('sign-in-btn')
     expect(page).to have_selector 'a', text: I18n.t('header.my_account')
-    expect(page).to have_current_path root_path
   end
-
-  scenario 'when sign in via facebook'
 end

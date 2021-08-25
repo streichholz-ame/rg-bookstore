@@ -38,6 +38,10 @@ RSpec.configure do |config|
   config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} })
 
   config.include FactoryBot::Syntax::Methods
+
+  config.include Warden::Test::Helpers
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
@@ -51,3 +55,16 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+module ActiveRecord
+  class Base
+    mattr_accessor :shared_connection
+    @@shared_connection = nil
+
+    def self.connection
+      @@shared_connection || retrieve_connection
+    end
+  end
+end
+
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection

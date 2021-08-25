@@ -1,27 +1,27 @@
 %main.container.general-main-wrap
   .text-center
-    %h3.general-login-title= t('devise.log_in')
+    %h3.general-login-title= t('authorization.log_in')
     = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-login-icon' do
       %i.fa.fa-facebook-official
-    %p.general-login-text= t('devise.or')
+    %p.general-login-text= t('authorization.or')
   .general-form
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
+      = render 'devise/shared/error_messages', resource: resource
       .form-group.mb-30
-        = f.label :email, t('devise.enter_email'), class: 'control-label input-label', autocomplete: 'email'
-        = f.email_field :email, placeholder: "Enter Email", autofocus: true, autocomplete: "email", class: 'form-control', id: 'email'
+        = f.label :email, t('authorization.enter_email'), class: 'control-label input-label', autocomplete: 'email'
+        = f.email_field :email, placeholder: t('authorization.enter_email'), autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email'
       .form-group.mb-30
-        = f.label :password, t('devise.enter_password'), class: 'control-label input-label', autocomlete: 'current-password'
-        = f.password_field :password, placeholder: "Password", autocomplete: "password", class: 'form-control', id: 'password'
-        = link_to t('devise.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
+        = f.label :password, t('authorization.enter_password'), class: 'control-label input-label', autocomlete: 'current-password'
+        = f.password_field :password, placeholder: t('authorization.enter_password'), autocomplete: 'password', class: 'form-control', id: 'password'
+        = link_to t('authorization.forgot_password'), new_user_password_path, class: 'help-block in-gold-500'
       .form-group.checkbox.text-center.mb-30
         %label.checkbox-label
           = f.check_box :remember_me, class: 'checkbox-input' do
             %i.fa.fa-check
           - if devise_mapping.rememberable?
-            = f.label :remember_me, t('devise.remember_me'), class: 'checkbox-text remember-me'
+            = f.label :remember_me, t('authorization.remember_me'), class: 'checkbox-text remember-me'
       .text-center
-        = f.submit t('devise.back'), class: 'btn btn-default mb-20', id: 'sign-in-btn'
+        = f.submit t('authorization.back'), class: 'btn btn-default mb-20', id: 'sign-in-btn'
     %p.general-sign-text.text-center
-      = t('devise.no_account')
-      = link_to t('header.sign_up'), new_user_registration_path, class: 'in-gold-500'
+      = t('authorization.no_account')
+      = link_to t('authorization.sign_up'), new_user_registration_path, class: 'in-gold-500'

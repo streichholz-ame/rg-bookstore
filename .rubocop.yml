@@ -13,7 +13,7 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Layout/LineLength:
-  Max: 120
+  Max: 100
 
 Metrics/MethodLength:
   Exclude: 
@@ -33,3 +33,10 @@ Layout/LineLength:
 Rails/BulkChangeTable: 
   Exclude:
     - 'db/migrate/*.rb'
+
+Lint/AmbiguousBlockAssociation:
+  IgnoredMethods: [change]
+
+Style/ClassVars:
+  Exclude:
+    - 'spec/rails_helper.rb'
