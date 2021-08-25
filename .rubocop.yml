@@ -1,0 +1,47 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7.1
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+  Exclude: 
+  - 'config/initializers/simple_form_bootstrap.rb'
+  - 'app/models/user.rb'
+  - 'config/initializers/simple_form.rb'
+
+Style/StringConcatenation:
+  Exclude: 
+    - 'app/admin/reviews.rb'
+
+Metrics/MethodLength:
+  Exclude: 
+    - 'db/*.rb'
+    - 'db/**/*.rb'
+    
+Metrics/BlockLength:
+  Exclude:
+    - 'app/admin/*.rb'
+    - 'spec/**/*.rb'
+    - 'config/environments/*.rb'
+    - 'config/initializers/*.rb'
+
+Rails/BulkChangeTable: 
+  Exclude:
+    - 'db/migrate/*.rb'
+
+Lint/AmbiguousBlockAssociation:
+  IgnoredMethods: [change]
+
+Style/ClassVars:
+  Exclude:
+    - 'spec/rails_helper.rb'

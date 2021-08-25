@@ -13,12 +13,17 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/coverage/
+/node_modules/
+/.idea/
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
-
+/.history/
+/node_modules/
+/coverage/
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep

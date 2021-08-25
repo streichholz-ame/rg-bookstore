@@ -1,0 +1,15 @@
+.help-block.hint {
+  display: none;
+}
+
+.form-group-invalid{
+  label{
+    color: red;
+  }
+  input{
+    border-color: red;
+  }
+  .invalid-feedback{
+    color: red;
+  }
+}

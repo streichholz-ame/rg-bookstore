@@ -1,0 +1,25 @@
+span#description {
+  display: inline;
+  .a {
+    display: inline;
+  }
+}
+
+span#full_description {
+  display: none;
+  .a {
+    display: none;
+  }
+}
+
+[name="review[rating]"]{
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+label.book-rating{
+  cursor: pointer;
+  margin: 0 4px;
+}
