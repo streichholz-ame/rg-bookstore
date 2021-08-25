@@ -18,8 +18,8 @@ def generate_book
     material: 'Hardcover Book',
     publication_year: rand(2000..2021)
   )
-  File.open("public/images/#{rand(1..12)}.jpg") do |image|
-    book.image = image
+  File.open("public/images/#{rand(1..16)}.jpg") do |photo|
+    book.photo = photo
   end
   book.save!
 end
@@ -44,22 +44,9 @@ def generate_book_authors
   end
 end
 
-def generate_book_images
-  Book.all.each do |book|
-    3.times do
-      image = Image.new(book_id: book.id)
-      File.open("public/images/#{rand(1..12)}.jpg") do |f|
-        image.image = f
-      end
-      image.save
-    end
-  end
-end
-
 generate_categories
 20.times { generate_book }
 20.times { generate_author }
 generate_book_authors
-generate_book_images
 AdminUser.create!(email: 'admin@example.com', password: 'password',
                   password_confirmation: 'password')

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_132754) do
+ActiveRecord::Schema.define(version: 2021_08_13_125748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_132754) do
     t.bigint "category_id"
     t.string "name"
     t.text "description"
-    t.string "image"
+    t.string "photo"
     t.decimal "price"
     t.integer "publication_year"
     t.float "height"
@@ -94,14 +94,6 @@ ActiveRecord::Schema.define(version: 2021_08_18_132754) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "images", force: :cascade do |t|
-    t.string "image"
-    t.bigint "book_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["book_id"], name: "index_images_on_book_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -137,5 +129,4 @@ ActiveRecord::Schema.define(version: 2021_08_18_132754) do
   end
 
   add_foreign_key "books", "categories"
-  add_foreign_key "images", "books"
 end

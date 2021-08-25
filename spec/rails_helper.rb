@@ -20,7 +20,6 @@ require 'i18n'
 require 'capybara/poltergeist'
 require 'webdrivers'
 require 'selenium-webdriver'
-require 'fakefs/safe'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
