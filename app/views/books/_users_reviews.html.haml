@@ -1,0 +1,19 @@
+%h3.in-gold-500.mb-25= t('review.header', count: @review.approved_reviews.count)
+.general-message-wrap.divider-lg
+  -if @review.approved_reviews.any?
+    - @review.approved_reviews.each do |review|
+      .clearfix
+        %img.img-circle.logo-size.inlide-block.pull-left{src: 'https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg'}
+        .ml-70
+          %div
+            .general-message-date.hidden-xs= @review.date(review)
+            .max-240
+              .general-message-verified= t('review.verified_reviewer')
+              .general-message-name= @review.user_name(review)
+          .mb-15
+            - review.rating.times do
+              %i.fa.fa-star.rate-star
+          %p= review.review_text
+  -else
+    .clearfix
+      %p= t('book_page.no_reviews')

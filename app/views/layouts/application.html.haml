@@ -10,7 +10,10 @@
 
 %body
   = render 'partials/header'
-  - flash.each do |key, message| 
-    = message 
+  %main.container
+    #flash-display
+      - flash.each do |key, message| 
+        .alert{:class => "alert-#{key} fadeout"} 
+          = message 
   = yield 
   = render 'partials/footer'

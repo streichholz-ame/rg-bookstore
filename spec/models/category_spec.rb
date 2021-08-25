@@ -5,7 +5,7 @@ RSpec.describe Category, type: :model do
     it { is_expected.to have_db_column(:name).of_type(:string) }
   end
 
-  context 'with assosiations' do
+  context 'with associations' do
     it { is_expected.to have_many(:books).dependent(:destroy) }
   end
 end

@@ -14,7 +14,7 @@ RSpec.describe Address, type: :model do
     it { is_expected.to have_db_column(:addressable_type).of_type(:string) }
   end
 
-  context 'with assosiations' do
+  context 'with associations' do
     it { is_expected.to belong_to(:addressable) }
   end
 end
