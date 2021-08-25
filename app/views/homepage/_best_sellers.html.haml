@@ -4,8 +4,9 @@
     - @catalog_presenter.best_sellers.each do |book|
       .col-sm-6.col-md-3
         .general-thumb-wrap
-          .thumbnail.general-thumbnail
-            %img.img-shadow.general-thumbnail-img{src: 'http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg', alt: 'design-book'}
+          .thumbnail.general-thumbnail#best-sellers-row
+            %img.img-shadow.general-thumbnail-img
+              = image_tag book.image_url(:small_image), alt: book.name
             .thumb-hover
               .general-thumb-link-wrap
                 %a.thumb-hover-link{href: '#'}

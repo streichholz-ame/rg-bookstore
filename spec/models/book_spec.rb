@@ -4,7 +4,6 @@ RSpec.describe Book, type: :model do
   context 'with database columns' do
     it { is_expected.to have_db_column(:name).of_type(:string) }
     it { is_expected.to have_db_column(:description).of_type(:text) }
-    it { is_expected.to have_db_column(:photo).of_type(:string) }
     it { is_expected.to have_db_column(:publication_year).of_type(:integer) }
     it { is_expected.to have_db_column(:height).of_type(:float) }
     it { is_expected.to have_db_column(:width).of_type(:float) }

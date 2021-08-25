@@ -2,6 +2,8 @@ require_relative 'boot'
 
 require 'rails/all'
 # Pick the frameworks you want:
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
 require 'presenter'
 require 'active_model/railtie'
 require 'active_job/railtie'
