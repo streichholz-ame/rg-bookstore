@@ -1,5 +1,4 @@
 class CartPresenter
-
   def find_book(current_item)
     Book.find(current_item.book_id)
   end
@@ -17,11 +16,10 @@ class CartPresenter
   end
 
   def subtotal_order_price(current_order)
-    current_order.order_items.map {|item| Book.find(item.book_id)[:price] * item.quantity}.sum
+    current_order.order_items.sum { |item| Book.find(item.book_id)[:price] * item.quantity }
   end
 
   def total_price(current_order)
     subtotal_order_price(current_order) - coupon_price
   end
-
 end

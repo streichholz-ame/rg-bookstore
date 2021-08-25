@@ -15,11 +15,20 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    if !session[:current_order_id].nil?
+    saved_order = Order.find_by(user_id: session[:session_id])
+    if session[:current_order_id]
       Order.find(session[:current_order_id])
+    elsif current_user && saved_order
+      saved_order.update(user_id: current_user.id)
+    elsif current_user && Order.find_by(user_id: current_user.id)
+      Order.find_by(user_id: current_user.id)
     else
-      Order.new
+      Order.new(user_id: logged_in_or_guest)
     end
+  end
+
+  def logged_in_or_guest
+    current_user ? current_user.id : session[:session_id]
   end
 
   include Pagy::Backend

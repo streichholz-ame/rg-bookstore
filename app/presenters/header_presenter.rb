@@ -4,11 +4,12 @@ class HeaderPresenter
   def initialize(current_order)
     @current_order = current_order
   end
+
   def categories
     Category.all
   end
 
   def cart_count
-    current_order.order_items.map { |item| item[:quantity] }.sum
+    current_order.order_items.pluck(:quantity).sum
   end
 end

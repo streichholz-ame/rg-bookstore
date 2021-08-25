@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_113533) do
+ActiveRecord::Schema.define(version: 2021_08_23_165131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,11 @@ ActiveRecord::Schema.define(version: 2021_08_19_113533) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "coupons", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "images", force: :cascade do |t|
     t.string "image"
     t.bigint "book_id"
@@ -115,7 +120,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_113533) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -148,6 +153,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_113533) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
+    t.boolean "guest", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -157,5 +163,4 @@ ActiveRecord::Schema.define(version: 2021_08_19_113533) do
   add_foreign_key "images", "books"
   add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
-  add_foreign_key "orders", "users"
 end

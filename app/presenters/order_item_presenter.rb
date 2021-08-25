@@ -1,2 +1,2 @@
-class OrderItemPresenter < ApplicationPresenter
+class OrderItemPresenter
 end

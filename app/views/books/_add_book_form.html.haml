@@ -1,6 +1,5 @@
 = simple_form_for(OrderItem.new, validate: true, input_html: { class: 'col-xs-5 col-md-3' }, url: order_items_path, html: { method: :post }) do |f|
   = f.input :book_id, as: :hidden, input_html: { value: @current_book.id }
-  = f.input :user_id, as: :hidden, input_html: { value: current_user.id }
   .col-xs-5.col-md-3
     .input-group.general-position
       = link_to '#', class: 'input-link', id: 'minus' do
