@@ -1,0 +1,15 @@
+= f.hidden_field :type, value: type
+.form-group
+  = f.input :first_name, placeholder: t('hints.first_name'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_fields(type, :first_name) }
+.form-group
+  = f.input :last_name, placeholder: t('hints.last_name'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_fields(type, :last_name) }
+.form-group
+  = f.input :address, placeholder: t('hints.address'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_fields(type, :address) }
+.form-group
+  = f.input :city, placeholder: t('hints.city'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_fields(type, :city) }
+.form-group
+  = f.input :zip, placeholder: t('hints.zip'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_fields(type, :zip) }
+.form-group.select-country-form
+  = f.input :country, placeholder: t('hints.country'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_fields(type, :country) }
+.form-group.mb-60
+  = f.input :phone, placeholder: t('hints.phone'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @presenter.fill_fields(type, :phone) }

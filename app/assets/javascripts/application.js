@@ -4,4 +4,6 @@
 //= require bootstrap
 //= require activestorage
 //= require turbolinks
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .

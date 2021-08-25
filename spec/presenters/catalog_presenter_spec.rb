@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CatalogPresenter do
-  let(:catalog) { described_class.new(sort: '') }
+  let(:catalog) { described_class.new }
   let!(:category1) { create(:category) }
   let!(:category2) { create(:category) }
   let!(:book1) { create(:book, :with_author, category: category1) }
@@ -33,8 +33,13 @@ RSpec.describe CatalogPresenter do
   end
 
   describe 'author_name' do
+    let(:author_names) do
+      book1.authors.map do |author|
+        "#{author.first_name}" "#{author.last_name}"
+      end
+    end
     it 'return book author' do
-      expect(catalog.author_name(book1)).to eq(book1.authors.map(&:name).join(', '))
+      expect(catalog.author_name(book1)).to eq(author_names.map { |author| author }.join(', '))
     end
   end
 end

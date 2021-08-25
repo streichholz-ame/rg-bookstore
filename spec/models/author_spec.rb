@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Author, type: :model do
   context 'with database columns' do
-    it { is_expected.to have_db_column(:name).of_type(:string) }
+    it { is_expected.to have_db_column(:first_name).of_type(:string) }
+    it { is_expected.to have_db_column(:last_name).of_type(:string) }
+    it { is_expected.to have_db_column(:description).of_type(:string) }
   end
 
   context 'with assosiations' do

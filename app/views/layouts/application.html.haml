@@ -1,7 +1,7 @@
 !!!
 %head
-  %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
-  %meta{name: "viewport", content: "width=device-width"}
+  %meta{content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}/
+  %meta{name: 'viewport', content: 'width=device-width'}
   %title Bookstore
   = csrf_meta_tags
   = csp_meta_tag
@@ -10,5 +10,7 @@
 
 %body
   = render 'partials/header'
+  - flash.each do |key, message| 
+    = message 
   = yield 
   = render 'partials/footer'

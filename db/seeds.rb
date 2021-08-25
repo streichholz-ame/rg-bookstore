@@ -10,7 +10,7 @@ def generate_book
   book = Book.new(
     category_id: rand(1..3),
     name: FFaker::Book.title,
-    description: FFaker::Lorem.paragraphs,
+    description: FFaker::Book.description,
     price: rand(12.99..99.99).round(2),
     height: 9,
     width: 6,
@@ -25,7 +25,11 @@ def generate_book
 end
 
 def generate_author
-  author = Author.new(name: FFaker::Book.author)
+  author = Author.new(
+    first_name: FFaker::Name.first_name,
+    last_name: FFaker::Name.last_name,
+    description: FFaker::Lorem.sentence
+  )
   author.save!
 end
 
@@ -44,3 +48,7 @@ generate_categories
 20.times { generate_book }
 20.times { generate_author }
 generate_book_authors
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password',
+                    password_confirmation: 'password')
+end

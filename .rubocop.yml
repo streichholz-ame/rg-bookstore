@@ -14,6 +14,10 @@ Style/FrozenStringLiteralComment:
 
 Layout/LineLength:
   Max: 120
+  Exclude: 
+  - 'config/initializers/simple_form_bootstrap.rb'
+  - 'app/models/user.rb'
+  - 'config/initializers/simple_form.rb'
 
 Metrics/MethodLength:
   Exclude: 
@@ -22,4 +26,18 @@ Metrics/MethodLength:
     
 Metrics/BlockLength:
   Exclude:
+    - 'app/admin/*.rb'
     - 'spec/**/*.rb'
+    - 'config/environments/*.rb'
+    - 'config/initializers/*.rb'
+
+Rails/BulkChangeTable: 
+  Exclude:
+    - 'db/migrate/*.rb'
+
+Lint/AmbiguousBlockAssociation:
+  IgnoredMethods: [change]
+
+Style/ClassVars:
+  Exclude:
+    - 'spec/rails_helper.rb'

@@ -1,5 +1,7 @@
 FactoryBot.define do
   factory :author do
-    name { FFaker::Book.author }
+    first_name { FFaker::Name.first_name }
+    last_name { FFaker::Name.last_name }
+    description { FFaker::Lorem.sentence }
   end
 end

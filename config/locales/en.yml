@@ -13,6 +13,10 @@ en:
     shop: 'Shop'
     orders: 'Orders'
     settings: 'Settings'
+    log_out: 'Log Out'
+    sign_in: 'Log In'
+    sign_up: 'Sign Up'
+    my_account: 'My Account'
   footer:
     home: 'Home'
     shop: 'Shop'
@@ -36,6 +40,7 @@ en:
     dimensions: 'Dimensions'
     materials: 'Materials'
     price: "€%{price}"
+    dimentions_description: '"H: %{height}\" x W: %{width}\" x D: %{depth}"'
   catalog: 
     title: 'Сatalog'
     view_more: 'View More'
@@ -44,7 +49,73 @@ en:
   cart: 
     add: 'Add to Cart'
   review: 
+    header: 'Review (%{count})'
     write: 'Write a Review'
     score: 'Score'
     post: 'Post'
     verified_reviewer: 'Verified Reviewer'
+  authorization:
+    enter_email: 'Enter Email'
+    enter_password: 'Password'
+    or: 'or'
+    sign_up: 'Sign Up'
+    confirm_password: 'Confirm Password'
+    log_in: 'Log In'
+    forgot_password: 'Forgot password?'
+    no_account: 'Don’t have an Account?'
+    back: 'Back to Store'
+    remember_me: 'Remember me'
+    email_instructions: 'Email Instructions'
+    cancel: 'Cancel'
+    set_new_password: 'Set new password'
+    new_password: 'Type a new Password'
+    change: 'Change'
+  account_settings: 
+    header: 'Settings'
+    save: 'Save'
+    address: 'Address'
+    privacy: 'Privacy'
+    addresses: 
+      billing_address: 'Billing Address'
+      shipping_address: Shipping Address
+      first_name: 'First Name'
+      last_name: 'Last Name'
+      city: 'City' 
+      zip: 'Zip'
+      country: 'Country'
+      phone: 'Phone'
+    settings: 
+      email: 'Email'
+      enter_email: 'Enter Email'
+      password: 'Password'
+      old_password: 'Old Password'
+      new_password: 'New Password'
+      confirm_password: 'Confirm Password'
+      remove_account:
+        header: 'Remove Account'
+        request: 'Please Remove My Account'
+        confirmation: 'I understand that all data will be lost'
+  hints: 
+    first_name: 'Please enter your first name'
+    last_name: 'Please enter your last name'
+    city: 'Please enter your city'
+    address: 'Please enter your address'
+    zip: 'Please enter your zip'
+    country: 'Please choose your country from the following'
+    phone: 'Please enter your phone'
+  flash: 
+    destroy_success: 'Your account was successfully destroyed.'
+    destroy_error: 'Error occured. Account was not deleted.'
+    change_password_success: 'Your password was successfully changed.'
+    change_password_error: 'Error occured. Your password was not changed.'
+    change_email_success: 'Your email was successfully updated.'
+    change_email_error: 'Your email was not changed.'
+    change_address_success: 'Your address was successfully changed'
+    change_address_error: 'Your address was not changed.'
+  admin:
+    price: "€%{price}"
+    users: "Users: %{count}"
+    books: "Books: %{count}"
+    categories: "Categories: %{count}"
+    authors: "Authors: %{count}"
+    edit: 'Edit information'

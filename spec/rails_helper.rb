@@ -14,6 +14,7 @@ require 'rspec/rails'
 require 'capybara'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'capybara/active_admin/rspec'
 require 'yaml'
 require 'i18n'
 require 'capybara/poltergeist'
@@ -35,9 +36,18 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 
-  config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} })
+  config.include Rails.application.routes.url_helpers
+
+  config.include(Shoulda::Matchers::ActionController,
+                 { type: :model, file_path: %r{spec/controllers} })
 
   config.include FactoryBot::Syntax::Methods
+
+  config.include Warden::Test::Helpers
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+
+  config.include Capybara::DSL
 end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
@@ -51,3 +61,16 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+module ActiveRecord
+  class Base
+    mattr_accessor :shared_connection
+    @@shared_connection = nil
+
+    def self.connection
+      @@shared_connection || retrieve_connection
+    end
+  end
+end
+
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
