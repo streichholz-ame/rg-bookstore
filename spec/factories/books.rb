@@ -2,6 +2,7 @@ FactoryBot.define do
   factory :book do
     name { FFaker::Book.title }
     description { FFaker::Book.description }
+    image { File.open('spec/fixtures/images/default.jpg') }
     price { rand(12.99..99.99).round(2) }
     height { 9 }
     width { 6 }
