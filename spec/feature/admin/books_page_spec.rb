@@ -39,7 +39,6 @@ RSpec.describe 'Admin book Page', type: feature do
   scenario 'view book' do
     click_on('View')
     expect(page).to have_content(book.name)
-    expect(page).to have_content(book.description)
   end
 
   context 'edit book' do
