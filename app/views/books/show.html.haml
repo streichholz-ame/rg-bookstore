@@ -1,0 +1,60 @@
+%main.container
+  = link_to url_for(:back), class: 'general-back-link' do
+    %i.fa.fa-long-arrow-left.mr-15
+      = t('book_page.back')
+  .row
+    = render 'book_page'
+  .mb-80
+    %h3= t('review.write')
+    %p.general-info-text= t('review.score') 
+    .mb-15
+      %i.fa.fa-star.rate-empty
+      %i.fa.fa-star.rate-empty
+      %i.fa.fa-star.rate-empty
+      %i.fa.fa-star.rate-empty
+      %i.fa.fa-star.rate-empty
+    %form.row
+      .col-md-8
+        .mb-40
+          .form-group
+            %label.control-label.input-label.in-grey-600{for: "title"} Title
+            %input#title.form-control{name:"title", type: "text"}
+          .form-group
+            %label.control-label.input-label.in-grey-600{for: "review"} Review
+            %textarea#review.form-control{name:"review", type: "text"}
+        .text-right
+          %button.btn.disabled.mb-20= t('review.post')
+  .mb-80
+    %h3.in-gold-500.mb-25 Reviews (3)
+    .general-message-wrap.divider-lg
+      .clearfix
+        %img.img-circle.logo-size.inlide-block.pull-left{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+        .ml-70
+          %div
+            .general-message-date.hidden-xs 11/11/16
+            .max-240
+              .general-message-verified= t('review.verified_reviewer')
+              .general-message-name Rita J. Lewis
+          .mb-15
+            %i.fa.fa-star.rate-star
+            %i.fa.fa-star.rate-star
+            %i.fa.fa-star.rate-star
+            %i.fa.fa-star.rate-star
+            %i.fa.fa-star.rate-star
+          %p Thank you BookStore, I was very pleased to receive my order for the Moleskine diary so soon after placing the order.
+    .general-message-wrap.divider-lg
+      .clearfix
+        %span.img-circle.logo-size.inlide-block.pull-left.logo-empty M
+        .ml-70
+          %div
+            .general-message-date.hidden-xs 11/11/16
+            .max-240
+              .general-message-verified.pull-right Verified Reviewer
+              .general-message-name May J. Novoa
+          .mb-15
+            %i.fa.fa-star.rate-star
+            %i.fa.fa-star.rate-star
+            %i.fa.fa-star.rate-star
+            %i.fa.fa-star.rate-star
+            %i.fa.fa-star.rate-star.rate-empty
+          %p If ‘Get a better job’ had landed on my desk a year ago, I might have been dismissive of it. Instead I was prepared to be open-minded. There have been many occasions where I turned to career books with practical activities to look for some inspiration when developing education activities for learners or assessment.

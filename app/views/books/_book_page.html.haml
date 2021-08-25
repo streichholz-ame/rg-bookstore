@@ -1,0 +1,58 @@
+.col-sm-6
+  .product-gallery
+    .mb-20
+      %img.img-responsive{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+    .images.clearfix
+      %a.img-link{href: "#"}
+        %img{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+      %a.img-link{href: "#"}
+        %img{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+      %a.img-link{href: "#"}
+        %img{src: "https://www.bramstein.com/static/smashing-book-5-photo-stack.9d5d114e3e.jpg"}
+.col-sm-6
+  %h1.mt-res-0= @current_book.name
+  %p.lead.small= @book_presenter.author_name
+  .row
+    .col-xs-12.col-md-4
+      %p.h1.in-gold-500.mt-10 
+        = t('book_page.price', price: @current_book.price)
+    .col-xs-5.col-md-3
+      .input-group.general-position
+        = link_to '#', class: 'input-link', id: 'minus' do
+          %i.fa.fa-minus.line-height-40
+        = text_field_tag 'book_count', '', class: 'form-control quantity-input book-count-input', value: 1
+        = link_to '#', class: 'input-link', id: 'plus' do
+          %i.fa.fa-plus.line-height-40
+    .col-xs-7.col-md-5
+      %button.btn.btn-default.pull-right.general-position= t('cart.add')
+  .general-info-wrap.divider-lg
+    %p= t('book_page.description')
+    %p#book-description.lead.small.line-height-2
+      %span#description
+        = @book_presenter.description
+        %span#read-more-link
+          = link_to '#', class: 'in-gold-500 ml-10' do
+            = t('book_page.read_more')
+      %span#full_description
+        = @book_presenter.full_description
+        %span#hide-read-more-link
+          = link_to '#', class: 'in-gold-500 ml-10' do
+            = t('book_page.hide_read_more')            
+  .general-info-wrap.divider-lg
+    .clearfix
+      %p.pull-left 
+        = t('book_page.year')
+      %p.lead.small.pull-right 
+        = @current_book.publication_year
+  .general-info-wrap.divider-lg
+    .clearfix
+      %p.pull-left 
+        = t('book_page.dimensions')
+      %p.lead.small.pull-right 
+        = @book_presenter.dimensions
+  .general-info-wrap.divider-lg
+    .clearfix
+      %p.pull-left 
+        = t('book_page.materials')
+      %p.lead.small.pull-right 
+        = @current_book.material

@@ -99,19 +99,24 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    capybara-screenshot (1.0.25)
-      capybara (>= 1.0, < 4)
-      launchy
     cassandra (0.23.0)
       json
       rake
       simple_uuid (~> 0.3)
       thrift_client (~> 0.7, < 0.9)
+    childprocess (3.0.0)
+    cliver (0.3.2)
     coderay (1.1.3)
     colorize (0.8.1)
     concurrent-ruby (1.1.9)
     content_disposition (1.0.0)
     crass (1.0.6)
+    database_cleaner (2.0.1)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     devise (4.8.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -125,7 +130,12 @@ GEM
     erubi (1.10.0)
     erubis (2.7.0)
     execjs (2.8.1)
-    faraday (1.5.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faraday (1.5.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -140,11 +150,12 @@ GEM
     faraday-excon (1.1.0)
     faraday-httpclient (1.0.1)
     faraday-net_http (1.0.1)
-    faraday-net_http_persistent (1.1.0)
+    faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     fasterer (0.9.0)
       colorize (~> 0.7)
       ruby_parser (>= 3.14.1)
+    ffaker (2.18.0)
     ffi (1.15.3)
     font-awesome-rails (4.7.0.7)
       railties (>= 3.2, < 7)
@@ -199,8 +210,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    launchy (2.5.0)
-      addressable (~> 2.7)
     lefthook (0.7.6)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -245,6 +254,11 @@ GEM
     parser (3.0.2.0)
       ast (~> 2.4.1)
     pg (1.2.3)
+    poltergeist (1.18.1)
+      capybara (>= 2.1, < 4)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
+    presenter-rails (1.0.0)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -281,6 +295,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.3.0)
       loofah (~> 2.3)
+    rails-i18n (6.0.0)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 7)
     railties (6.0.4)
       actionpack (= 6.0.4)
       activesupport (= 6.0.4)
@@ -332,7 +349,7 @@ GEM
     rubocop-performance (1.11.4)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.11.2)
+    rubocop-rails (2.11.3)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.7.0, < 2.0)
@@ -343,6 +360,7 @@ GEM
     ruby2_keywords (0.0.4)
     ruby_parser (3.16.0)
       sexp_processor (~> 4.15, >= 4.15.1)
+    rubyzip (2.3.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -358,6 +376,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    selenium-webdriver (3.142.7)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
     sexp_processor (4.15.3)
     shoulda-matchers (4.5.1)
       activesupport (>= 4.2.0)
@@ -383,10 +404,10 @@ GEM
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
-    sprockets-rails (3.2.2)
-      actionpack (>= 4.0)
-      activesupport (>= 4.0)
-      sprockets (>= 3.0.0)
+    sprockets-rails (2.3.3)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (>= 2.8, < 4.0)
     temple (0.8.2)
     thor (1.1.0)
     thread_safe (0.3.6)
@@ -408,6 +429,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webdrivers (4.6.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -428,17 +453,19 @@ DEPENDENCIES
   brakeman (~> 3.3, >= 3.3.2)
   bullet (~> 6.1, >= 6.1.4)
   byebug
-  capybara (~> 3.35, >= 3.35.3)
-  capybara-screenshot (~> 1.0, >= 1.0.25)
+  capybara (>= 2.5.0)
+  database_cleaner
   devise (~> 4.8)
+  factory_bot_rails
   fasterer
+  ffaker
   font-awesome-rails
   font-awesome-sass (~> 4.6, >= 4.6.2)
   haml (~> 5.2, >= 5.2.1)
   haml-rails (~> 2.0, >= 2.0.1)
   i18n (~> 0.7.0)
   jbuilder (~> 2.7)
-  jquery-rails
+  jquery-rails (>= 3.1.0)
   lefthook (~> 0.7.6)
   listen (~> 3.2)
   mini_magick (~> 4.11)
@@ -446,10 +473,13 @@ DEPENDENCIES
   omniauth-facebook (~> 8.0)
   pagy (~> 4.10, >= 4.10.1)
   pg (>= 0.18, < 2.0)
+  poltergeist
+  presenter-rails
   pry-rails (~> 0.3.9)
   puma (~> 4.1)
   pundit (~> 2.1)
   rails (~> 6.0.3, >= 6.0.3.2)
+  rails-i18n
   rspec-rails (~> 5.0, >= 5.0.1)
   rubocop (~> 1.18, >= 1.18.3)
   rubocop-performance (~> 1.11, >= 1.11.4)
@@ -458,6 +488,7 @@ DEPENDENCIES
   sass (~> 3.7, >= 3.7.4)
   sass-rails
   sassc-rails (>= 2.1.0)
+  selenium-webdriver
   shoulda-matchers (~> 4.5, >= 4.5.1)
   shrine (~> 3.4)
   simplecov
@@ -465,9 +496,11 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sprockets (= 3.7.1)
+  sprockets-rails (~> 2.1, >= 2.1.3)
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
+  webdrivers
 
 RUBY VERSION
    ruby 2.7.2p137

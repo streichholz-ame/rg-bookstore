@@ -1,33 +1,50 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  homepage:
+    welcome: 'Welcome to our amazing Bookstore!'
+    about: 'We pore through hundreds of new books each month and select the five best we can find to share with our members.'
+    get_started: 'Get Started'
+    buy_now: 'Buy Now'
+    previous: 'Previous'
+    next: 'Next'
+    best_sellers: 'Best Sellers'
+  header:
+    home: 'Home'
+    bookstore: 'Bookstore'
+    shop: 'Shop'
+    orders: 'Orders'
+    settings: 'Settings'
+  footer:
+    home: 'Home'
+    shop: 'Shop'
+    orders: 'Orders'
+    settings: 'Settings'
+  sorting:
+    newest: 'Newest first'
+    popular: 'Popular first'
+    price_asc: 'Price: Low to hight'
+    price_desc: 'Price: Hight to low'
+    title_asc: 'Title: A-Z'
+    title_desc: 'Title: Z-A'
+  filter: 
+    show_all: 'All books'
+  book_page: 
+    back: 'Back to results'
+    description: 'Description'
+    read_more: 'Read More'
+    hide_read_more: 'Hide Read More'
+    year: 'Year of publication'
+    dimensions: 'Dimensions'
+    materials: 'Materials'
+    price: "€%{price}"
+  catalog: 
+    title: 'Сatalog'
+    view_more: 'View More'
+    filter: 'Filter by category'
+    sort: 'Sort by'
+  cart: 
+    add: 'Add to Cart'
+  review: 
+    write: 'Write a Review'
+    score: 'Score'
+    post: 'Post'
+    verified_reviewer: 'Verified Reviewer'

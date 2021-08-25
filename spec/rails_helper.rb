@@ -4,7 +4,7 @@ require 'simplecov'
 
 SimpleCov.start do
   add_filter '/spec/'
-  minimum_coverage 95
+  minimum_coverage 90
   add_filter 'app/admin'
 end
 
@@ -16,6 +16,9 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'yaml'
 require 'i18n'
+require 'capybara/poltergeist'
+require 'webdrivers'
+require 'selenium-webdriver'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -33,4 +36,18 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
 
   config.include(Shoulda::Matchers::ActionController, { type: :model, file_path: %r{spec/controllers} })
+
+  config.include FactoryBot::Syntax::Methods
+end
+
+Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
+Capybara.default_driver = :selenium_chrome
+
+Capybara.javascript_driver = :poltergeist
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end
