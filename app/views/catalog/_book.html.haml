@@ -2,15 +2,18 @@
   -@books.each do |book|
     .col-xs-6.col-sm-3
       .general-thumb-wrap
-        .thumbnail.general-thumbnail
+        .thumbnail.general-thumbnail{ style: 'padding: 30% 0' }
           %img.img-shadow.general-thumbnail-img
             = image_tag book.image_url(:medium_image)
           .thumb-hover
-            .general-thumb-link-wrap
+            .general-thumb-link-wrap{ style: 'display: flex' }
               = link_to book_path(book), class: 'thumb-hover-link' do 
-                %i.fa.fa-eye.thumb-icon{'aria-hidden': 'true'}                
-              %a.thumb-hover-link{href: '#'}
-                %i.fa.fa-shopping-cart.thumb-icon
+                %i.fa.fa-eye.thumb-icon{'aria-hidden': 'true'} 
+              =  simple_form_for(OrderItem.new, validate: true, url: order_items_path, html: { method: :post }) do |f|
+                = f.input :book_id, as: :hidden, input_html: { value: book.id }
+                = f.input :quantity, as: :hidden, input_html: { value: 1 }
+                = f.submit '', class: 'thumb-hover-link' do
+                  %i.fa.fa-shopping-cart.thumb-icon
       .general-thumb-info      
         %p.title= book.name
         %p.font-16.in-gold-500= t('book_page.price', price: book.price)

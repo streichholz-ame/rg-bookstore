@@ -58,6 +58,10 @@ en:
     subtotal: 'SubTotal'
     enter_coupon: 'Enter Your Coupon Code'
     apply_coupon: 'Apply Coupon'
+    coupon_used: 'You have already used your Coupon'
+    added: 'Successfully added to your Cart'
+    deleted: 'Successfully deleted from your Cart'
+    coupon_error: 'Your Coupon is incorrect or expired'
     summary: 
       title: 'Order Summary'
       subtotal: 'Subtotal:'

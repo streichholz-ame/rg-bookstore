@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :orders
   resources :order_items
+  resources :coupons
   resources :accounts
   resources :change_emails
   resources :addresses

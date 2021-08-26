@@ -1,7 +1,7 @@
 class CreateOrderItemService
-  attr_reader :current_user, :current_order, :order_params, :params, :order_item_form
+  attr_reader :current_order, :order_params, :params, :order_item_form
 
-  def initialize(current_user, order_params, params)
+  def initialize(order_params, params)
     @params = params
     @order_params = order_params
     @order_item_form = OrderItemForm.new(order_params)
@@ -9,7 +9,6 @@ class CreateOrderItemService
 
   def call(current_order)
     @current_order = current_order
-    binding.pry
     create_order_item
   end
 
@@ -31,7 +30,8 @@ class CreateOrderItemService
   def save_item
     return unless order_item_form.valid?
 
-    order = current_order.order_items.find_or_initialize_by(book_id: order_item_form.book_id, quantity: order_item_form.quantity)
+    order = current_order.order_items.find_or_initialize_by(book_id: order_item_form.book_id,
+                                                            quantity: order_item_form.quantity)
     order.save
   end
 end

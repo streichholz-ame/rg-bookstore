@@ -10,6 +10,6 @@ class HeaderPresenter
   end
 
   def cart_count
-    current_order.order_items.pluck(:quantity).sum
+    current_order ? current_order.order_items.pluck(:quantity).sum : 0
   end
 end
