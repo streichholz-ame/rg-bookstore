@@ -9,10 +9,10 @@
             .general-thumb-link-wrap{ style: 'display: flex' }
               = link_to book_path(book), class: 'thumb-hover-link' do 
                 %i.fa.fa-eye.thumb-icon{'aria-hidden': 'true'} 
-              =  simple_form_for(OrderItem.new, validate: true, url: order_items_path, html: { method: :post }) do |f|
+              =  simple_form_for(OrderItem.new, validate: true, url: order_items_path, html: { method: :post, id: 'shopping-btn' }) do |f|
                 = f.input :book_id, as: :hidden, input_html: { value: book.id }
                 = f.input :quantity, as: :hidden, input_html: { value: 1 }
-                = f.submit '', class: 'thumb-hover-link' do
+                = f.button :button, '', class: 'thumb-hover-link shopping-link' do
                   %i.fa.fa-shopping-cart.thumb-icon
       .general-thumb-info      
         %p.title= book.name

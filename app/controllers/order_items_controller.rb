@@ -15,6 +15,7 @@ class OrderItemsController < ApplicationController
   def destroy
     delete_service = DeleteOrderItemService.new(current_order, params)
     delete_service.call
+    session.delete(:current_order_id) if delete_service.delete_order?
     redirect_success(I18n.t('cart.deleted'))
   end
 

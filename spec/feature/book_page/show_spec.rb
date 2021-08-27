@@ -5,7 +5,7 @@ describe 'Book Page', type: :feature do
   let(:count_result) { '2' }
   before { visit(book_path(book)) }
 
-  it 'increment book count' do
+  it 'increment book count and add to cart' do
     find('i', class: 'fa-plus').click
     click_on(I18n.t('cart.add'))
     expect(page).to have_content(count_result)

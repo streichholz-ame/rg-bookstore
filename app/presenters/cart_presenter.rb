@@ -32,6 +32,8 @@ class CartPresenter
     total_price.round(2)
   end
 
+  def coupon; end
+
   def coupon_price
     if current_order.coupon
       total = (current_order.coupon.discount * subtotal_order_price) / 100

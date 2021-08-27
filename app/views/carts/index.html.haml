@@ -21,8 +21,10 @@
       .col-sm-4
         - if @cart_presenter.current_order.coupon
           = t('cart.coupon_used')
+        - elsif @cart_presenter.current_order.id.nil?
+          = t('cart.coupon_when_no_items')
         - else
-          = render partial: 'coupon_form'
+          = render partial: 'coupon_form', locals: {current_order: current_order}
       .col-sm-8
         .res-mr-200.text-center.general-text-right
           %p.in-gold-500.font-18= t('cart.summary.title')

@@ -62,6 +62,7 @@ en:
     added: 'Successfully added to your Cart'
     deleted: 'Successfully deleted from your Cart'
     coupon_error: 'Your Coupon is incorrect or expired'
+    coupon_when_no_items: 'You should add at least one Item to use your Coupon'
     summary: 
       title: 'Order Summary'
       subtotal: 'Subtotal:'
