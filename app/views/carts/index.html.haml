@@ -44,5 +44,5 @@
                 %strong.font-18= t('cart.summary.total')
               %td
                 %strong.font-18= t('book_page.price', price: @cart_presenter.total_order_price)
-          %button.btn.btn-default.mb-20.visible-xs-inline-block= t('cart.checkout')
-  %button.btn.btn-default.mb-20.hidden-xs.center-block= t('cart.checkout')
+          = button_to t('cart.checkout'), checkout_log_in_path, class: 'btn btn-default mb-20 visible-xs-inline-block', method: :get
+  = button_to t('cart.checkout'), checkout_log_in_path, class: 'btn btn-default mb-20 hidden-xs center-block', method: :get

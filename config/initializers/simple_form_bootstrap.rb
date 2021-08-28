@@ -15,7 +15,7 @@
 # Use this setup block to configure all options available in SimpleForm.
 SimpleForm.setup do |config|
   # Default class for buttons
-  config.button_class = 'btn-simple-form'
+  config.button_class = 'btn'
   config.input_mappings = { /country/ => :string }
 
   # Define the default class of the input wrapper of the boolean input.

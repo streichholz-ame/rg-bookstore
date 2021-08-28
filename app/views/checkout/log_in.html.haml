@@ -1,0 +1,36 @@
+%main.container
+  .row
+    .col-md-5.mb-40
+      .text-center
+        %h3.general-subtitle Returning Customer
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-login-icon' do
+          %i.fa.fa-facebook-official
+        %p.general-login-text or
+      .general-form
+        = form_for(resource, as: :resource_name, url: session_path(resource_name)) do |f|
+          = render 'devise/shared/error_messages', resource: resource
+          .form-group.mb-30
+            = f.label :email, t('authorization.enter_email'), class: 'control-label input-label', autocomplete: 'email'
+            = f.email_field :email, placeholder: t('authorization.enter_email'), autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email'
+          .form-group.mb-30
+            = f.label :password, t('authorization.enter_password'), class: 'control-label input-label', autocomlete: 'current-password'
+            = f.password_field :password, placeholder: t('authorization.enter_password'), autocomplete: 'password', class: 'form-control', id: 'password'
+          .text-center
+            = f.submit 'Log In with Password', class: 'btn btn-default mb-20', id: 'sign-in-btn'
+    .col-md-5.col-md-offset-1.mb-60
+      .text-center
+        %h3.general-subtitle New Customer
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-login-icon' do
+          %i.fa.fa-facebook-official
+        %p.general-login-text or
+      %form.general-form
+        .mb-40
+          %p.mb-5 Quick Register
+          %p.general-info-text.font-12.mb-20 You’ll be able to create password later
+          = form_for(resource, as: resource_name, url: registration_path(resource_name), method: :post) do |f|
+            = render 'devise/shared/error_messages', resource: resource
+            .form-group.mb-30
+              = f.label :email, t('authorization.enter_email'), class: 'control-label input-label'
+              = f.email_field :email, placeholder:t('account_settings.settings.enter_email'), autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email'
+              = resource.errors.messages[:email].to_sentence
+              = f.submit 'Continue to Checkout', class: 'btn mb-20', id: 'sign-up-btn'  
