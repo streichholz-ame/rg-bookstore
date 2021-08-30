@@ -32,6 +32,7 @@ class CreateOrderItemService
 
     order = current_order.order_items.find_or_initialize_by(book_id: order_item_form.book_id,
                                                             quantity: order_item_form.quantity)
+    
     order.save
   end
 end

@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 2021_08_23_165131) do
 
   create_table "coupons", force: :cascade do |t|
     t.string "number"
-    t.decimal "discount", precision: 2, default: "6"
+    t.decimal "discount", precision: 2, default: "3"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -124,6 +124,8 @@ ActiveRecord::Schema.define(version: 2021_08_23_165131) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "coupon_id"
+    t.integer "status", default: 0, null: false
+    t.string "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coupon_id"], name: "index_orders_on_coupon_id"
