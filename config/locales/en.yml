@@ -63,6 +63,7 @@ en:
     deleted: 'Successfully deleted from your Cart'
     coupon_error: 'Your Coupon is incorrect or expired'
     coupon_when_no_items: 'You should add at least one Item to use your Coupon'
+    when_no_items: 'You should add at least one Item to Checkout'
     summary: 
       title: 'Order Summary'
       subtotal: 'Subtotal:'
@@ -77,6 +78,29 @@ en:
     verified_reviewer: 'Verified Reviewer'
     title: 'Title'
     text: 'Please write your review here (up to 500 symbols)...'
+  checkout: 
+    complete:
+      title: 'Checkout'
+      address: 'Address'
+      delivery: 'Delivery'
+      payment: 'Payment'
+      confirm: 'Confirm'
+      complete: 'Complete'
+      thank_you: 'Thank You for your Order!'
+      confirmation: 'An order confirmation has been has been sent to %{email}'
+  order: 
+    orders: 'My Orders'
+    sorting:
+      title: 'Sort by'
+      waiting: 'Waiting for processing'
+      processing: 'In Progress'
+      in_delivery: 'In Delivery'
+      delivered: 'Delivered'
+      canceled: 'Canceled'
+    item_number: 'Number'
+    item_completed_at: 'Completed at'
+    item_status: 'Status'
+    item_total: 'Total'
   authorization:
     enter_email: 'Enter Email'
     enter_password: 'Password'

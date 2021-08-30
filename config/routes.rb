@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
-  get 'checkout/log_in'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: 'homepage#index'
 
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
-                            quick_registrations: 'users/quick_registrations',  }
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
   post 'users/auth/:provider/callback', to: 'sessions#create'
   match 'users/auth/failure', to: redirect('/'), via: %i[get post]
@@ -20,7 +18,7 @@ Rails.application.routes.draw do
       get 'catalog', to: 'catalog#index'
     end
   end
-  resources :checkout, only: :show
+  resources :checkout
   resources :carts
   resources :orders
   resources :order_items

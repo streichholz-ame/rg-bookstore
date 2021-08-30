@@ -46,6 +46,7 @@ gem 'sprockets-rails', '~> 2.1', '>= 2.1.3'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'virtus'
+gem 'wicked'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 

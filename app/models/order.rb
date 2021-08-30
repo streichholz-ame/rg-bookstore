@@ -11,5 +11,5 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   enum status: { cart: 0, log_in: 1, address: 2, shipping: 3, payment: 4, confirm: 5, complete: 6,
-  in_delivery: 7, delivered: 8, canceled: 9 }
+                 in_delivery: 7, delivered: 8, canceled: 9 }
 end
