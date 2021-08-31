@@ -1,0 +1,12 @@
+#shopping-btn{
+  .btn{
+    padding: 0;
+    background-color: transparent;
+  }
+  .btn:focus{
+    outline: none;
+  }
+  .btn:hover{
+    background-color: #eeeeee;
+  }
+}

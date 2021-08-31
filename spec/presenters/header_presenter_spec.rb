@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe HeaderPresenter do
-  let(:header) { described_class.new }
+  let(:header) { described_class.new(order) }
+  let(:order) { create(:order) }
   let!(:category1) { create(:category) }
   let!(:category2) { create(:category) }
   let!(:category2) { create(:category) }

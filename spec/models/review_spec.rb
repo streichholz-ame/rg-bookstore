@@ -13,4 +13,15 @@ RSpec.describe Review, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:book) }
   end
+
+  describe 'change status' do
+    let(:review) { create(:review) }
+    it 'approve' do
+      expect { review.approve! }.to change { review.status }.from('processing').to('published')
+    end
+
+    it 'reject' do
+      expect { review.reject! }.to change { review.status }.from('processing').to('rejected')
+    end
+  end
 end

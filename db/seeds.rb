@@ -56,10 +56,15 @@ def generate_book_images
   end
 end
 
+def generate_coupon
+  Coupon.create(number: '12345')
+end
+
 generate_categories
 20.times { generate_book }
 20.times { generate_author }
 generate_book_authors
 generate_book_images
+generate_coupon
 AdminUser.create!(email: 'admin@example.com', password: 'password',
                   password_confirmation: 'password')

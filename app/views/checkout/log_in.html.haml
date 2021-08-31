@@ -1,0 +1,35 @@
+%main.container
+  .row
+    .col-md-5.mb-40
+      .text-center
+        %h3.general-subtitle Returning Customer
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-login-icon' do
+          %i.fa.fa-facebook-official
+        %p.general-login-text or
+      .general-form
+        = simple_form_for(User.new, url: user_session_path) do |f|
+          .form-group.mb-30
+            = f.label :email, t('authorization.enter_email'), class: 'control-label input-label', autocomplete: 'email'
+            = f.email_field :email, placeholder: t('authorization.enter_email'), autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email'
+          .form-group.mb-30
+            = f.label :password, t('authorization.enter_password'), class: 'control-label input-label', autocomlete: 'current-password'
+            = f.password_field :password, placeholder: t('authorization.enter_password'), autocomplete: 'password', class: 'form-control', id: 'password'
+          .text-center
+            = f.submit 'Log In with Password', class: 'btn btn-default mb-20', id: 'sign-in-btn'
+    .col-md-5.col-md-offset-1.mb-60
+      .text-center
+        %h3.general-subtitle New Customer
+        = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-login-icon' do
+          %i.fa.fa-facebook-official
+        %p.general-login-text or
+        = simple_form_for(User.new, url: user_registration_path, method: :post, html: { class: 'general-form' }) do |f|
+          .mb-40
+            %p.mb-5 Quick Register
+            %p.general-info-text.font-12.mb-20 You’ll be able to create password later
+            .form-group.mb-30
+              = f.label :email, t('authorization.enter_email'), class: 'control-label input-label'
+              = f.email_field :email, placeholder:t('account_settings.settings.enter_email'), autofocus: true, autocomplete: 'email', class: 'form-control', id: 'email'
+              - password = Devise.friendly_token.first(10)
+              = f.hidden_field :password, value: password
+              = f.hidden_field :password_confirmation, value: password
+              = f.submit 'Continue to Checkout', class: 'btn mb-20', id: 'sign-up-btn'  
