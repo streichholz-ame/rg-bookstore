@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
   def index
-    @orders_presenter = OrdersPresenter.new(current_user)
+    @orders_presenter = present(current_user.orders)
   end
 end

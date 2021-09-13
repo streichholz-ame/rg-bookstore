@@ -2,7 +2,7 @@ class CatalogController < ApplicationController
   before_action :filter_books
 
   def index
-    @catalog_presenter = CatalogPresenter.new
+    @catalog_presenter = CatalogPresenter.new(Book.all)
     @sorted_books = SortingService.new(@filtered_books, params).call
     @pagy, @books = pagy(@sorted_books, items: 12)
   end

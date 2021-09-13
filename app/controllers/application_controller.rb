@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   before_action :header_presenter, :current_or_guest_user
   helper_method :current_order
 
@@ -37,7 +38,7 @@ class ApplicationController < ActionController::Base
   def logging_in
     guest_order = Order.find_by(user_id: guest_user.id)
     if guest_order
-      Order.find_or_initialize_by(user_id: current_user.id).order_items.append(guest_order.order_items)
+      Order.checkout_process.find_or_initialize_by(user_id: current_user.id).order_items.append(guest_order.order_items)
     else
       current_order
     end
@@ -51,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    if current_user && Order.find_by(user_id: current_user.id)
+    if current_user && Order.checkout_process.find_by(user_id: current_user.id)
       Order.find_by(user_id: current_user.id)
     elsif session[:current_order_id]
       Order.find(session[:current_order_id])
