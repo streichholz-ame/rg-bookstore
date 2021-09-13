@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_165131) do
+ActiveRecord::Schema.define(version: 2021_09_07_084625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,7 +98,25 @@ ActiveRecord::Schema.define(version: 2021_08_23_165131) do
 
   create_table "coupons", force: :cascade do |t|
     t.string "number"
-    t.decimal "discount", precision: 2, default: "3"
+    t.decimal "discount", precision: 2, default: "4"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "number"
+    t.string "name"
+    t.string "date"
+    t.string "cvv"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "deliveries", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price"
+    t.integer "days_min"
+    t.integer "days_max"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -124,11 +142,17 @@ ActiveRecord::Schema.define(version: 2021_08_23_165131) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "coupon_id"
-    t.integer "status", default: 0, null: false
+    t.string "status"
     t.string "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "address_id"
+    t.bigint "delivery_id"
+    t.bigint "credit_card_id"
+    t.index ["address_id"], name: "index_orders_on_address_id"
     t.index ["coupon_id"], name: "index_orders_on_coupon_id"
+    t.index ["credit_card_id"], name: "index_orders_on_credit_card_id"
+    t.index ["delivery_id"], name: "index_orders_on_delivery_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -145,6 +169,16 @@ ActiveRecord::Schema.define(version: 2021_08_23_165131) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
+    t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -159,10 +193,17 @@ ActiveRecord::Schema.define(version: 2021_08_23_165131) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
-    t.boolean "guest", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_roles", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_roles_on_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
   add_foreign_key "books", "categories"
