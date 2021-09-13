@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DeleteOrderItemService do
-  let(:order) { create(:order) }
+  let(:order) { create(:order, :with_item) }
   let(:order_item) { order.order_items.first }
   let(:params) { { id: order_item.id } }
   let(:delete_service) { described_class.new(order, params) }

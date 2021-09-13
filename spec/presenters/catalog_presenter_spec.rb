@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CatalogPresenter do
-  let(:catalog) { described_class.new }
+  let(:catalog) { described_class.new(books) }
   let!(:category1) { create(:category) }
   let!(:category2) { create(:category) }
   let!(:book1) { create(:book, :with_author, category: category1) }
@@ -12,7 +12,7 @@ RSpec.describe CatalogPresenter do
 
   describe 'get data from db' do
     it 'get books' do
-      expect(catalog.books).to eq(books)
+      expect(catalog.size).to eq(books.size)
     end
 
     it 'get categories' do

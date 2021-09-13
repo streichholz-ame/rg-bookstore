@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UpdateOrderItemService do
-  let(:order) { create(:order) }
+  let(:order) { create(:order, :with_item) }
   let(:params) { { id: order.order_items.first.id, plus: true, item_quantity: 2 } }
   let(:update_service) { described_class.new(params) }
 

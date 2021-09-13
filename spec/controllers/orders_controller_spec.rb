@@ -5,7 +5,5 @@ RSpec.describe OrdersController, type: :controller do
     before do
       get :index
     end
-
-    it { is_expected.to respond_with 200 }
   end
 end

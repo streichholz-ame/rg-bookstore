@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CreateOrderItemService do
-  let(:order) { create(:order) }
+  let(:order) { create(:order, :with_item) }
   let(:create_service) { described_class.new(order_params, params) }
 
   describe 'change cart' do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CouponsController, type: :controller do
-  let!(:order) { create(:order) }
+  let!(:order) { create(:order, :with_item) }
   let!(:coupon) { create(:coupon) }
 
   describe 'PUT #update' do
