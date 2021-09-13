@@ -1,4 +1,4 @@
-class CartPresenter
+class CartPresenter < ApplicationPresenter
   attr_reader :current_order
 
   EMPTY_COUPON_PRICE = 0
@@ -32,7 +32,17 @@ class CartPresenter
     total_price.round(2)
   end
 
-  def coupon; end
+  def delivery_type
+    Delivery.find(current_order.delivery_id)
+  end
+
+  def subtotal_price_with_delivery
+    subtotal_order_price + delivery_type.price
+  end
+
+  def total_price_with_delivery
+    (subtotal_price_with_delivery - coupon_price).round(2)
+  end
 
   def coupon_price
     if current_order.coupon

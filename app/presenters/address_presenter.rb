@@ -1,4 +1,4 @@
-class AddressPresenter
+class AddressPresenter < ApplicationPresenter
   attr_reader :current_user
 
   def initialize(current_user)
@@ -12,6 +12,10 @@ class AddressPresenter
     when BillingAddress.name then billing_address(field)
     when ShippingAddress.name then shipping_address(field)
     end
+  end
+
+  def addresses
+    AddressForm.new
   end
 
   def billing_form

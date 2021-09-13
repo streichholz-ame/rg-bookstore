@@ -1,4 +1,4 @@
-class ReviewPresenter
+class ReviewPresenter < ApplicationPresenter
   attr_reader :current_book
 
   def initialize(current_book)

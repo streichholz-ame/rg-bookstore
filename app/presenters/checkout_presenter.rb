@@ -1,0 +1,2 @@
+class CheckoutPresenter < ApplicationPresenter
+end
