@@ -2,7 +2,7 @@
   = link_to catalog_index_path, class: 'filter-link' do
     = t('filter.show_all')
     %span.badge.general-badge 
-      = @catalog_presenter.books_count
+      = @catalog_presenter.count
 - @catalog_presenter.categories.each do |category|
   %li.mr-35
     = link_to catalog_category_path(category), class: 'filter-link' do

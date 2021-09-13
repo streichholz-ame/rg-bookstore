@@ -1,0 +1,23 @@
+- @order_items.each do |item|
+  .general-cart-item.divider-lg-bottom
+    .general-img-wrap-table
+      %img.cart-img-shadow
+        = image_tag(@cart_presenter.find_book(item).image_url(:small_image))
+    %p.title.in-gold-500= @cart_presenter.book_info(item, :name)
+    %table.table
+      %tr
+        %td
+          %span.in-grey-600= t('cart.price') 
+        %td
+          %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.book_info(item, :price))
+      %tr
+        %td.vertical-middle
+          %span.in-grey-600= t('cart.quantity') 
+        %td
+          .input-group
+            = text_field_tag 'book_count', '', class: 'form-control quantity-input book-count-input', value: item.quantity
+      %tr
+        %td
+          %span.in-grey-600= t('cart.subtotal')
+        %td
+          %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.subtotal_price(item))

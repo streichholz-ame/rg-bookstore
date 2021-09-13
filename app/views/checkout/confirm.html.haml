@@ -1,0 +1,28 @@
+%main.container.general-main-wrap
+  = render partial: 'checkout_header'
+  = simple_form_for(:current_order, url: wizard_path, method: :put) do |f|
+    .row.mb-20
+      = render partial: 'confirmation_info'
+    .visible-xs
+      = render partial: 'order_item_mobile'
+    .hidden-xs.divider-lg.pt-20
+      %table.table.table-hover
+        %thead
+          %tr
+            %th
+              %span.in-grey-600 Book
+            %th.col-method
+            %th
+              %span.in-grey-600 Price
+            %th
+              %span.in-grey-600 Quantity
+            %th
+              %span.in-grey-600 Total
+        %tbody
+          = render partial: 'order_item'
+    .text-center.general-text-right
+      %p.in-gold-500.font-18 Order Summary
+      %table.general-summary-table.general-summary-table-right.general-text-right
+        = render partial: 'order_summary'
+    .text-center
+      = f.submit 'Place Order', class: 'btn btn-default mb-20'

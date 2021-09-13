@@ -1,7 +1,7 @@
 %main.container
   .row
     .col-md-5.mb-40
-      .text-center
+      .text-center#checkout-log-in
         %h3.general-subtitle Returning Customer
         = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'general-login-icon' do
           %i.fa.fa-facebook-official
@@ -15,7 +15,7 @@
             = f.label :password, t('authorization.enter_password'), class: 'control-label input-label', autocomlete: 'current-password'
             = f.password_field :password, placeholder: t('authorization.enter_password'), autocomplete: 'password', class: 'form-control', id: 'password'
           .text-center
-            = f.submit 'Log In with Password', class: 'btn btn-default mb-20', id: 'sign-in-btn'
+            = f.submit 'Log In with Password', url: next_wizard_path, class: 'btn btn-default mb-20', id: 'sign-in-btn'
     .col-md-5.col-md-offset-1.mb-60
       .text-center
         %h3.general-subtitle New Customer

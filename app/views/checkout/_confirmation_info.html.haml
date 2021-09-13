@@ -1,0 +1,43 @@
+- if @order.shipping_address(current_order.address_id)
+  .col-sm-3
+    %h3.general-subtitle= @order.shipping_address(current_order.address_id).type
+    %p.general-address
+      = @order.receiver_name(shipping_address.type)
+      %span
+        = link_to 'edit', wizard_path(:address), class: 'general-edit'
+      %br
+      = @order.shipping_address.address
+      %br
+      = @order.full_address(shipping_address.type)
+      %br
+      = @order.shipping_address.country
+      %br
+      = @order.phone(shipping_address.type)
+- else 
+  .col-sm-3
+    %h3.general-subtitle= @order.billing_address(current_order.address_id).type
+    %p.general-address
+      = @order.receiver_name
+      = link_to 'edit', wizard_path(:address), class: 'general-edit'
+      %br
+      = @order.delivery_address.address
+      %br
+      = @order.full_address
+      %br
+      = @order.delivery_address.country
+      %br
+      = @order.phone
+.col-sm-3
+  %h3.general-subtitle Shipments
+  %p.general-address
+    = @order.delivery_type(current_order).name
+    %span= link_to 'edit', wizard_path(:delivery), class: 'general-edit'
+    %br
+    By train
+.col-sm-3
+  %h3.general-subtitle Payment Information
+  %p.general-address
+    = @order.card_number
+    %span= link_to 'edit', wizard_path(:payment), class: 'general-edit'
+    %br
+    12/2018

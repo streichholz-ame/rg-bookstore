@@ -1,0 +1,23 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th.col-method
+        %span.in-grey-600.ml-40= t('checkout.delivery.method')
+      %th
+        %span.in-grey-600= t('checkout.delivery.days')
+      %th
+        %span.in-grey-600= t('checkout.delivery.price')
+  %tbody
+    = f.collection_radio_buttons :delivery_id, @deliveries, :id, :name do |b|
+      %tr
+        %td
+          .form-group.radio.mt-0.mb-0
+            = b.label(class: 'radio-label') do
+              = b.radio_button(class: 'radio-input', hidden: "true")
+              %span.radio-icon
+              %span.radio-text= b.text
+        %td
+          %span= t('checkout.delivery.delivery_time', min: b.object.days_min, max: b.object.days_max)
+        %td
+          %span.font-16.in-gold-500= t('checkout.delivery.delivery_price', price: b.object.price)
+          
