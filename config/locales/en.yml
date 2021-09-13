@@ -79,6 +79,28 @@ en:
     title: 'Title'
     text: 'Please write your review here (up to 500 symbols)...'
   checkout: 
+    summary: 'Order Summary'
+    order_total: 'Order Total:'
+    item_total: 'Item Total:'
+    continue_btn: 'Save and Continue'
+    address: 
+      billing: 'Billing Address'
+      shipping: 'Shipping Address' 
+      fields_required: 'all fields are required'
+      use_billing: 'Use Billing Adress'
+    delivery: 
+      method: 'Method'
+      days: 'Days'
+      price: 'Price'
+      delivery_time: '%{min} to %{max} days'
+      delivery_price: '€%{price}'
+    payment: 
+      credit_card: 'Credit Card'
+      card_number: 'Card Number'
+      card_number_hint: 'Please enter a valid credit card number'
+      card_holder: 'Name on Card'
+      card_expire: 'MM / YY'
+      card_cvv: 'CVV'
     complete:
       title: 'Checkout'
       address: 'Address'
@@ -88,6 +110,10 @@ en:
       complete: 'Complete'
       thank_you: 'Thank You for your Order!'
       confirmation: 'An order confirmation has been has been sent to %{email}'
+      receiver_name: "%{first_name} %{ last_name}"
+      full_address: "%{city} %{zip}"
+      phone: "Phone %{phone}"
+      masked_card_number: "**** **** **** %{number}"
   order: 
     orders: 'My Orders'
     sorting:

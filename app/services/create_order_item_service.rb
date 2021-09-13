@@ -30,9 +30,8 @@ class CreateOrderItemService
   def save_item
     return unless order_item_form.valid?
 
-    order = current_order.order_items.find_or_initialize_by(book_id: order_item_form.book_id,
-                                                            quantity: order_item_form.quantity)
-
-    order.save
+    order_item = current_order.order_items.find_or_initialize_by(book_id: order_item_form.book_id,
+                                                                 quantity: order_item_form.quantity)
+    order_item.save
   end
 end
