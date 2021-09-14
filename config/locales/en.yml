@@ -83,6 +83,13 @@ en:
     order_total: 'Order Total:'
     item_total: 'Item Total:'
     continue_btn: 'Save and Continue'
+    log_in: 
+      returning: 'Returning Customer'
+      new_customer: 'New Customer'
+      quick_registration: 'Quick Register'
+      password_info: 'You’ll be able to create password later'
+      authorization: 'Log In with Password'
+      registration: 'Continue to Checkout'
     address: 
       billing: 'Billing Address'
       shipping: 'Shipping Address' 
@@ -101,6 +108,8 @@ en:
       card_holder: 'Name on Card'
       card_expire: 'MM / YY'
       card_cvv: 'CVV'
+    confirm: 
+      place_order: 'Place Order'
     complete:
       title: 'Checkout'
       address: 'Address'
@@ -110,10 +119,11 @@ en:
       complete: 'Complete'
       thank_you: 'Thank You for your Order!'
       confirmation: 'An order confirmation has been has been sent to %{email}'
-      receiver_name: "%{first_name} %{ last_name}"
+      receiver_name: "%{first_name} %{last_name}"
       full_address: "%{city} %{zip}"
       phone: "Phone %{phone}"
       masked_card_number: "**** **** **** %{number}"
+      back_to_store: 'Back to Store'
   order: 
     orders: 'My Orders'
     sorting:
