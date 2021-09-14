@@ -35,6 +35,7 @@ Metrics/BlockLength:
     - 'config/environments/*.rb'
     - 'config/initializers/*.rb'
     - 'config/routes.rb'
+    - 'app/models/order.rb'
 
 Rails/BulkChangeTable: 
   Exclude:
