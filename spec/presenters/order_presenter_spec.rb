@@ -12,29 +12,38 @@ RSpec.describe OrderPresenter do
   let(:presenter) { described_class.new(order) }
 
   describe '#order_status' do
-    let(:order_complete) { create(:order, :with_item, user_id: user.id, status: 'complete') }
-    let(:order_in_delivery) { create(:order, :with_item, user_id: user.id, status: 'in_delivery') }
-    let(:order_delivered) { create(:order, :with_item, user_id: user.id, status: 'delivered') }
-    let(:order_canceled) { create(:order, :with_item, user_id: user.id, status: 'canceled') }
-
-    it "return 'processing checkout'" do
-      expect(presenter.order_status(order)).to eq('Processing Checkout')
+    describe 'processing checkout' do
+      it 'return status' do
+        expect(presenter.order_status).to eq('Processing Checkout')
+      end
     end
 
-    it "return 'processing'" do
-      expect(presenter.order_status(order_complete)).to eq('Processing')
+    describe 'complete' do
+      let(:order) { create(:order, :with_item, user_id: user.id, status: 'complete') }
+      it 'return status' do
+        expect(presenter.order_status).to eq('Processing')
+      end
     end
 
-    it "return 'in delivery'" do
-      expect(presenter.order_status(order_in_delivery)).to eq('In Delivery')
+    describe 'in delivery' do
+      let(:order) { create(:order, :with_item, user_id: user.id, status: 'in_delivery') }
+      it 'return status' do
+        expect(presenter.order_status).to eq('In Delivery')
+      end
     end
 
-    it "return 'delivered'" do
-      expect(presenter.order_status(order_delivered)).to eq('Delivered')
+    describe 'delivered' do
+      let(:order) { create(:order, :with_item, user_id: user.id, status: 'delivered') }
+      it 'return status' do
+        expect(presenter.order_status).to eq('Delivered')
+      end
     end
 
-    it "return 'canceled'" do
-      expect(presenter.order_status(order_canceled)).to eq('Canceled')
+    describe 'canceled' do
+      let(:order) { create(:order, :with_item, user_id: user.id, status: 'canceled') }
+      it 'return status' do
+        expect(presenter.order_status).to eq('Canceled')
+      end
     end
   end
 
@@ -52,12 +61,12 @@ RSpec.describe OrderPresenter do
     let(:book_price) { Book.find(order_item.book_id)[:price] }
     let(:book_price1) { Book.find(order_item1.book_id)[:price] }
     it 'return order_price' do
-      expect(presenter.order_price(order)).to eq(book_price * order_item.quantity + book_price1 * order_item1.quantity)
+      expect(presenter.order_price).to eq(book_price * order_item.quantity + book_price1 * order_item1.quantity)
     end
   end
   describe 'address' do
     it 'return address' do
-      expect(presenter.address).to eq(address)
+      expect(presenter.delivery_address).to eq(address)
     end
   end
 
@@ -123,7 +132,7 @@ RSpec.describe OrderPresenter do
 
   describe 'delivery_type' do
     it 'return delivery type' do
-      expect(presenter.delivery_type(order)).to eq(delivery)
+      expect(presenter.delivery_type).to eq(delivery)
     end
   end
 
@@ -142,7 +151,7 @@ RSpec.describe OrderPresenter do
     let(:book_price1) { Book.find(order_item1.book_id)[:price] }
     let(:order_price) { book_price * order_item.quantity + book_price1 * order_item1.quantity }
     it 'return full price' do
-      expect(presenter.price_with_delivery(order)).to eq(order_price + delivery.price)
+      expect(presenter.price_with_delivery).to eq(order_price + delivery.price)
     end
   end
 end

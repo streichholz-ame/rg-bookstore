@@ -14,7 +14,4 @@ RSpec.describe CheckoutController, type: :controller do
       expect(subject).to respond_with 302
     end
   end
-
-  describe '#update' do
-  end
 end
