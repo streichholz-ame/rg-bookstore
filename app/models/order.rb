@@ -4,7 +4,9 @@ class Order < ApplicationRecord
   belongs_to :coupon, optional: true
   belongs_to :delivery, optional: true
   belongs_to :credit_card, optional: true
-  has_one :address
+
+  has_one :address, dependent: nil
+  accepts_nested_attributes_for :address, reject_if: proc { |attributes| attributes.any.blank? }
 
   scope :checkout_process, -> { where(status: %w[cart address delivery payment confirm]) }
   scope :processing, -> { where(status: 'complete') }

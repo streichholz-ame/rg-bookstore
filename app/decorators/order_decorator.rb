@@ -1,6 +1,6 @@
 class OrderDecorator < ApplicationDecorator
   delegate_all
-  def order_status(order)
+  def order_status
     case order.status
     when 6 then 'Processing'
     when 7 then 'In Delivery'
@@ -16,7 +16,7 @@ class OrderDecorator < ApplicationDecorator
 
   def address
     delivery_address = subject.address_id
-    @address = Address.find(delivery_address)
+    Address.find(delivery_address)
   end
 
   def shipping_address(address_id)
@@ -30,15 +30,15 @@ class OrderDecorator < ApplicationDecorator
   end
 
   def receiver_name
-    "#{address.first_name} #{address.last_name}"
+    "#{delivery_address.first_name} #{delivery_address.last_name}"
   end
 
   def full_address
-    "#{address.city} #{address.zip}"
+    "#{delivery_address.city} #{delivery_address.zip}"
   end
 
   def phone
-    "Phone #{address.phone}"
+    "Phone #{delivery_address.phone}"
   end
 
   def card_number

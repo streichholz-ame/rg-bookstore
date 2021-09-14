@@ -1,8 +1,6 @@
 class OrderPresenter < ApplicationPresenter
-  attr_reader :address
-
-  def order_status(order)
-    case order.status
+  def order_status
+    case subject.status
     when 'complete' then 'Processing'
     when 'in_delivery' then 'In Delivery'
     when 'delivered' then 'Delivered'
@@ -15,13 +13,13 @@ class OrderPresenter < ApplicationPresenter
     Book.find(order_item.book_id)[:price] * order_item.quantity
   end
 
-  def order_price(order)
-    order.order_items.sum { |item| Book.find(item.book_id)[:price] * item.quantity }
+  def order_price
+    subject.order_items.sum { |item| Book.find(item.book_id)[:price] * item.quantity }
   end
 
   def delivery_address
     delivery_address = subject.address_id
-    @address = Address.find(delivery_address)
+    Address.find(delivery_address)
   end
 
   def shipping_address(address_id)
@@ -35,15 +33,16 @@ class OrderPresenter < ApplicationPresenter
   end
 
   def receiver_name
-    I18n.t('checkout.complete.receiver_name', first_name: address.first_name, last_name: address.last_name)
+    I18n.t('checkout.complete.receiver_name', first_name: delivery_address.first_name,
+                                              last_name: delivery_address.last_name)
   end
 
   def full_address
-    I18n.t('checkout.complete.full_address', city: address.city, zip: address.zip)
+    I18n.t('checkout.complete.full_address', city: delivery_address.city, zip: delivery_address.zip)
   end
 
   def phone
-    I18n.t('checkout.complete.phone', phone: address.phone)
+    I18n.t('checkout.complete.phone', phone: delivery_address.phone)
   end
 
   def card_number
@@ -60,15 +59,15 @@ class OrderPresenter < ApplicationPresenter
     subject.credit_card.cvv.gsub!(/[0-9]/, '*')
   end
 
-  def delivery_type(order)
-    Delivery.find(order.delivery_id)
+  def delivery_type
+    Delivery.find(subject.delivery_id)
   end
 
   def find_book(current_item)
     Book.find(current_item.book_id)
   end
 
-  def price_with_delivery(order)
-    order_price(order) + delivery_type(order).price
+  def price_with_delivery
+    order_price + delivery_type.price
   end
 end

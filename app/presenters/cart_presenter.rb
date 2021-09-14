@@ -5,6 +5,7 @@ class CartPresenter < ApplicationPresenter
 
   def initialize(current_order)
     @current_order = current_order
+    super
   end
 
   def find_book(current_item)

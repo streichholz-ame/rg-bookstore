@@ -1,12 +1,15 @@
 module Updatable
   def update_address
-    @addresses_form = Addresses::Edit.new(address_params[:billing_form], current_user).call
-    unless address_params[:shipping_form].value?('')
-      @addresses_form = Addresses::Edit.new(address_params[:shipping_form],
-                                            current_user).call
+    @presenter = AddressPresenter.new(current_user)
+    if address_params[:shipping_address].value?('')
+      address = Addresses::Edit.new(address_params[:billing_address], current_user).call
+    else
+      Addresses::Edit.new(address_params[:billing_address], current_user).call
+      address = Addresses::Edit.new(address_params[:shipping_address], current_user).call
     end
+    render_wizard unless address
+
     current_order.update(address_id: order_address.id)
-    render_wizard unless @addresses_form
   end
 
   def update_delivery
@@ -44,12 +47,10 @@ module Updatable
   end
 
   def address_params
-    params.require(:address_form).permit(
-      shipping_form:
-      %i[addressable_id addressable_type type first_name last_name address
-         city zip country phone],
-      billing_form: %i[addressable_id addressable_type type first_name last_name address
-                       city zip country phone]
+    params.require(:order).permit(
+      shipping_address: %i[addressable_id addressable_type type first_name last_name address city zip country
+                           phone], billing_address: %i[addressable_id addressable_type
+                                                       type first_name last_name address city zip country phone]
     )
   end
 

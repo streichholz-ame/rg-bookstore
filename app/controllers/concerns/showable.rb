@@ -4,7 +4,6 @@ module Showable
   end
 
   def show_address
-    @addresses_form = AddressForm.new
     @presenter = AddressPresenter.new(current_user)
     @order_presenter = OrderPresenter.new(current_user)
   end

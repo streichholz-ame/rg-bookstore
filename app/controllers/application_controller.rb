@@ -38,9 +38,17 @@ class ApplicationController < ActionController::Base
   def logging_in
     guest_order = Order.find_by(user_id: guest_user.id)
     if guest_order
-      Order.checkout_process.find_or_initialize_by(user_id: current_user.id).order_items.append(guest_order.order_items)
+      check_existing_order(guest_order)
     else
       current_order
+    end
+  end
+
+  def check_existing_order(guest_order)
+    if current_user.orders.checkout_process.empty?
+      Order.create(user_id: current_user.id).order_items.append(guest_order.order_items)
+    else
+      Order.checkout_process.find_by(user_id: current_user.id).order_items.append(guest_order.order_items)
     end
   end
 

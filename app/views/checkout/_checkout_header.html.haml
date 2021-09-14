@@ -8,5 +8,5 @@
         - else
           = i+1
       %span 
-        = link_to t("checkout.complete.#{step}"), wizard_path(step), class: 'step-text hidden-xs', id: "step_#{i}"
+        = link_to_if wizard_steps.index(params[:id].to_sym) >= i+1, t("checkout.complete.#{step}"), wizard_path(step), class: 'step-text hidden-xs', id: "step_#{i}"
     %li.step-divider

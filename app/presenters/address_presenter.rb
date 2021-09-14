@@ -1,12 +1,6 @@
 class AddressPresenter < ApplicationPresenter
-  attr_reader :current_user
-
-  def initialize(current_user)
-    @current_user = current_user
-  end
-
   def fill_fields(type, field)
-    return unless current_user.addresses.exists?(type: type)
+    return unless subject.addresses.exists?(type: type)
 
     case type
     when BillingAddress.name then billing_address(field)
@@ -27,10 +21,10 @@ class AddressPresenter < ApplicationPresenter
   end
 
   def billing_address(field)
-    current_user.billing_address[field]
+    subject.billing_address[field]
   end
 
   def shipping_address(field)
-    current_user.shipping_address[field]
+    subject.shipping_address[field]
   end
 end

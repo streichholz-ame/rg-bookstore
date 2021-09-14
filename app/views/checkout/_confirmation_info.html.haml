@@ -2,17 +2,17 @@
   .col-sm-3
     %h3.general-subtitle= @order.shipping_address(current_order.address_id).type
     %p.general-address
-      = @order.receiver_name(shipping_address.type)
+      = @order.receiver_name
       %span
         = link_to 'edit', wizard_path(:address), class: 'general-edit'
       %br
-      = @order.shipping_address.address
+      = @order.delivery_address.address
       %br
-      = @order.full_address(shipping_address.type)
+      = @order.full_address
       %br
-      = @order.shipping_address.country
+      = @order.delivery_address.country
       %br
-      = @order.phone(shipping_address.type)
+      = @order.phone
 - else 
   .col-sm-3
     %h3.general-subtitle= @order.billing_address(current_order.address_id).type
@@ -30,7 +30,7 @@
 .col-sm-3
   %h3.general-subtitle Shipments
   %p.general-address
-    = @order.delivery_type(current_order).name
+    = @order.delivery_type.name
     %span= link_to 'edit', wizard_path(:delivery), class: 'general-edit'
     %br
     By train
