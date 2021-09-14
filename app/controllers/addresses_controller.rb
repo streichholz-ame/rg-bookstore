@@ -18,7 +18,6 @@ class AddressesController < ApplicationController
   private
 
   def permitted_params
-    # binding.pry
     params.require(:address_form).permit(:addressable_id, :addressable_type, :type, :first_name, :last_name, :address,
                                          :city, :zip, :country, :phone)
   end

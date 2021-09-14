@@ -10,22 +10,22 @@ describe 'Address Page', type: :feature do
     before { visit(checkout_index_path) }
     it 'go through all steps' do
       within('#billing-form') do
-        fill_in 'order_billing_address_first_name', with: order.address[:first_name]
-        fill_in 'order_billing_address_last_name', with: order.address[:last_name]
-        fill_in 'order_billing_address_address', with: order.address[:address]
-        fill_in 'order_billing_address_city', with: order.address[:city]
-        fill_in 'order_billing_address_zip', with: order.address[:zip]
-        fill_in 'order_billing_address_country', with: order.address[:country]
-        fill_in 'order_billing_address_phone', with: order.address[:phone]
+        fill_in 'order_address_form_first_name', with: order.address[:first_name]
+        fill_in 'order_address_form_last_name', with: order.address[:last_name]
+        fill_in 'order_address_form_address', with: order.address[:address]
+        fill_in 'order_address_form_city', with: order.address[:city]
+        fill_in 'order_address_form_zip', with: order.address[:zip]
+        fill_in 'order_address_form_country', with: order.address[:country]
+        fill_in 'order_address_form_phone', with: order.address[:phone]
       end
       within('#shipping-form') do
-        fill_in 'order_shipping_address_first_name', with: order.address[:first_name]
-        fill_in 'order_shipping_address_last_name', with: order.address[:last_name]
-        fill_in 'order_shipping_address_address', with: order.address[:address]
-        fill_in 'order_shipping_address_city', with: order.address[:city]
-        fill_in 'order_shipping_address_zip', with: order.address[:zip]
-        fill_in 'order_shipping_address_country', with: order.address[:country]
-        fill_in 'order_shipping_address_phone', with: order.address[:phone]
+        fill_in 'order_address_form_first_name', with: order.address[:first_name]
+        fill_in 'order_address_form_last_name', with: order.address[:last_name]
+        fill_in 'order_address_form_address', with: order.address[:address]
+        fill_in 'order_address_form_city', with: order.address[:city]
+        fill_in 'order_address_form_zip', with: order.address[:zip]
+        fill_in 'order_address_form_country', with: order.address[:country]
+        fill_in 'order_address_form_phone', with: order.address[:phone]
       end
       find('input[type="submit"]').click
 

@@ -8,6 +8,8 @@ $(document).on('turbolinks:load', function(){
     else {
       $('.shipping-form').css('display', 'none');
       $('#use-billing-address').attr('checked', true);
+      $('.shipping-form').find('*').find('input').prop('disabled', true)
+      $('.shipping-form').find('input[type=hidden]').prop('disabled', true)
     }
   })
 

@@ -1,14 +1,8 @@
 module Updatable
   def update_address
     @presenter = AddressPresenter.new(current_user)
-    if address_params[:shipping_address].value?('')
-      address = Addresses::Edit.new(address_params[:billing_address], current_user).call
-    else
-      Addresses::Edit.new(address_params[:billing_address], current_user).call
-      address = Addresses::Edit.new(address_params[:shipping_address], current_user).call
-    end
+    address = Addresses::Edit.new(address_params[:address_form], current_user).call
     render_wizard unless address
-
     current_order.update(address_id: order_address.id)
   end
 
@@ -37,6 +31,12 @@ module Updatable
     session.delete(:current_order_id)
   end
 
+  def order_address
+    return current_user.billing_address unless current_user.shipping_address
+
+    current_user.shipping_address
+  end
+
   def delivery_params
     params.require(:order).permit(:delivery_id)
   end
@@ -48,18 +48,8 @@ module Updatable
 
   def address_params
     params.require(:order).permit(
-      shipping_address: %i[addressable_id addressable_type type first_name last_name address city zip country
-                           phone], billing_address: %i[addressable_id addressable_type
-                                                       type first_name last_name address city zip country phone]
+      address_form: %i[addressable_id addressable_type type first_name last_name address city zip country phone]
     )
-  end
-
-  def order_address
-    if current_user.shipping_address.nil?
-      current_user.billing_address
-    else
-      current_user.shipping_address
-    end
   end
 
   def card_params

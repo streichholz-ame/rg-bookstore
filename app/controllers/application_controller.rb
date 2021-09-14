@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Pundit
   before_action :header_presenter, :current_or_guest_user
   helper_method :current_order
+  attr_reader :guest_order
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || root_path
@@ -36,15 +37,15 @@ class ApplicationController < ActionController::Base
   end
 
   def logging_in
-    guest_order = Order.find_by(user_id: guest_user.id)
+    @guest_order = Order.find_by(user_id: guest_user.id)
     if guest_order
-      check_existing_order(guest_order)
+      check_existing_order
     else
       current_order
     end
   end
 
-  def check_existing_order(guest_order)
+  def check_existing_order
     if current_user.orders.checkout_process.empty?
       Order.create(user_id: current_user.id).order_items.append(guest_order.order_items)
     else
