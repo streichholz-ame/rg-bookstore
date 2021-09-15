@@ -1,24 +1,21 @@
-- @deliveries.each do |delivery|
-  .general-cart-item.divider-lg-bottom.mb-30
-    %table.table
-      %tr
-        %td.col-half
-          %span.in-grey-600= t('checkout.delivery.book')
-        %td.col-half
-          .form-group.radio.mt-0.mb-0
-            %label.radio-label
-              %input.radio-input{type: "radio", hidden: "true"}
-              %span.radio-icon
-              %span.radio-text Delivery Next Day!
-      %tr
-        %td
-          %span.in-grey-600 Days
-        %td
-          %span.font-16.fw-300 3 to 7 days
-      %tr
-        %td
-          %span.in-grey-600 Price
-        %td
-          %span.font-16.in-gold-500 €5.00
-          
-          
+%table.table
+  = f.collection_radio_buttons :delivery_id, @deliveries, :id, :name do |b|
+    %tr
+      %td.col-half
+        %span.in-grey-600= t('checkout.delivery.method')
+      %td.col-half
+        .form-group.radio.mt-0.mb-0
+          = b.label(class: 'radio-label', namespace: 'mobile') do
+            = b.radio_button(class: 'radio-input', hidden: "true", namespace: 'mobile')
+            %span.radio-icon
+            %span.radio-text= b.text
+    %tr
+      %td
+        %span.in-grey-600= t('checkout.delivery.days')
+      %td
+        %span.font-16.fw-300= t('checkout.delivery.delivery_time', min: b.object.days_min, max: b.object.days_max)
+    %tr
+      %td
+        %span.in-grey-600= t('checkout.delivery.price')
+      %td
+        %span.font-16.in-gold-500= t('checkout.delivery.delivery_price', price: b.object.price)

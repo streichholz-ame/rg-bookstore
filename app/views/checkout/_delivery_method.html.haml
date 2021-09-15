@@ -3,8 +3,8 @@
     %tr
       %td
         .form-group.radio.mt-0.mb-0
-          = b.label(class: 'radio-label') do
-            = b.radio_button(class: 'radio-input', hidden: "true")
+          = b.label(class: 'radio-label', namespace: 'desktop') do
+            = b.radio_button(class: 'radio-input', hidden: "true", namespace: 'desktop')
             %span.radio-icon
             %span.radio-text= b.text
       %td
