@@ -1,0 +1,31 @@
+%main.container
+  = render partial: 'checkout_header'
+  = simple_form_for(current_order, url: wizard_path, validate: true, defaults: { input_html: { class: 'res-mb-100'} }, html: { method: :put }) do |f|
+    .hidden-xs.hidden-sm
+      .row
+        .col-md-5
+          %h3.general-subtitle= t('checkout.address.billing')
+          %p.general-info-text= t('checkout.address.fields_required')
+        .col-md-5.col-md-offset-1
+          %h3.general-subtitle= t('checkout.address.shipping')
+    .row
+      .col-md-5.mb-40#billing-form
+        .visible-xs.visible-sm
+          %h3.general-subtitle= t('checkout.address.billing')
+          %p.general-info-text= t('checkout.address.fields_required')
+        = f.simple_fields_for @presenter.addresses, as: :billing_address, validate: true, defaults: { input_html: { class: 'form-control' }}, html: { id: 'BillingAddress' } do |ff|
+          = render partial: 'shared/address_inputs_form', locals: { ff: ff, type: 'BillingAddress' }
+      .col-md-5.col-md-offset-1.mb-60.shipping-form#shipping-form
+        .visible-xs.visible-sm
+          %h3.general-subtitle= t('checkout.address.shipping')
+        = f.simple_fields_for @presenter.addresses, as: :shipping_address, validate: true, defaults: { input_html: { class: 'form-control' }}, html: { id: 'ShippingAddress' } do |ff|
+          = render partial: 'shared/address_inputs_form', locals: { ff: ff, type: 'ShippingAddress' }
+        .form-group.checkbox
+          %label.checkbox-label
+            %input.checkbox-input#use-billing-address{type: 'checkbox', hidden: 'true'}    
+            %span.checkbox-icon
+              %i.fa.fa-check
+            %span.checkbox-text= t('checkout.address.use_billing')
+    .general-text-align.mb-60
+      = f.submit t('checkout.continue_btn'), class: 'btn center-block mb-20'
+      

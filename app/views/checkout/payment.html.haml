@@ -1,0 +1,23 @@
+%main.container.general-main-wrap
+  = render partial: 'checkout_header'
+  %h3.general-subtitle= t('checkout.payment.header')
+  = simple_form_for(@credit_card_presenter.new_card, validate: true, url: wizard_path, method: :put) do |f|
+    .form-group
+      = f.input :number, placeholder: t('checkout.payment.card_number'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @credit_card_presenter.fill_card_fields(:number) }
+    .row
+      .col-sm-6
+        .form-group
+          = f.input :name, placeholder: t('checkout.payment.card_holder'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @credit_card_presenter.fill_card_fields(:name) }
+      .col-sm-3
+        .form-group
+          = f.input :date, placeholder: t('checkout.payment.card_expire'), label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @credit_card_presenter.fill_card_fields(:date) }
+      .col-sm-3
+        .form-group.relative
+          = f.input :cvv, placeholder: t('checkout.payment.card_cvv'), label: 'CVV', label_html: { class: 'control-label input-label' }, input_html: { class: 'form-control', value: @credit_card_presenter.fill_card_fields(:cvv) }
+          %i.fa.fa-question-circle.general-form-help
+    .general-text-align
+      %p.in-gold-500.font-18= t('checkout.confirm.summary')
+      %table.general-summary-table
+        = render partial: 'order_summary'
+    .text-center
+      = f.submit t('checkout.continue_btn'), class: 'btn btn-default mb-80'

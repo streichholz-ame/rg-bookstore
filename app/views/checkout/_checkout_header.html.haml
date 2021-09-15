@@ -1,0 +1,12 @@
+%h1.general-title-margin= t('checkout.complete.title')
+%ul.steps.list-inline
+  - wizard_steps[1..5].each_with_index do |step, i|
+    %li.step{ class: ('active' if wizard_steps.index(params[:id].to_sym) == i+1) }
+      %span.step-number
+        - if wizard_steps.index(params[:id].to_sym) > i+1
+          %i.fa.fa-check.step-icon
+        - else
+          = i+1
+      %span 
+        = link_to_if wizard_steps.index(params[:id].to_sym) >= i+1, t("checkout.complete.#{step}"), wizard_path(step), class: 'step-text hidden-xs', id: "step_#{i}"
+    %li.step-divider

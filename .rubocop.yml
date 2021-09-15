@@ -34,10 +34,16 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
     - 'config/environments/*.rb'
     - 'config/initializers/*.rb'
+    - 'config/routes.rb'
+    - 'app/models/order.rb'
 
 Rails/BulkChangeTable: 
   Exclude:
     - 'db/migrate/*.rb'
+
+Rails/HasAndBelongsToMany: 
+  Exclude: 
+    - 'app/models/role.rb'
 
 Lint/AmbiguousBlockAssociation:
   IgnoredMethods: [change]

@@ -1,0 +1,7 @@
+= form_with(url: coupon_path(@cart_presenter.current_order), method: :put) do |f|        
+  .input-group.general-input-group
+    = f.label t('cart.enter_coupon'), class: 'input-label'
+    = f.text_field :number, placeholder: t('cart.enter_coupon'), class: 'form-control mb-30'
+    %div
+      = f.submit t('cart.apply_coupon'), class: 'btn btn-primary mr-5 mb-15' 
+      

@@ -1,0 +1,49 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= t('cart.title')
+  .visible-xs
+    = render partial: 'order_item_phone'
+  .hidden-xs
+    %table.table.table-hover
+      %tr.no-hover
+        %th.col-pic.pl-0
+          %span.in-grey-600= t('cart.product')
+        %th.col-title
+        %th.col-price
+          %span.in-grey-600= t('cart.price') 
+        %th.col-quantity
+          %span.in-grey-600= t('cart.quantity') 
+        %th.col-total
+          %span.in-grey-600= t('cart.subtotal')
+        %th.col-close
+      = render partial: 'order_item'
+  .general-order-wrap
+    .row
+      .col-sm-4
+        - if @cart_presenter.current_order.coupon
+          = t('cart.coupon_used')
+        - elsif @cart_presenter.current_order.id.nil?
+          = t('cart.coupon_when_no_items')
+        - else
+          = render partial: 'coupon_form', locals: {current_order: current_order}
+      .col-sm-8
+        .res-mr-200.text-center.general-text-right
+          %p.in-gold-500.font-18= t('cart.summary.title')
+          %table.general-summary-table.general-summary-table-right.general-text-right
+            %tr
+              %td
+                %p.font-16= t('cart.summary.subtotal')
+              %td
+                %p.font-16= t('book_page.price', price: @cart_presenter.subtotal_order_price)
+            %tr
+              %td
+                %p.font-16= t('cart.summary.coupon')
+              %td
+                %p.font-16= t('book_page.price', price: @cart_presenter.coupon_price)
+            %tr
+              %td
+                %strong.font-18= t('cart.summary.total')
+              %td
+                %strong.font-18= t('book_page.price', price: @cart_presenter.total_order_price)
+          = button_to t('cart.checkout'), checkout_index_path, class: 'btn btn-default mb-20 visible-xs-inline-block', method: :get
+  = button_to t('cart.checkout'), checkout_index_path, class: 'btn btn-default mb-20 hidden-xs center-block', method: :get
+  

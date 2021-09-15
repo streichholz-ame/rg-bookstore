@@ -9,6 +9,7 @@ class AddressForm
   ADDRESS_TYPES = %w[ShippingAddress BillingAddress].freeze
 
   attribute :addressable_id, Integer
+  attribute :order_id, Integer
 
   attribute :first_name, String
   attribute :last_name, String

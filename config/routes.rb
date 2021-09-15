@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root to: 'homepage#index'
 
   devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
-                            registrations: 'users/registrations' }
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations',
+                            sessions: 'users/sessions' }
 
   post 'users/auth/:provider/callback', to: 'sessions#create'
   match 'users/auth/failure', to: redirect('/'), via: %i[get post]
@@ -19,7 +19,11 @@ Rails.application.routes.draw do
       get 'catalog', to: 'catalog#index'
     end
   end
-
+  resources :checkout
+  resources :carts
+  resources :orders
+  resources :order_items
+  resources :coupons
   resources :accounts
   resources :change_emails
   resources :addresses

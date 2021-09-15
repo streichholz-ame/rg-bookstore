@@ -1,0 +1,26 @@
+%main.container.general-main-wrap
+  = render partial: 'checkout_header'
+  %span.step-text.hidden-xs= t('checkout.delivery.header')
+  = form_for current_order, url: wizard_path do |f|
+    %h3.general-subtitle Credit Card
+    .visible-xs
+      .general-cart-item.divider-lg-bottom.mb-30
+        = render partial: 'delivery_method_mobile', locals: { f: f }
+    .hidden-xs.mb-res-50
+      %table.table.table-hover
+        %thead
+          %tr
+            %th.col-method
+              %span.in-grey-600.ml-40= t('checkout.delivery.method')
+            %th
+              %span.in-grey-600= t('checkout.delivery.days')
+            %th
+              %span.in-grey-600= t('checkout.delivery.price')
+        = render partial: 'delivery_method', locals: { f: f }
+    .general-text-align
+      %p.in-gold-500.font-18= t('checkout.confirm.summary')
+      %table.general-summary-table
+        = render partial: 'order_summary'
+    .text-center
+      = f.submit t('checkout.continue_btn'), class: 'btn btn-default mb-20'
+      

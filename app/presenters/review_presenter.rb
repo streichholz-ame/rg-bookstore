@@ -1,12 +1,6 @@
-class ReviewPresenter
-  attr_reader :current_book
-
-  def initialize(current_book)
-    @current_book = current_book
-  end
-
+class ReviewPresenter < ApplicationPresenter
   def all_reviews
-    current_book.reviews
+    subject.reviews
   end
 
   def user_name(current_review)

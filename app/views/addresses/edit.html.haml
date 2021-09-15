@@ -25,9 +25,10 @@
         .col-md-5.col-md-offset-1.mb-25
           .visible-xs.visible-sm
             %h3.general-subtitle.mt-0= t('account_settings.addresses.shipping_address')
-          = simple_form_for(@presenter.billing_form, validate: true,  defaults: { input_html: { class: 'form-control' }}, url: addresses_path, html: { method: :post, id: 'ShippingAddress' }) do |f|
+          = simple_form_for(@presenter.shipping_form, validate: true,  defaults: { input_html: { class: 'form-control' }}, url: addresses_path, html: { method: :post, id: 'ShippingAddress' }) do |f|
             = render partial: 'address_inputs_form', locals: { f: f, type: 'ShippingAddress' }
             .text-center.general-text-align
               = f.submit t('account_settings.save'), class: 'btn btn-default', id: 'save-shipping-address'
     #privacy.tab-pane.fade{role: 'tabpanel'}
       = render 'privacy'
+      

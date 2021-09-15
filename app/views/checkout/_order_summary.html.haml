@@ -1,0 +1,33 @@
+- if current_order.delivery_id.present?
+  %tr
+    %td
+      %p.font-16= t('cart.summary.subtotal')
+    %td
+      %p.font-16= t('book_page.price', price: @cart_presenter.subtotal_price_with_delivery)
+  %tr
+    %td
+      %p.font-16= t('cart.summary.coupon')
+    %td
+      %p.font-16= t('book_page.price', price: @cart_presenter.coupon_price)
+  %tr
+    %td
+      %strong.font-18= t('cart.summary.total')
+    %td
+      %strong.font-18= t('book_page.price', price: @cart_presenter.total_price_with_delivery)
+-else
+  %tr
+    %td
+      %p.font-16= t('cart.summary.subtotal')
+    %td
+      %p.font-16= t('book_page.price', price: @cart_presenter.subtotal_order_price)
+  %tr
+    %td
+      %p.font-16= t('cart.summary.coupon')
+    %td
+      %p.font-16= t('book_page.price', price: @cart_presenter.coupon_price)
+  %tr
+    %td
+      %strong.font-18= t('cart.summary.total')
+    %td
+      %strong.font-18= t('book_page.price', price: @cart_presenter.total_order_price)
+      
