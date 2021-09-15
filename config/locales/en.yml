@@ -96,12 +96,14 @@ en:
       fields_required: 'all fields are required'
       use_billing: 'Use Billing Adress'
     delivery: 
+      header: 'Delivery'
       method: 'Method'
       days: 'Days'
       price: 'Price'
       delivery_time: '%{min} to %{max} days'
       delivery_price: '€%{price}'
     payment: 
+      header: 'Payment'
       credit_card: 'Credit Card'
       card_number: 'Card Number'
       card_number_hint: 'Please enter a valid credit card number'
@@ -110,6 +112,11 @@ en:
       card_cvv: 'CVV'
     confirm: 
       place_order: 'Place Order'
+      book: 'Book'
+      price: 'Price'
+      quantity: 'Quantity'
+      total: 'Total'
+      summary: 'Order Summary'
     complete:
       title: 'Checkout'
       address: 'Address'

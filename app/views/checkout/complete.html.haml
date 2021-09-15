@@ -23,64 +23,24 @@
         %p.general-order-number.mb-0= current_order.number
         %p.general-address= current_order.created_at
     .visible-xs
-      .general-cart-item.divider-lg
-        .general-img-wrap-table
-          %img.cart-img-shadow{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-        %p.title Android Programming for Beginners
-        %P.in-grey-600.fw-300 A recipe-based book to help you efficiently create amazing PHP-based applications with Laravel 5.x
-        %table.table
-          %tr
-            %td
-              %span.in-grey-600 Price
-            %td
-              %span.font-16.in-gold-500 €28.50
-          %tr
-            %td.vertical-middle
-              %span.in-grey-600 Quantity
-            %td
-              %span 1
-          %tr
-            %td
-              %span.in-grey-600 SubTotal
-            %td
-              %span.font-16.in-gold-500 €32.90
-      .general-cart-item.divider-lg.mb-55
-        .general-img-wrap-table
-          %img.cart-img-shadow{src: "http://jonathantweedy.com/resources/thumbs/SmashingBook5ResponsiveWebDesign.jpg", alt: "design-book"}
-        %p.title Android Programming for Beginners
-        %table.table
-          %tr
-            %td
-              %span.in-grey-600 Price
-            %td
-              %span.font-16.in-gold-500 €28.50
-          %tr
-            %td.vertical-middle
-              %span.in-grey-600 Quantity
-            %td
-              %span 1
-          %tr
-            %td
-              %span.in-grey-600 SubTotal
-            %td
-              %span.font-16.in-gold-500 €32.90
+      = render partial: 'order_item_mobile'
     .hidden-xs.divider-lg.pt-20
       %table.table.table-hover
         %thead
           %tr
             %th
-              %span.in-grey-600 Book
+              %span.in-grey-600= t('checkout.confirm.book')
             %th.col-method
             %th
-              %span.in-grey-600 Price
+              %span.in-grey-600= t('checkout.confirm.price')
             %th
-              %span.in-grey-600 Quantity
+              %span.in-grey-600= t('checkout.confirm.quantity')
             %th
-              %span.in-grey-600 Total
+              %span.in-grey-600= t('checkout.confirm.total')
         %tbody
           = render partial: 'order_item'
     .text-center.general-text-right
-      %p.in-gold-500.font-18 Order Summary
+      %p.in-gold-500.font-18= t('checkout.confirm.summary')
       %table.general-summary-table.general-summary-table-right.general-text-right
         = render partial: 'order_summary'
     .text-center

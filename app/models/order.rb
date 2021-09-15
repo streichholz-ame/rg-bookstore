@@ -18,8 +18,8 @@ class Order < ApplicationRecord
 
   aasm(:status) do
     state :cart
-    state :address_type
-    state :delivery_type
+    state :address
+    state :delivery
     state :payment
     state :confirm
     state :complete
@@ -27,16 +27,16 @@ class Order < ApplicationRecord
     state :delivered
     state :canceled
 
-    event :address_type do
-      transitions from: :cart, to: :address_type
+    event :address do
+      transitions from: :cart, to: :address
     end
 
     event :delivery_type do
-      transitions from: :address_type, to: :delivery_type
+      transitions from: :address, to: :delivery
     end
 
     event :payment do
-      transitions from: :delivery_type, to: :payment
+      transitions from: :delivery, to: :payment
     end
 
     event :confirm do

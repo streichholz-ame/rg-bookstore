@@ -10,19 +10,20 @@
         %thead
           %tr
             %th
-              %span.in-grey-600 Book
+              %span.in-grey-600= t('checkout.confirm.book')
             %th.col-method
             %th
-              %span.in-grey-600 Price
+              %span.in-grey-600= t('checkout.confirm.price')
             %th
-              %span.in-grey-600 Quantity
+              %span.in-grey-600= t('checkout.confirm.quantity')
             %th
-              %span.in-grey-600 Total
+              %span.in-grey-600= t('checkout.confirm.total')
         %tbody
           = render partial: 'order_item'
     .text-center.general-text-right
-      %p.in-gold-500.font-18 Order Summary
+      %p.in-gold-500.font-18= t('checkout.confirm.summary')
       %table.general-summary-table.general-summary-table-right.general-text-right
         = render partial: 'order_summary'
     .text-center
-      = f.submit t('confirm.place_order'), class: 'btn btn-default mb-20'
+      = f.submit t('checkout.confirm.place_order'), class: 'btn btn-default mb-20'
+      

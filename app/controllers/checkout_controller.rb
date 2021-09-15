@@ -10,12 +10,13 @@ class CheckoutController < ApplicationController
     return redirect_to catalog_index_path if cart_empty?
 
     send("show_#{step}")
-    current_order.update(status: params[:id])
 
     render_wizard
   end
 
   def update
+    current_order.update(status: params[:id])
+
     send("update_#{step}")
     redirect_to next_wizard_path unless performed?
   end

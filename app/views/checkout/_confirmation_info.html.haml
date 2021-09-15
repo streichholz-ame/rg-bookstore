@@ -39,5 +39,5 @@
   %p.general-address
     = @order.card_number
     %span= link_to 'edit', wizard_path(:payment), class: 'general-edit'
-    %br
-    12/2018
+    %br= @order.credit_card.date
+    

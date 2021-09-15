@@ -20,15 +20,14 @@ module Updatable
   end
 
   def update_complete
-    clear_order_session
     redirect_to catalog_index_path
+
+    clear_order_session
   end
 
   def clear_order_session
-    return unless current_order&.complete?
-
-    cookies.delete(:current_order_id)
     session.delete(:current_order_id)
+    cookies.delete(:current_order_id)
   end
 
   def order_address
@@ -54,5 +53,9 @@ module Updatable
 
   def card_params
     params.require(:payment_form).permit(:number, :name, :date, :cvv)
+  end
+
+  def status_params
+    params.permit(:id)
   end
 end
