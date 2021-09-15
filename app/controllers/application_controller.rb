@@ -47,10 +47,18 @@ class ApplicationController < ActionController::Base
 
   def check_existing_order
     if current_user.orders.checkout_process.empty?
-      Order.create(user_id: current_user.id).order_items.append(guest_order.order_items)
+      new_order.order_items.append(guest_order.order_items)
     else
-      Order.checkout_process.find_by(user_id: current_user.id).order_items.append(guest_order.order_items)
+      find_order.order_items.append(guest_order.order_items)
     end
+  end
+
+  def new_order
+    Order.create(user_id: current_user.id)
+  end
+
+  def find_order
+    Order.checkout_process.find_by(user_id: current_user.id)
   end
 
   def create_guest_user

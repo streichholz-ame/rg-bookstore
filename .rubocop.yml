@@ -41,6 +41,10 @@ Rails/BulkChangeTable:
   Exclude:
     - 'db/migrate/*.rb'
 
+Rails/HasAndBelongsToMany: 
+  Exclude: 
+    - 'app/models/role.rb'
+
 Lint/AmbiguousBlockAssociation:
   IgnoredMethods: [change]
 
