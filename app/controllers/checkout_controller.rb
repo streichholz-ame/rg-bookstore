@@ -7,6 +7,7 @@ class CheckoutController < ApplicationController
   steps :log_in, :address, :delivery, :payment, :confirm, :complete
 
   def show
+    authorize current_order unless step == :log_in
     return redirect_to catalog_index_path if cart_empty?
 
     send("show_#{step}")

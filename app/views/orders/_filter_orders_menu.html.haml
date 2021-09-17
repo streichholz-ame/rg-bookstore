@@ -1,0 +1,12 @@
+%li
+  = link_to orders_path(status: :processing), class: 'filter-link' do
+    = t('order.sorting.waiting')
+%li
+  = link_to orders_path(status: :in_delivery), class: 'filter-link' do
+    = t('order.sorting.in_delivery')
+%li
+  = link_to orders_path(status: :delivered),  class: 'filter-link' do
+    = t('order.sorting.delivered')
+%li
+  = link_to orders_path(status: :canceled),  class: 'filter-link' do
+    = t('order.sorting.canceled')

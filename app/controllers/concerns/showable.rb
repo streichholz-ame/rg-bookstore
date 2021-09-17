@@ -16,7 +16,6 @@ module Showable
 
   def show_delivery
     @cart_presenter = CartPresenter.new(current_order)
-
     @deliveries = present(Delivery.all)
   end
 
@@ -26,7 +25,7 @@ module Showable
   end
 
   def show_confirm
-    @order = present(current_order)
+    @orders = OrderDecorator.decorate(current_order)
     @order_items = current_order.order_items
     @cart_presenter = CartPresenter.new(current_order)
   end
@@ -34,7 +33,7 @@ module Showable
   def show_complete
     @order_items = current_order.order_items
     @cart_presenter = CartPresenter.new(current_order)
-    @order = present(current_order)
+    @orders = OrderDecorator.decorate(current_order)
 
     order_number = (('A'..'Z').to_a).sample(2).join + ((0..9).to_a).sample(6).join
     current_order.update(number: order_number)

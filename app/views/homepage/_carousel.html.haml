@@ -17,7 +17,10 @@
               %p.lead= book.description
               %p.lead.small= @catalog_presenter.author_name(book)
               .general-align
-                %button.btn.btn-primary= t('homepage.buy_now')
+                =  simple_form_for(OrderItem.new, validate: true, url: order_items_path, html: { method: :post }) do |f|
+                  = f.input :book_id, as: :hidden, input_html: { value: book.id }
+                  = f.input :quantity, as: :hidden, input_html: { value: 1 }
+                  = f.submit t('homepage.buy_now'), class: 'btn btn-primary'
     %a.left.carousel-control{href: '#slider', role: 'button', 'data-slide': 'prev'}
       %span.icon-prev{'aria-hidden': 'true'}
       %span.sr-only= t('homepage.previous')

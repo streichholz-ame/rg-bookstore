@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
   def edit
+    authorize Address
     @presenter = AddressPresenter.new(current_user)
   end
 

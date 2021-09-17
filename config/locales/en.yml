@@ -135,6 +135,7 @@ en:
     orders: 'My Orders'
     sorting:
       title: 'Sort by'
+      all: 'All Orders'
       waiting: 'Waiting for processing'
       processing: 'In Progress'
       in_delivery: 'In Delivery'
@@ -144,6 +145,7 @@ en:
     item_completed_at: 'Completed at'
     item_status: 'Status'
     item_total: 'Total'
+    price: '€%{price}'
   authorization:
     enter_email: 'Enter Email'
     enter_password: 'Password'

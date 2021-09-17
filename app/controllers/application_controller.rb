@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
         guest_user.destroy
         session[:guest_user_id] = nil
       end
+      current_user.add_role :user
       current_user
     else
       guest_user
@@ -34,6 +35,10 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordNotFound
     session[:guest_user_id] = nil
     guest_user
+  end
+
+  def pundit_user
+    current_or_guest_user
   end
 
   def logging_in
@@ -63,6 +68,7 @@ class ApplicationController < ActionController::Base
 
   def create_guest_user
     u = User.create(email: "guest_#{Time.now.to_i}#{rand(99)}@example.com")
+    u.add_role :guest_user
     u.save!(validate: false)
     session[:guest_user_id] = u.id
     u
@@ -70,7 +76,7 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if current_user && Order.checkout_process.find_by(user_id: current_user.id)
-      Order.find_by(user_id: current_user.id)
+      Order.where(user_id: current_user.id).last
     elsif session[:current_order_id]
       Order.find(session[:current_order_id])
     else
@@ -80,6 +86,15 @@ class ApplicationController < ActionController::Base
 
   def logged_in_or_guest
     current_user ? current_user.id : session[:guest_user_id]
+  end
+
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  private
+
+  def user_not_authorized
+    flash[:alert] = 'You are not authorized to perform this action.'
+    redirect_to(request.referer || root_path)
   end
 
   include Pagy::Backend

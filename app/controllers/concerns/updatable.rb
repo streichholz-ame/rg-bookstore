@@ -31,6 +31,8 @@ module Updatable
   end
 
   def order_address
+    @order = Order.find_by(id: params[:id])
+
     return current_user.billing_address unless current_user.shipping_address
 
     current_user.shipping_address

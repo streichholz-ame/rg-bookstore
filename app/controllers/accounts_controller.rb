@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   def update
+    authorize Address
     change_password = ChangePasswordService.new(current_user, permitted_params).call
     if change_password
       flash[:success] = t('flash.change_password_success')
@@ -11,6 +12,7 @@ class AccountsController < ApplicationController
   end
 
   def destroy
+    authorize Address
     if current_user&.destroy
       flash[:success] = t('flash.destroy_success')
     else

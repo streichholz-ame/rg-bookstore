@@ -2,6 +2,8 @@ class ApplicationPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
+    raise Pundit::NotAuthorizedError, 'must be logged in' unless user.has_role? :user
+
     @user = user
     @record = record
   end
@@ -32,6 +34,10 @@ class ApplicationPolicy
 
   def destroy?
     false
+  end
+
+  def scope
+    Pundit.policy_scope!(user, record.class)
   end
 
   class Scope

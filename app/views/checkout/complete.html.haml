@@ -9,16 +9,16 @@
         .visible-xs
           %p.general-order-number.mb-0= current_order.number
           %p.general-address= current_order.created_at
-        = @order.receiver_name
+        = @orders.receiver_name
         %span.general-edit edit
         %br
-        = @order.delivery_address.address
+        = @orders.delivery_address.address
         %br
-        = @order.full_address
+        = @orders.full_address
         %br
-        = @order.delivery_address.country
+        = @orders.delivery_address.country
         %br
-        = @order.phone
+        = @orders.phone
       .col-sm-6.hidden-xs.text-right
         %p.general-order-number.mb-0= current_order.number
         %p.general-address= current_order.created_at
