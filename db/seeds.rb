@@ -61,11 +61,44 @@ def generate_coupon
   Coupon.create(number: '12345')
 end
 
+def generate_delivery
+  Delivery.create(name: 'Delivery Next Day!', days_min: 1, days_max: 3, price: 10.0)
+  Delivery.create(name: 'Delivery Within a Week!', days_min: 3, days_max: 7, price: 7.0)
+end
+
+def generate_order
+  order = Order.create(
+    status: 'delivered'
+  )
+end
+
+def generate_order_item
+  books = Book.all
+  book_id = books.map(&:id)
+  order_id = Order.all.map(&:id)
+  OrderItem.create(
+    order_id: rand(order_id.size),
+    book_id: rand(book_id.size), 
+    quantity: rand(1..9)
+  )
+end
+
+def generate_user
+  User.create(
+    email: FFaker::Internet.email,
+    password: FFaker::Lorem.word
+  )
+end
+
 generate_categories
 30.times { generate_book }
 30.times { generate_author }
+20.times { generate_user }
+10.times { generate_order }
+50.times { generate_order_item }
 generate_book_authors
 generate_book_images
 generate_coupon
+generate_delivery
 AdminUser.create!(email: 'admin@example.com', password: 'password',
                   password_confirmation: 'password')
