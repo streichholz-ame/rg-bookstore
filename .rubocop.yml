@@ -22,6 +22,7 @@ Layout/LineLength:
 Style/StringConcatenation:
   Exclude: 
     - 'app/admin/reviews.rb'
+    - 'app/admin/orders.rb'
 
 Metrics/MethodLength:
   Exclude: 

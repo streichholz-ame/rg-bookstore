@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
   private
 
   def filter_orders
+    authorize Order
     status = params[:status]
     @filtered_orders = params[:status].nil? ? current_user.orders : current_user.orders.send(status)
   end

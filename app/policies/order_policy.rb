@@ -1,14 +1,4 @@
 class OrderPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      if user.has_role? :user
-        scope.all
-      else
-        false
-      end
-    end
-  end
-
   def index?
     true if user.has_role? :user
   end

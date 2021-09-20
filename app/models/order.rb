@@ -59,4 +59,16 @@ class Order < ApplicationRecord
       transitions from: %i[complete in_delivery delivered], to: :canceled
     end
   end
+
+  def cancel!
+    update(status: 'canceled')
+  end
+
+  def set_in_delivery!
+    update(status: 'in_delivery')
+  end
+
+  def deliver!
+    update(status: 'delivered')
+  end
 end

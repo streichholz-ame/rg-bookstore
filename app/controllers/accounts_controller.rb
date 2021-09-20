@@ -13,6 +13,7 @@ class AccountsController < ApplicationController
 
   def destroy
     authorize Address
+
     if current_user&.destroy
       flash[:success] = t('flash.destroy_success')
     else

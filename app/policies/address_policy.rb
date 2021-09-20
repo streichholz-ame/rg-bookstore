@@ -1,10 +1,4 @@
 class AddressPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
-
   def index?
     true if user.has_role? :user
   end

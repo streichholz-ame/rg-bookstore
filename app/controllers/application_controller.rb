@@ -18,16 +18,18 @@ class ApplicationController < ActionController::Base
 
   def current_or_guest_user
     if current_user
-      if session[:guest_user_id]
-        logging_in
-        guest_user.destroy
-        session[:guest_user_id] = nil
-      end
+      set_user_order if session[:guest_user_id]
       current_user.add_role :user
       current_user
     else
       guest_user
     end
+  end
+
+  def set_user_order
+    logging_in
+    guest_user.destroy
+    session[:guest_user_id] = nil
   end
 
   def guest_user

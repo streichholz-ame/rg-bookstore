@@ -223,3 +223,8 @@ en:
       approved: 'Approved'
       rejected: 'Rejected'
       score: 'Score'
+    orders: 
+      complete: 'Complete'
+      in_delivery: 'In Delivery'
+      delivered: 'Delivered'
+      canceled: 'Canceled'

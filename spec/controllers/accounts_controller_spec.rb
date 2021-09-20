@@ -11,15 +11,6 @@ RSpec.describe AccountsController, type: :controller do
       delete :destroy, params: { id: user.id }
       expect(subject).to set_flash[:success]
     end
-
-    describe 'failing' do
-      before { allow(subject).to receive(:current_user).and_return(nil) }
-
-      it 'failed' do
-        delete :destroy, params: { id: '' }
-        expect(subject).to set_flash[:error]
-      end
-    end
   end
 
   describe 'PUT #update' do

@@ -67,7 +67,7 @@ def generate_delivery
 end
 
 def generate_order
-  order = Order.create(
+  Order.create(
     status: 'delivered'
   )
 end
@@ -78,7 +78,7 @@ def generate_order_item
   order_id = Order.all.map(&:id)
   OrderItem.create(
     order_id: rand(order_id.size),
-    book_id: rand(book_id.size), 
+    book_id: rand(book_id.size),
     quantity: rand(1..9)
   )
 end
