@@ -1,0 +1,11 @@
+= simple_form_for(OrderItem.new, validate: true, input_html: { class: 'col-xs-5 col-md-3' }, url: order_items_path, html: { method: :post }) do |f|
+  = f.input :book_id, as: :hidden, input_html: { value: @current_book.id }
+  .col-xs-5.col-md-3
+    .input-group.general-position
+      = link_to '#', class: 'input-link', id: 'minus' do
+        %i.fa.fa-minus.line-height-40
+      = f.input :quantity, as: :string, label: false, input_html: { value: '1', class: 'form-control quantity-input book-count-input' }
+      = link_to '#', class: 'input-link', id: 'plus' do
+        %i.fa.fa-plus.line-height-40
+  .col-xs-7.col-md-5
+    = f.submit t('cart.add'), class: 'btn btn-default pull-right general-position'

@@ -1,11 +1,14 @@
+require 'rails_helper'
+
 describe 'Book Page', type: :feature do
   let!(:book) { create(:book, :with_author) }
   let(:count_result) { '2' }
   before { visit(book_path(book)) }
 
-  it 'increment book count' do
+  it 'increment book count and add to cart' do
     find('i', class: 'fa-plus').click
-    expect(find_field('book_count').value).to eq(count_result)
+    click_on(I18n.t('cart.add'))
+    expect(page).to have_content(count_result)
   end
 
   it 'go back to catalog page' do

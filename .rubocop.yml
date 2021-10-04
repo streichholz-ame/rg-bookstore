@@ -34,6 +34,7 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
     - 'config/environments/*.rb'
     - 'config/initializers/*.rb'
+    - 'config/routes.rb'
 
 Rails/BulkChangeTable: 
   Exclude:

@@ -1,0 +1,24 @@
+- @order_items.each do |item|
+  %tr.cart-item
+    %td
+      .general-img-wrap-table
+        %img.cart-img-shadow.pull-left
+          = link_to image_tag(@cart_presenter.find_book(item).image_url(:small_image)), book_path(@cart_presenter.find_book(item))
+    %td
+      = link_to @cart_presenter.book_info(item, :name), book_path(@cart_presenter.find_book(item)), class:'title in-gold-500 ml-10' 
+    %td
+      %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.book_info(item, :price))
+    %td
+      .input-group.general-position
+        = link_to '#', class: 'input-link cart-minus', id: 'cart-minus' do
+          %i.fa.fa-minus.line-height-40
+        = text_field_tag 'book_count', '', class: 'form-control quantity-input book-count-input', value: item.quantity
+        = hidden_field :item_id, item.id, class: 'current-item-id', value: item.id
+        = link_to '#', class: 'input-link cart-plus', id: 'cart-plus' do
+          %i.fa.fa-plus.line-height-40
+    %td
+      %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.subtotal_price(item))
+    %td
+      = button_to order_item_path(item), class: 'close general-cart-close', method: :delete do
+        %span{'aria-hidden': "true"} &times;
+
