@@ -4,7 +4,7 @@ class BestSellersQuery
     Book.find(best_sold_books)
   end
 
-  private 
+  private
 
   def books_sold
     Book.find_by_sql("SELECT book.id, book.category_id, SUM(order_item.quantity) as book_count
