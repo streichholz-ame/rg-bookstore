@@ -9,10 +9,10 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :address, reject_if: proc { |attributes| attributes.any.blank? }
 
   scope :processing, -> { where(status: %w[cart address delivery payment confirm]) }
-  scope :complete, -> { where(status: 'complete') }
-  scope :in_delivery, -> { where(status: 'in_delivery') }
-  scope :delivered, -> { where(status: 'delivered') }
-  scope :canceled, -> { where(status: 'canceled') }
+  scope :complete, -> { where(status: %w[complete]) }
+  scope :in_delivery, -> { where(status: %w[in_delivery]) }
+  scope :delivered, -> { where(status: %w[delivered]) }
+  scope :canceled, -> { where(status: %w[canceled]) }
 
   has_many :order_items, dependent: :destroy
 
@@ -61,14 +61,14 @@ class Order < ApplicationRecord
   end
 
   def cancel!
-    update(status: 'canceled')
+    update(status: %w[canceled])
   end
 
   def set_in_delivery!
-    update(status: 'in_delivery')
+    update(status: %w[in_delivery])
   end
 
   def deliver!
-    update(status: 'delivered')
+    update(status: %w[delivered])
   end
 end

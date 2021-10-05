@@ -4,10 +4,10 @@ ActiveAdmin.register Order do
   filter :status
 
   scope :all
-  scope :complete, -> { where(status: 'complete') }
-  scope :in_delivery, -> { where(status: 'in_delivery') }
-  scope :delivered, -> { where(status: 'delivered') }
-  scope :canceled, -> { where(status: 'canceled') }
+  scope :complete, -> { where(status: %w[complete]) }
+  scope :in_delivery, -> { where(status: %w[in_delivery]) }
+  scope :delivered, -> { where(status: %w[delivered]) }
+  scope :canceled, -> { where(status: %w[canceled]) }
 
   index do
     selectable_column

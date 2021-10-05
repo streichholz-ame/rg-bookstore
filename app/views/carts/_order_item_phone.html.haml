@@ -1,4 +1,4 @@
-- @order_items.each do |item|
+- @order_item.each do |item|
   .general-cart-item.divider-lg-bottom
     = button_to order_item_path(item), class: 'close general-cart-close', method: :delete do
       %span{'aria-hidden': "true"} &times;
@@ -27,5 +27,5 @@
         %td
           %span.in-grey-600= t('cart.subtotal')
         %td
-          %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.subtotal_price(item))
+          %span.font-16.in-gold-500= t('book_page.price', price: @order_item.subtotal_price(item))
           

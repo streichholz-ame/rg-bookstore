@@ -14,10 +14,6 @@ class OrderDecorator < ApplicationDecorator
     current_item.book[field]
   end
 
-  def subtotal_price(current_item)
-    current_item.quantity * current_item.book.price
-  end
-
   def order_item_price(order_item)
     order_item.book[:price] * order_item.quantity
   end

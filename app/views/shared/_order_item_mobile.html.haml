@@ -1,4 +1,4 @@
-- @order_items.each do |item|
+- @order_item.each do |item|
   .general-cart-item.divider-lg-bottom
     .general-img-wrap-table
       %img.cart-img-shadow
@@ -20,4 +20,4 @@
         %td
           %span.in-grey-600= t('cart.subtotal')
         %td
-          %span.font-16.in-gold-500= t('book_page.price', price: @orders.subtotal_price(item))
+          %span.font-16.in-gold-500= t('book_page.price', price: @order_item.subtotal_price(item))

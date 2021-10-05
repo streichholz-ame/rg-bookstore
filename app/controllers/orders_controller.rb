@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
     authorize @order
     @orders = @order.decorate
-    @order_items = @order.order_items
+    @order_item = OrderItemDecorator.decorate(@order.order_items)
   end
 
   private

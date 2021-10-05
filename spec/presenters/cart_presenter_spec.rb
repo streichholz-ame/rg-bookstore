@@ -6,16 +6,6 @@ RSpec.describe CartPresenter do
   let(:order_item1) { order.order_items.last }
   let(:delivery) { create(:delivery) }
 
-  describe 'book' do
-    let(:order) { create(:order, :with_item) }
-    let(:book) { Book.find(order.order_items.first.book_id) }
-    let(:field) { :name }
-
-    it 'give book info' do
-      expect(presenter.book_info(order_item, field)).to eq(book.name)
-    end
-  end
-
   describe 'price' do
     let(:order) { create(:order, :with_item) }
     let(:book) { Book.find(order.order_items.first.book_id) }
