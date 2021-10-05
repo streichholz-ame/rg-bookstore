@@ -1,7 +1,7 @@
 .mb-35
   %h3= t('homepage.best_sellers')
   .row
-    - @catalog_presenter.best_sellers.each do |book|
+    - @best_sellers.each do |book|
       .col-sm-6.col-md-3
         .general-thumb-wrap
           .thumbnail.general-thumbnail#best-sellers-row
