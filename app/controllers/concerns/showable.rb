@@ -8,8 +8,8 @@ module Showable
     @order_presenter = OrderPresenter.new(current_user)
   end
 
-  def cart_empty?
-    return unless current_order.order_items.empty?
+  def cart_empty
+    return if current_order.order_items.present?
 
     flash[:error] = I18n.t('cart.when_no_items')
   end
@@ -25,7 +25,7 @@ module Showable
   end
 
   def show_confirm
-    @orders = OrderDecorator.decorate(current_order)
+    @orders = current_order.decorate
     @order_items = current_order.order_items
     @cart_presenter = CartPresenter.new(current_order)
   end
@@ -33,8 +33,13 @@ module Showable
   def show_complete
     @order_items = current_order.order_items
     @cart_presenter = CartPresenter.new(current_order)
-    @orders = OrderDecorator.decorate(current_order)
+    @orders = current_order.decorate
+    order_number
+  end
 
+  private
+
+  def order_number
     order_number = (('A'..'Z').to_a).sample(2).join + ((0..9).to_a).sample(6).join
     current_order.update(number: order_number)
   end

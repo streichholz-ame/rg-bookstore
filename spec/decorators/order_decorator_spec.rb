@@ -14,14 +14,14 @@ RSpec.describe OrderDecorator do
   describe '#order_status' do
     describe 'processing checkout' do
       it 'return status' do
-        expect(decorator.order_status).to eq('Processing Checkout')
+        expect(decorator.order_status).to eq('Processing')
       end
     end
 
     describe 'complete' do
       let(:order) { create(:order, :with_item, user_id: user.id, status: 'complete') }
       it 'return status' do
-        expect(decorator.order_status).to eq('Waiting for processing')
+        expect(decorator.order_status).to eq('In Progress')
       end
     end
 
@@ -127,20 +127,6 @@ RSpec.describe OrderDecorator do
     let(:masked_cvv) { '***' }
     it 'return masked cvv' do
       expect(decorator.cvv).to eq(masked_cvv)
-    end
-  end
-
-  describe 'delivery_type' do
-    it 'return delivery type' do
-      expect(decorator.delivery_type).to eq(delivery)
-    end
-  end
-
-  describe 'find_book' do
-    let(:order_item) { order.order_items.first }
-    let(:book) { Book.find(order_item.book_id) }
-    it 'return book' do
-      expect(decorator.find_book(order_item)).to eq(book)
     end
   end
 

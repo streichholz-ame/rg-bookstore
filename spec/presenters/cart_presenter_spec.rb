@@ -10,9 +10,6 @@ RSpec.describe CartPresenter do
     let(:order) { create(:order, :with_item) }
     let(:book) { Book.find(order.order_items.first.book_id) }
     let(:field) { :name }
-    it 'find book' do
-      expect(presenter.find_book(order_item)).to eq(book)
-    end
 
     it 'give book info' do
       expect(presenter.book_info(order_item, field)).to eq(book.name)
@@ -61,9 +58,6 @@ RSpec.describe CartPresenter do
     describe 'delivery' do
       describe 'without coupon' do
         let(:order) { create(:order, :with_item, delivery_id: delivery.id) }
-        it 'return delivery type' do
-          expect(presenter.delivery_type).to eq(delivery)
-        end
 
         it 'return price without coupon' do
           expect(presenter.subtotal_price_with_delivery).to eq(total_price + delivery.price)
@@ -76,8 +70,5 @@ RSpec.describe CartPresenter do
         end
       end
     end
-    describe 'delivery_type'
-    describe 'subtotal_price_with_delivery'
-    describe 'total_price_with_delivery'
   end
 end

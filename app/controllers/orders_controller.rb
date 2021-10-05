@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :filter_orders
+  before_action :filter_orders, only: :index
 
   def index
     authorize Order
@@ -19,6 +19,6 @@ class OrdersController < ApplicationController
   def filter_orders
     authorize Order
     status = params[:status]
-    @filtered_orders = params[:status].nil? ? current_user.orders : current_user.orders.send(status)
+    @filtered_orders = status ? current_user.orders.public_send(status) : current_user.orders
   end
 end

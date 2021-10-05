@@ -8,8 +8,8 @@ class Order < ApplicationRecord
   has_one :address, dependent: nil
   accepts_nested_attributes_for :address, reject_if: proc { |attributes| attributes.any.blank? }
 
-  scope :checkout_process, -> { where(status: %w[cart address delivery payment confirm]) }
-  scope :processing, -> { where(status: 'complete') }
+  scope :processing, -> { where(status: %w[cart address delivery payment confirm]) }
+  scope :complete, -> { where(status: 'complete') }
   scope :in_delivery, -> { where(status: 'in_delivery') }
   scope :delivered, -> { where(status: 'delivered') }
   scope :canceled, -> { where(status: 'canceled') }

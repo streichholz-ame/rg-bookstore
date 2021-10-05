@@ -8,16 +8,12 @@ class CartPresenter < ApplicationPresenter
     super
   end
 
-  def find_book(current_item)
-    Book.find(current_item.book_id)
-  end
-
   def subtotal_price(current_item)
-    current_item.quantity * find_book(current_item).price
+    current_item.quantity * current_item.book.price
   end
 
   def book_info(current_item, field)
-    find_book(current_item)[field]
+    current_item.book[field]
   end
 
   def total_order_price
@@ -25,7 +21,7 @@ class CartPresenter < ApplicationPresenter
   end
 
   def subtotal_order_price
-    current_order.order_items.sum { |item| Book.find(item.book_id)[:price] * item.quantity }
+    current_order.order_items.sum { |item| item.book[:price] * item.quantity }
   end
 
   def total_price_with_coupon
@@ -33,12 +29,8 @@ class CartPresenter < ApplicationPresenter
     total_price.round(2)
   end
 
-  def delivery_type
-    Delivery.find(current_order.delivery_id)
-  end
-
   def subtotal_price_with_delivery
-    subtotal_order_price + delivery_type.price
+    subtotal_order_price + current_order.delivery.price
   end
 
   def total_price_with_delivery

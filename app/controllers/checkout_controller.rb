@@ -7,10 +7,10 @@ class CheckoutController < ApplicationController
   steps :log_in, :address, :delivery, :payment, :confirm, :complete
 
   def show
-    authorize current_order unless step == :log_in
-    return redirect_to catalog_index_path if cart_empty?
+    authorize current_order if step != :log_in
+    return redirect_to catalog_index_path if cart_empty
 
-    send("show_#{step}")
+    public_send("show_#{step}")
 
     render_wizard
   end
@@ -18,7 +18,7 @@ class CheckoutController < ApplicationController
   def update
     current_order.update(status: params[:id])
 
-    send("update_#{step}")
+    public_send("update_#{step}")
     redirect_to next_wizard_path unless performed?
   end
 end

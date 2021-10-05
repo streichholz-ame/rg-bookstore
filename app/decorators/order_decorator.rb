@@ -1,29 +1,29 @@
 class OrderDecorator < ApplicationDecorator
   delegate_all
   def order_status
-    case object.status
-    when 'complete' then 'Waiting for processing'
-    when 'in_delivery' then 'In Delivery'
-    when 'delivered' then 'Delivered'
-    when 'canceled' then 'Canceled'
-    else 'Processing Checkout'
+    case object.status.to_sym
+    when :complete then t('order.sorting.processing')
+    when :in_delivery then t('order.sorting.in_delivery')
+    when :delivered then t('order.sorting.delivered')
+    when :canceled then t('order.sorting.canceled')
+    else t('order.sorting.waiting')
     end
   end
 
   def book_info(current_item, field)
-    find_book(current_item)[field]
+    current_item.book[field]
   end
 
   def subtotal_price(current_item)
-    current_item.quantity * find_book(current_item).price
+    current_item.quantity * current_item.book.price
   end
 
   def order_item_price(order_item)
-    Book.find(order_item.book_id)[:price] * order_item.quantity
+    order_item.book[:price] * order_item.quantity
   end
 
   def order_price
-    object.order_items.sum { |item| Book.find(item.book_id)[:price] * item.quantity }
+    object.order_items.sum { |item| item.book[:price] * item.quantity }
   end
 
   def total_price
@@ -31,7 +31,7 @@ class OrderDecorator < ApplicationDecorator
   end
 
   def delivery_price
-    order_price + delivery_type.price
+    order_price + object.delivery.price
   end
 
   def delivery_address
@@ -63,25 +63,11 @@ class OrderDecorator < ApplicationDecorator
   end
 
   def card_number
-    credit_card = CreditCard.find(object.credit_card_id)
-    credit_card_number = credit_card.number
-    mask(credit_card_number)
-  end
-
-  def mask(number)
-    I18n.t('checkout.complete.masked_card_number', number: number.last(4))
+    mask(object.credit_card.number)
   end
 
   def cvv
     object.credit_card.cvv.gsub!(/[0-9]/, '*')
-  end
-
-  def delivery_type
-    Delivery.find(object.delivery_id)
-  end
-
-  def find_book(current_item)
-    Book.find(current_item.book_id)
   end
 
   def price_with_delivery
@@ -89,11 +75,16 @@ class OrderDecorator < ApplicationDecorator
   end
 
   def coupon_price
-    if object.coupon
-      total = (object.coupon.discount * order_price) / 100
-      total.round(2)
-    else
-      0
-    end
+    object.coupon ? calculate_coupon_to_price : 0
+  end
+
+  private
+
+  def mask(number)
+    I18n.t('checkout.complete.masked_card_number', number: number.last(4))
+  end
+
+  def calculate_coupon_to_price
+    ((object.coupon.discount * order_price) / 100).round(2)
   end
 end

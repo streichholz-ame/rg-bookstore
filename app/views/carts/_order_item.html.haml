@@ -3,11 +3,11 @@
     %td
       .general-img-wrap-table
         %img.cart-img-shadow.pull-left
-          = link_to image_tag(@cart_presenter.find_book(item).image_url(:small_image)), book_path(@cart_presenter.find_book(item))
+          = link_to image_tag(item.book.image_url(:small_image)), book_path(item.book)
     %td
-      = link_to @cart_presenter.book_info(item, :name), book_path(@cart_presenter.find_book(item)), class:'title in-gold-500 ml-10' 
+      = link_to item.book[:name], book_path(item.book), class:'title in-gold-500 ml-10' 
     %td
-      %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.book_info(item, :price))
+      %span.font-16.in-gold-500= t('book_page.price', price: item.book.price)
     %td
       .input-group.general-position
         = link_to '#', class: 'input-link cart-minus', id: 'cart-minus' do

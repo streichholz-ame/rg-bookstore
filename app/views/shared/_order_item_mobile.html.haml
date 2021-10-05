@@ -2,14 +2,14 @@
   .general-cart-item.divider-lg-bottom
     .general-img-wrap-table
       %img.cart-img-shadow
-        = image_tag(@orders.find_book(item).image_url(:small_image))
-    %p.title.in-gold-500= @orders.book_info(item, :name)
+        = image_tag(item.book.image_url(:small_image))
+    %p.title.in-gold-500= item.book.name
     %table.table
       %tr
         %td
           %span.in-grey-600= t('cart.price') 
         %td
-          %span.font-16.in-gold-500= t('book_page.price', price: @orders.book_info(item, :price))
+          %span.font-16.in-gold-500= t('book_page.price', price: item.book.price)
       %tr
         %td.vertical-middle
           %span.in-grey-600= t('cart.quantity') 

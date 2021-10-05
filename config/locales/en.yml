@@ -136,7 +136,7 @@ en:
     sorting:
       title: 'Sort by'
       all: 'All Orders'
-      waiting: 'Waiting for processing'
+      waiting: 'Processing'
       processing: 'In Progress'
       in_delivery: 'In Delivery'
       delivered: 'Delivered'
@@ -205,6 +205,7 @@ en:
     change_address_success: 'Your address was successfully changed'
     change_address_error: 'Your address was not changed.'
     review: 'Thanks for Review. It will be published as soon as Admin will approve it.'
+    no_access: 'You are not authorized to perform this action.'
   admin:
     price: "€%{price}"
     users: "Users: %{count}"

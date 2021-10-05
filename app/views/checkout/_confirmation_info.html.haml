@@ -30,7 +30,7 @@
 .col-sm-3
   %h3.general-subtitle Shipments
   %p.general-address
-    = @orders.delivery_type.name
+    = @orders.delivery.name
     %span= link_to 'edit', wizard_path(:delivery), class: 'general-edit'
     %br
     By train

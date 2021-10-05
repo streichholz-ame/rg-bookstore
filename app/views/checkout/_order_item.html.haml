@@ -3,12 +3,12 @@
     %td
       .general-img-wrap-table
         %img.cart-img-shadow.pull-left
-          = link_to image_tag(@cart_presenter.find_book(item).image_url(:small_image)), book_path(@cart_presenter.find_book(item))
+          = link_to image_tag(item.book.image_url(:small_image)), book_path(item.book)
     %td
-      %p.title=  @cart_presenter.book_info(item, :name)
-      %p.in-grey-600.fw-300=  @cart_presenter.book_info(item, :description)
+      %p.title=  item.book.name
+      %p.in-grey-600.fw-300=  item.book.description
     %td
-      %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.book_info(item, :price))
+      %span.font-16.in-gold-500= t('book_page.price', price: item.book.price)
     %td
       %span.ml-30= item.quantity
     %td

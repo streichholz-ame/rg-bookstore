@@ -11,11 +11,11 @@ describe AddressPolicy do
       guest_user.add_role :guest
     end
     it 'allows access if user logged in' do
-      expect(subject).to permit(logged_in_user, Address.new)
+      expect(subject).to permit(logged_in_user, logged_in_user)
     end
 
     it 'denies access if user guest' do
-      expect(subject).not_to permit(guest_user, Address.new)
+      expect(subject).not_to permit(guest_user, guest_user)
     end
   end
 end
