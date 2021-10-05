@@ -17,6 +17,7 @@
 /node_modules/
 /.idea/
 
+
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
 !/tmp/pids/
@@ -32,3 +33,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 public/uploads/book/image/**/*.jpg
+public/images/*.jpg
