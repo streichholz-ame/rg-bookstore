@@ -1,34 +1,34 @@
 $(document).on('turbolinks:load', function(){
   $('.cart-minus').on('click', function(event){
     $(event.preventDefault()); 
-    var current_item = $(this).parents('.input-group');
-    updateBookQuantity('minus', current_item)
+    var currentItem = $(this).parents('.input-group');
+    updateBookQuantity('minus', currentItem)
   })
 
   $('.cart-plus').on('click', function(event){
     $(event.preventDefault()); 
-    var current_item = $(this).parents('.input-group');
-    updateBookQuantity('plus', current_item)
+    var currentItem = $(this).parents('.input-group');
+    updateBookQuantity('plus', currentItem)
   })
 
-  function updateBookQuantity(symbol, current_item){
-    var item_count = $('.book-count-input').val()
-    var item_id = $(current_item).find('.current-item-id').val()
+  function updateBookQuantity(symbol, currentItem){
+    var itemCount = $('.book-count-input').val()
+    var itemId = $(currentItem).find('.current-item-id').val()
 
     if(symbol == 'plus'){
       $.ajax({
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         type: "PUT",
-        url: "/order_items/" + item_id,
-        data: { item_quantity: item_count, plus: true }
+        url: "/order_items/" + itemId,
+        data: { item_quantity: itemCount, plus: true }
       });
     }
     else{
       $.ajax({
         beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
         type: "PUT",
-        url: "/order_items/" + item_id,
-        data: { item_quantity: item_count, minus: true }
+        url: "/order_items/" + itemId,
+        data: { item_quantity: itemCount, minus: true }
       });
     }
   }

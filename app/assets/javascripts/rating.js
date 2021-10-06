@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $('.book-rating').click(function() {
-    labelID = $(this).attr('for');
+    var labelID = $(this).attr('for');
     $('#'+labelID).trigger('click');
   });
 
@@ -18,11 +18,11 @@ $(document).ready(function () {
   });
 
   $('.book-rating').on('click', function () {
-    labelID = $(this).attr('for');
-    var radio_btn = $('#' + labelID)
+    var labelID = $(this).attr('for');
+    var radioBtn = $('#' + labelID)
 
     for(i = 1; i<=5; i++){
-      if(i <= radio_btn.val()){
+      if(i <= radioBtn.val()){
         $(document).find('label[for=review_rating_' + i + ']').find('i').addClass('fa-star').removeClass('fa-star-o')
       }
       else{
