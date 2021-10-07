@@ -16,6 +16,6 @@ class BestSellersQuery
 
   def best_sellers
     # <<-SQL
-    #   SELECT 
+    #   SELECT
   end
 end

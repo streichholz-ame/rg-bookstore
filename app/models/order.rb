@@ -8,7 +8,8 @@ class Order < ApplicationRecord
   has_one :address, dependent: nil
   accepts_nested_attributes_for :address, reject_if: proc { |attributes| attributes.any.blank? }
 
-  enum status: [:cart, :address, :delivery, :payment, :confirm, :complete, :in_delivery, :delivered, :canceled]
+  enum status: { cart: 0, address: 1, delivery: 2, payment: 3, confirm: 4, complete: 5,
+                 in_delivery: 6, delivered: 7, canceled: 8 }
 
   scope :processing, -> { where(status: [0, 1, 2, 3, 4]) }
   scope :complete, -> { where(status: 5) }
@@ -17,7 +18,6 @@ class Order < ApplicationRecord
   scope :canceled, -> { where(status: 8) }
 
   has_many :order_items, dependent: :destroy
-
 
   aasm(:status) do
     state :cart

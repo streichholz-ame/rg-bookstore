@@ -125,7 +125,7 @@ RSpec.describe OrderDecorator do
     let(:order) { create(:order, :with_item, :with_coupon, :with_delivery, user_id: user.id) }
     let(:coupon) { decorator.order_price * order.coupon.discount / 100 }
     let(:price_with_coupon) { decorator.delivery_price - coupon }
-    it 'total price' do 
+    it 'total price' do
       expect(decorator.total_price).to eq(price_with_coupon.round(2))
     end
 
