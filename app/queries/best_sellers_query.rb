@@ -13,4 +13,9 @@ class BestSellersQuery
     GROUP BY book.id, book.category_id
     ORDER BY book_count DESC")
   end
+
+  def best_sellers
+    # <<-SQL
+    #   SELECT 
+  end
 end

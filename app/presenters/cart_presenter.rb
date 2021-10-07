@@ -8,14 +8,6 @@ class CartPresenter < ApplicationPresenter
     super
   end
 
-  def subtotal_price(current_item)
-    current_item.quantity * current_item.book.price
-  end
-
-  def book_info(current_item, field)
-    current_item.book[field]
-  end
-
   def total_order_price
     current_order.coupon ? total_price_with_coupon : subtotal_order_price
   end
@@ -38,11 +30,12 @@ class CartPresenter < ApplicationPresenter
   end
 
   def coupon_price
-    if current_order.coupon
-      total = (current_order.coupon.discount * subtotal_order_price) / 100
-      total.round(2)
-    else
-      EMPTY_COUPON_PRICE
-    end
+    current_order.coupon ? calculate_coupon_to_price : 0
+  end
+
+  private
+
+  def calculate_coupon_to_price
+    ((current_order.coupon.discount * subtotal_order_price) / 100).round(2)
   end
 end

@@ -4,7 +4,7 @@ describe 'Payment Page', type: :feature do
   let(:billing_address) { create(:billing_address, addressable: user) }
   let(:delivery) { create(:delivery) }
   let!(:order) do
-    create(:order, :with_item, user_id: user.id, address_id: billing_address.id, delivery_id: delivery.id)
+    create(:order, :with_item, user_id: user.id, address_id: billing_address.id, delivery_id: delivery.id, status: 'delivery')
   end
   let(:credit_card) { create(:credit_card) }
   let(:empty_field_message) { "can't be blank" }

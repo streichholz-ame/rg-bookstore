@@ -5,7 +5,6 @@ module Showable
 
   def show_address
     @presenter = AddressPresenter.new(current_user)
-    @order_presenter = OrderPresenter.new(current_user)
   end
 
   def cart_empty
@@ -33,7 +32,6 @@ module Showable
   end
 
   def show_complete
-    @order_item = current_order.order_items
     cart_presenter
     @orders = current_order.decorate
     order_item
@@ -47,7 +45,7 @@ module Showable
   end
 
   def order_item
-    @order_item = OrderItemDecorator.decorate(current_order.order_items)
+    @order_items = OrderItemDecorator.decorate_collection(current_order.order_items)
   end
 
   def order_number

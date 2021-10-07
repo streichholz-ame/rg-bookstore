@@ -1,2 +1,0 @@
-class OrderPresenter < ApplicationPresenter
-end

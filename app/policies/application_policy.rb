@@ -38,6 +38,14 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
 
+  def recorded_user?
+    (user.has_role? :user) && (user.id == record.id)
+  end
+
+  def logged_in_user?
+    user.has_role? :user
+  end
+
   class Scope
     attr_reader :user, :scope
 

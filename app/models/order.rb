@@ -8,13 +8,16 @@ class Order < ApplicationRecord
   has_one :address, dependent: nil
   accepts_nested_attributes_for :address, reject_if: proc { |attributes| attributes.any.blank? }
 
-  scope :processing, -> { where(status: %w[cart address delivery payment confirm]) }
-  scope :complete, -> { where(status: %w[complete]) }
-  scope :in_delivery, -> { where(status: %w[in_delivery]) }
-  scope :delivered, -> { where(status: %w[delivered]) }
-  scope :canceled, -> { where(status: %w[canceled]) }
+  enum status: [:cart, :address, :delivery, :payment, :confirm, :complete, :in_delivery, :delivered, :canceled]
+
+  scope :processing, -> { where(status: [0, 1, 2, 3, 4]) }
+  scope :complete, -> { where(status: 5) }
+  scope :in_delivery, -> { where(status: 6) }
+  scope :delivered, -> { where(status: 7) }
+  scope :canceled, -> { where(status: 8) }
 
   has_many :order_items, dependent: :destroy
+
 
   aasm(:status) do
     state :cart
@@ -61,14 +64,14 @@ class Order < ApplicationRecord
   end
 
   def cancel!
-    update(status: %w[canceled])
+    update(status: :canceled)
   end
 
   def set_in_delivery!
-    update(status: %w[in_delivery])
+    update(status: :in_delivery)
   end
 
   def deliver!
-    update(status: %w[delivered])
+    update(status: :delivered)
   end
 end

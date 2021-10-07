@@ -3,31 +3,31 @@
     %td
       %p.font-16= t('cart.summary.subtotal')
     %td
-      %p.font-16= t('book_page.price', price: @orders.order_price)
+      %p.font-16= t('book_page.price', price: @order.order_price)
   %tr
     %td
       %p.font-16= t('cart.summary.coupon')
     %td
-      %p.font-16= t('book_page.price', price: @orders.coupon_price)
+      %p.font-16= t('book_page.price', price: @order.coupon_price)
   %tr
     %td
       %strong.font-18= t('cart.summary.total')
     %td
-      %strong.font-18= t('book_page.price', price: @orders.total_price)
+      %strong.font-18= t('book_page.price', price: @order.total_price)
 -else
   %tr
     %td
       %p.font-16= t('cart.summary.subtotal')
     %td
-      %p.font-16= t('book_page.price', price: @orders.order_price)
+      %p.font-16= t('book_page.price', price: @order.order_price)
   %tr
     %td
       %p.font-16= t('cart.summary.coupon')
     %td
-      %p.font-16= t('book_page.price', price: @orders.coupon_price)
+      %p.font-16= t('book_page.price', price: @order.coupon_price)
   %tr
     %td
       %strong.font-18= t('cart.summary.total')
     %td
-      %strong.font-18= t('book_page.price', price: @orders.total_price)
+      %strong.font-18= t('book_page.price', price: @order.total_price)
       

@@ -6,8 +6,7 @@ RSpec.describe OrderDecorator do
   let(:delivery) { create(:delivery) }
   let(:credit_card) { create(:credit_card) }
   let!(:order) do
-    create(:order, :with_item, user_id: user.id, address_id: address.id, credit_card_id: credit_card.id,
-                               delivery_id: delivery.id)
+    create(:order, :with_item, :with_delivery, :with_credit_card, user_id: user.id, address_id: address.id)
   end
   let(:decorator) { described_class.new(order).decorate }
 
@@ -44,14 +43,6 @@ RSpec.describe OrderDecorator do
       it 'return status' do
         expect(decorator.order_status).to eq('Canceled')
       end
-    end
-  end
-
-  describe 'order_item_price' do
-    let(:order_item) { order.order_items.first }
-    let(:book_price) { Book.find(order_item.book_id)[:price] }
-    it 'return item price' do
-      expect(decorator.order_item_price(order_item)).to eq(book_price * order_item.quantity)
     end
   end
 
@@ -130,6 +121,19 @@ RSpec.describe OrderDecorator do
     end
   end
 
+  describe 'with coupon' do
+    let(:order) { create(:order, :with_item, :with_coupon, :with_delivery, user_id: user.id) }
+    let(:coupon) { decorator.order_price * order.coupon.discount / 100 }
+    let(:price_with_coupon) { decorator.delivery_price - coupon }
+    it 'total price' do 
+      expect(decorator.total_price).to eq(price_with_coupon.round(2))
+    end
+
+    it 'coupon price' do
+      expect(decorator.coupon_price).to eq(coupon.round(2))
+    end
+  end
+
   describe 'price_with_delivery' do
     let(:order_item) { order.order_items.first }
     let(:order_item1) { order.order_items.last }
@@ -138,6 +142,21 @@ RSpec.describe OrderDecorator do
     let(:order_price) { book_price * order_item.quantity + book_price1 * order_item1.quantity }
     it 'return full price' do
       expect(decorator.price_with_delivery).to eq(I18n.t('order.price', price: order_price + delivery.price))
+    end
+  end
+
+  describe 'date complete' do
+    let(:order) { create(:order, :with_item, user_id: user.id, status: 'delivered') }
+    describe 'delivered order' do
+      it 'return date' do
+        expect(decorator.date_complete).to eq(order.updated_at.to_date)
+      end
+    end
+    describe 'not delivered' do
+      let(:order) { create(:order, :with_item, user_id: user.id, status: 'in_delivery') }
+      it 'not return date' do
+        expect(decorator.date_complete).not_to eq(order.updated_at.to_date)
+      end
     end
   end
 end

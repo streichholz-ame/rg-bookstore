@@ -3,15 +3,14 @@ class OrdersController < ApplicationController
 
   def index
     authorize Order
-    @orders_presenter = present(current_user.orders)
     @orders = OrderDecorator.decorate_collection(@filtered_orders)
   end
 
   def show
-    @order = Order.find_by(id: params[:id])
-    authorize @order
-    @orders = @order.decorate
-    @order_item = OrderItemDecorator.decorate(@order.order_items)
+    order = Order.find_by(id: params[:id])
+    authorize order
+    @order = order.decorate
+    @order_items = OrderItemDecorator.decorate_collection(@order.order_items)
   end
 
   private

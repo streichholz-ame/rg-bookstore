@@ -16,7 +16,7 @@ class CheckoutController < ApplicationController
   end
 
   def update
-    current_order.update(status: params[:id])
+    current_order.public_send("#{step}!")
 
     public_send("update_#{step}")
     redirect_to next_wizard_path unless performed?

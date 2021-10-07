@@ -13,10 +13,6 @@ RSpec.describe CartPresenter do
     let(:quantity) { order_item.quantity }
     let(:quantity1) { order_item1.quantity }
 
-    it 'subtotal price' do
-      expect(presenter.subtotal_price(order_item)).to eq(book.price * quantity)
-    end
-
     it 'subtotal_order_price' do
       expect(presenter.subtotal_order_price).to eq((book.price * quantity) + (book1.price * quantity1))
     end

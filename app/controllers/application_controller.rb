@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
   end
 
   def find_order
-    Order.processing.find_by(user_id: current_user.id)
+    current_user.orders.processing.last
   end
 
   def check_existing_order

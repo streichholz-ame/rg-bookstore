@@ -19,11 +19,6 @@ Layout/LineLength:
   - 'app/models/user.rb'
   - 'config/initializers/simple_form.rb'
 
-Style/StringConcatenation:
-  Exclude: 
-    - 'app/admin/reviews.rb'
-    - 'app/admin/orders.rb'
-
 Metrics/MethodLength:
   Exclude: 
     - 'db/*.rb'

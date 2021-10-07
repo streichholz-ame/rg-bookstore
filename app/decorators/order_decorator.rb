@@ -10,12 +10,10 @@ class OrderDecorator < ApplicationDecorator
     end
   end
 
-  def book_info(current_item, field)
-    current_item.book[field]
-  end
+  def date_complete
+    return t('order.not_delivered') unless object.delivered?
 
-  def order_item_price(order_item)
-    order_item.book[:price] * order_item.quantity
+    object.updated_at.to_date
   end
 
   def order_price

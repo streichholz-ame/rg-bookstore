@@ -1,17 +1,17 @@
 class OrderPolicy < ApplicationPolicy
   def index?
-    user.has_role? :user
+    logged_in_user?
   end
 
   def show?
-    user.has_role? :user
+    logged_in_user?
   end
 
   def update?
-    user.has_role? :user
+    logged_in_user?
   end
 
   def destroy?
-    user.has_role? :user
+    logged_in_user?
   end
 end

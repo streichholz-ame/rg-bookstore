@@ -1,43 +1,43 @@
 %main.container.general-main-wrap
-  %h1.general-title-margin= "Order #{@orders.number}"
+  %h1.general-title-margin= t('order.order_number', number: @order.number)
   .row.mb-20
-    - if @orders.shipping_address(current_order.address_id)
+    - if @order.shipping_address(current_order.address_id)
       .col-sm-3
-        %h3.general-subtitle.mt-0 Shipping Address
+        %h3.general-subtitle.mt-0= t('order.headers.shipping_address')
         %p.general-address
-          = @orders.receiver_name
+          = @order.receiver_name
           %br
-          = @orders.delivery_address.address
+          = @order.delivery_address.address
           %br
-          = @orders.full_address
+          = @order.full_address
           %br
-          = @orders.delivery_address.country
+          = @order.delivery_address.country
           %br
-          = @orders.phone
+          = @order.phone
     - else 
       .col-sm-3
-        %h3.general-subtitle.mt-0 Billing Address
+        %h3.general-subtitle.mt-0= t('order.headers.billing_address')
         %p.general-address
-          = @orders.receiver_name
+          = @order.receiver_name
           %br
-          = @orders.delivery_address.address
+          = @order.delivery_address.address
           %br
-          = @orders.full_address
+          = @order.full_address
           %br
-          = @orders.delivery_address.country
+          = @order.delivery_address.country
           %br
-          = @orders.phone
+          = @order.phone
     .col-sm-3
-      %h3.general-subtitle.mt-0 Shipments
+      %h3.general-subtitle.mt-0= t('order.headers.shipments')
       %p.general-address
-        = @orders.delivery.name
+        = @order.delivery.name
         %br
         By train
     .col-sm-3
-      %h3.general-subtitle.mt-0 Payment Information
+      %h3.general-subtitle.mt-0= t('order.headers.payment_info')
       %p.general-address
-        = @orders.card_number
-        %br= @orders.credit_card.date
+        = @order.card_number
+        %br= @order.credit_card.date
   .visible-xs
     = render partial: 'shared/order_item_mobile'
   .hidden-xs.divider-lg.pt-20
@@ -56,6 +56,6 @@
         %tbody
           = render partial: 'shared/order_item'
   .text-center.general-text-right
-    %p.in-gold-500.font-18 Order Summary
+    %p.in-gold-500.font-18= t('order.headers.order_summary')
     %table.general-summary-table.general-summary-table-right.general-text-right
       = render partial: 'shared/order_summary'
