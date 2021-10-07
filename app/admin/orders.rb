@@ -4,10 +4,10 @@ ActiveAdmin.register Order do
   filter :status
 
   scope :all
-  scope :processing, -> { where(status: 'complete') }
-  scope :in_delivery, -> { where(status: 'in_delivery') }
-  scope :delivered, -> { where(status: 'delivered') }
-  scope :canceled, -> { where(status: 'canceled') }
+  scope :complete, -> { where(status: %w[complete]) }
+  scope :in_delivery, -> { where(status: %w[in_delivery]) }
+  scope :delivered, -> { where(status: %w[delivered]) }
+  scope :canceled, -> { where(status: %w[canceled]) }
 
   index do
     selectable_column
@@ -15,7 +15,13 @@ ActiveAdmin.register Order do
     column :coupon_id
     column :status
     column :number
-
+    actions defaults: false do |order|
+      links = []
+      links << link_to(t('admin.orders.canceled'), cancel_admin_order_path(order), method: :put).to_s
+      links << link_to(t('admin.orders.in_delivery'), set_in_delivery_admin_order_path(order), method: :put).to_s
+      links << link_to(t('admin.orders.delivered'), deliver_admin_order_path(order), method: :put).to_s
+      safe_join(links, ' ')
+    end
     actions
   end
 
@@ -31,5 +37,24 @@ ActiveAdmin.register Order do
     f.inputs I18n.t('admin.edit') do
       f.input :status
     end
+    actions
+  end
+
+  member_action :cancel, method: :put do
+    resource.cancel!
+    redirect_back(fallback_location: admin_reviews_path,
+                  notice: t('admin.orders.canceled'))
+  end
+
+  member_action :set_in_delivery, method: :put do
+    resource.set_in_delivery!
+    redirect_back(fallback_location: admin_reviews_path,
+                  notice: t('admin.orders.in_delivery'))
+  end
+
+  member_action :deliver, method: :put do
+    resource.deliver!
+    redirect_back(fallback_location: admin_reviews_path,
+                  notice: t('admin.orders.delivered'))
   end
 end

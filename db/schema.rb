@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_13_150551) do
+ActiveRecord::Schema.define(version: 2021_09_16_114649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_150551) do
 
   create_table "coupons", force: :cascade do |t|
     t.string "number"
-    t.decimal "discount", precision: 2, default: "4"
+    t.decimal "discount", precision: 2, default: "8"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_150551) do
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "coupon_id"
-    t.string "status"
+    t.integer "status"
     t.string "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

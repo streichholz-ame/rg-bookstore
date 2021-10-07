@@ -10,6 +10,6 @@ class CatalogController < ApplicationController
   private
 
   def filter_books
-    @filtered_books = params[:id].nil? ? Book.all : Book.where(category_id: params[:id])
+    @filtered_books = params[:id] ? Book.where(category_id: params[:id]) : Book.all
   end
 end

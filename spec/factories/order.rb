@@ -15,5 +15,9 @@ FactoryBot.define do
     trait :with_delivery do
       delivery { create(:delivery) }
     end
+
+    trait :with_coupon do
+      coupon { create(:coupon) }
+    end
   end
 end

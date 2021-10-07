@@ -11,11 +11,11 @@ ActiveAdmin.register Review do
   index do
     selectable_column
     column t('admin.review.title') do |review|
-      Book.find(review.book_id).name
+      review.book.name
     end
     column t('admin.review.date'), :created_at
     column t('admin.review.user') do |review|
-      User.find(review.user_id).email
+      review.user.email
     end
     column t('admin.review.review'), :review_text
     column t('admin.review.status') do |review|
@@ -23,24 +23,22 @@ ActiveAdmin.register Review do
     end
     column t('admin.review.score'), :rating
 
-    column do |review|
-      (link_to t('admin.review.approve'),
-               approve_admin_review_path(review), method: :put) + ' - ' +
-        (link_to t('admin.review.reject'),
-                 reject_admin_review_path(review), method: :put)
+    actions defaults: false do |review|
+      links = []
+      links << link_to(t('admin.review.approve'), approve_admin_review_path(review), method: :put).to_s
+      links << link_to(t('admin.review.reject'), reject_admin_review_path(review), method: :put).to_s
+      safe_join(links, ' ')
     end
   end
 
   member_action :approve, method: :put do
-    review = Review.find(params[:id])
-    review.approve!
+    resource.approve!
     redirect_back(fallback_location: admin_reviews_path,
                   notice: t('admin.review.approved'))
   end
 
   member_action :reject, method: :put do
-    review = Review.find(params[:id])
-    review.reject!
+    resource.reject!
     redirect_back(fallback_location: admin_reviews_path,
                   danger: t('admin.review.rejected'))
   end

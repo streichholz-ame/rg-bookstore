@@ -4,7 +4,7 @@ class ReviewPresenter < ApplicationPresenter
   end
 
   def user_name(current_review)
-    User.find(current_review.user_id).email.gsub(/@[a-zA-Z.]+/, '')
+    current_review.user.email.gsub(/@[a-zA-Z.]+/, '')
   end
 
   def date(current_review)

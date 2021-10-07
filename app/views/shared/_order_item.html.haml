@@ -5,7 +5,7 @@
         %img.cart-img-shadow.pull-left
           = link_to image_tag(item.book.image_url(:small_image)), book_path(item.book)
     %td
-      %p.title=  item.book.name
+      %p.title= item.book.name
       %p.in-grey-600.fw-300=  item.book.description
     %td
       %span.font-16.in-gold-500= t('book_page.price', price: item.book.price)

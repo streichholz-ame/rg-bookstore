@@ -1,0 +1,61 @@
+%main.container.general-main-wrap
+  %h1.general-title-margin= t('order.order_number', number: @order.number)
+  .row.mb-20
+    - if @order.shipping_address(current_order.address_id)
+      .col-sm-3
+        %h3.general-subtitle.mt-0= t('order.headers.shipping_address')
+        %p.general-address
+          = @order.receiver_name
+          %br
+          = @order.delivery_address.address
+          %br
+          = @order.full_address
+          %br
+          = @order.delivery_address.country
+          %br
+          = @order.phone
+    - else 
+      .col-sm-3
+        %h3.general-subtitle.mt-0= t('order.headers.billing_address')
+        %p.general-address
+          = @order.receiver_name
+          %br
+          = @order.delivery_address.address
+          %br
+          = @order.full_address
+          %br
+          = @order.delivery_address.country
+          %br
+          = @order.phone
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('order.headers.shipments')
+      %p.general-address
+        = @order.delivery.name
+        %br
+        By train
+    .col-sm-3
+      %h3.general-subtitle.mt-0= t('order.headers.payment_info')
+      %p.general-address
+        = @order.card_number
+        %br= @order.credit_card.date
+  .visible-xs
+    = render partial: 'shared/order_item_mobile'
+  .hidden-xs.divider-lg.pt-20
+    %table.table.table-hover
+      %thead
+        %tr
+          %th
+            %span.in-grey-600= t('checkout.confirm.book')
+          %th.col-method
+          %th
+            %span.in-grey-600= t('checkout.confirm.price')
+          %th
+            %span.in-grey-600= t('checkout.confirm.quantity')
+          %th
+            %span.in-grey-600= t('checkout.confirm.total')
+        %tbody
+          = render partial: 'shared/order_item'
+  .text-center.general-text-right
+    %p.in-gold-500.font-18= t('order.headers.order_summary')
+    %table.general-summary-table.general-summary-table-right.general-text-right
+      = render partial: 'shared/order_summary'

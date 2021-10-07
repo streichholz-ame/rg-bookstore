@@ -1,8 +1,13 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  include Pagy::Backend
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
   before_action :header_presenter, :current_or_guest_user
   helper_method :current_order
   attr_reader :guest_order
+
+  GUEST_EMAIL_NUM = 99
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || root_path
@@ -18,11 +23,8 @@ class ApplicationController < ActionController::Base
 
   def current_or_guest_user
     if current_user
-      if session[:guest_user_id]
-        logging_in
-        guest_user.destroy
-        session[:guest_user_id] = nil
-      end
+      set_user_order if session[:guest_user_id]
+      current_user.add_role :user
       current_user
     else
       guest_user
@@ -36,6 +38,45 @@ class ApplicationController < ActionController::Base
     guest_user
   end
 
+  def pundit_user
+    current_or_guest_user
+  end
+
+  def current_order
+    if current_user && current_user.orders.processing.present?
+      current_user.orders.processing.last
+    elsif session[:current_order_id]
+      Order.find(session[:current_order_id])
+    else
+      Order.new(user_id: logged_in_or_guest)
+    end
+  end
+
+  private
+
+  def create_guest_user
+    user = User.create(email: "guest_#{Time.now.to_i}#{rand(GUEST_EMAIL_NUM)}@example.com")
+    user.add_role :guest_user
+    user.save!(validate: false)
+    session[:guest_user_id] = user.id
+    user
+  end
+
+  def logged_in_or_guest
+    current_user ? current_user.id : session[:guest_user_id]
+  end
+
+  def user_not_authorized
+    flash[:alert] = I18n.t('flash.no_access')
+    redirect_to(request.referer || root_path)
+  end
+
+  def set_user_order
+    logging_in
+    guest_user.destroy
+    session[:guest_user_id] = nil
+  end
+
   def logging_in
     @guest_order = Order.find_by(user_id: guest_user.id)
     if guest_order
@@ -45,42 +86,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def check_existing_order
-    if current_user.orders.checkout_process.empty?
-      new_order.order_items.append(guest_order.order_items)
-    else
-      find_order.order_items.append(guest_order.order_items)
-    end
-  end
-
   def new_order
     Order.create(user_id: current_user.id)
   end
 
   def find_order
-    Order.checkout_process.find_by(user_id: current_user.id)
+    current_user.orders.processing.last
   end
 
-  def create_guest_user
-    u = User.create(email: "guest_#{Time.now.to_i}#{rand(99)}@example.com")
-    u.save!(validate: false)
-    session[:guest_user_id] = u.id
-    u
-  end
-
-  def current_order
-    if current_user && Order.checkout_process.find_by(user_id: current_user.id)
-      Order.find_by(user_id: current_user.id)
-    elsif session[:current_order_id]
-      Order.find(session[:current_order_id])
+  def check_existing_order
+    if current_user.orders.processing.empty?
+      new_order.order_items.append(guest_order.order_items)
     else
-      Order.new(user_id: logged_in_or_guest)
+      find_order.order_items.append(guest_order.order_items)
     end
   end
-
-  def logged_in_or_guest
-    current_user ? current_user.id : session[:guest_user_id]
-  end
-
-  include Pagy::Backend
 end

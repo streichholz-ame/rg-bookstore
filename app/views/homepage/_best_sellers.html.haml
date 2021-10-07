@@ -1,18 +1,21 @@
 .mb-35
   %h3= t('homepage.best_sellers')
   .row
-    - @catalog_presenter.best_sellers.each do |book|
+    - @best_sellers.each do |book|
       .col-sm-6.col-md-3
         .general-thumb-wrap
           .thumbnail.general-thumbnail#best-sellers-row
             %img.img-shadow.general-thumbnail-img
               = image_tag book.image_url(:small_image), alt: book.name
             .thumb-hover
-              .general-thumb-link-wrap
-                %a.thumb-hover-link{href: '#'}
-                  %i.fa.fa-eye.thumb-icon{'aria-hidden': 'true'}
-                %a.thumb-hover-link{href: '#'}
-                  %i.fa.fa-shopping-cart.thumb-icon
+              .general-thumb-link-wrap{ style: 'display: flex' }
+                = link_to book_path(book), class: 'thumb-hover-link' do 
+                  %i.fa.fa-eye.thumb-icon{'aria-hidden': 'true'} 
+                =  simple_form_for(OrderItem.new, validate: true, url: order_items_path, html: { method: :post, id: 'shopping-btn' }) do |f|
+                  = f.input :book_id, as: :hidden, input_html: { value: book.id }
+                  = f.input :quantity, as: :hidden, input_html: { value: 1 }
+                  = f.button :button, '', class: 'thumb-hover-link shopping-link' do
+                    %i.fa.fa-shopping-cart.thumb-icon
         .mb-35
           .clearfix
             %p.pull-right.font-16.in-gold-500= t('book_page.price', price: book.price)

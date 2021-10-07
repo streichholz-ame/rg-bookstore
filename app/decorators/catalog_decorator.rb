@@ -4,10 +4,6 @@ class CatalogDecorator < ApplicationDecorator
   NEW_BOOKS_COUNT = 3
   BEST_SELLERS_COUNT = 4
 
-  def best_sellers
-    books.last(BEST_SELLERS_COUNT)
-  end
-
   def carousel_newest_books
     books.last(NEW_BOOKS_COUNT)
   end

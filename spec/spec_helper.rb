@@ -18,6 +18,10 @@ RSpec.configure do |config|
     DatabaseCleaner.start
   end
 
+  config.before do
+    controller.extend Pundit if defined?(controller)
+  end
+
   config.after(:each) do
     DatabaseCleaner.clean
   end

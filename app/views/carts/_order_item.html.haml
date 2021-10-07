@@ -3,11 +3,12 @@
     %td
       .general-img-wrap-table
         %img.cart-img-shadow.pull-left
-          = link_to image_tag(@cart_presenter.find_book(item).image_url(:small_image)), book_path(@cart_presenter.find_book(item))
+          = link_to image_tag(item.book.image_url(:small_image)), book_path(item.book)
     %td
-      = link_to @cart_presenter.book_info(item, :name), book_path(@cart_presenter.find_book(item)), class:'title in-gold-500 ml-10' 
+      = link_to item.book[:name], book_path(item.book), class:'title in-gold-500 ml-10' 
     %td
-      %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.book_info(item, :price))
+      %span.font-16.in-gold-500
+        = t('book_page.price', price: item.book.price)
     %td
       .input-group.general-position
         = link_to '#', class: 'input-link cart-minus', id: 'cart-minus' do
@@ -17,7 +18,8 @@
         = link_to '#', class: 'input-link cart-plus', id: 'cart-plus' do
           %i.fa.fa-plus.line-height-40
     %td
-      %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.subtotal_price(item))
+      %span.font-16.in-gold-500
+        = t('book_page.price', price: item.order_item_price)
     %td
       = button_to order_item_path(item), class: 'close general-cart-close', method: :delete do
         %span{'aria-hidden': "true"} &times;

@@ -1,21 +1,35 @@
 class OrderDecorator < ApplicationDecorator
   delegate_all
   def order_status
-    case order.status
-    when 6 then 'Processing'
-    when 7 then 'In Delivery'
-    when 8 then 'Delivered'
-    when 9 then 'Canceled'
-    else 'Processing Checkout'
+    case object.status.to_sym
+    when :complete then t('order.sorting.processing')
+    when :in_delivery then t('order.sorting.in_delivery')
+    when :delivered then t('order.sorting.delivered')
+    when :canceled then t('order.sorting.canceled')
+    else t('order.sorting.waiting')
     end
   end
 
-  def order_price(order)
-    order.order_items.sum { |item| Book.find(item.book_id)[:price] * item.quantity }
+  def date_complete
+    return t('order.not_delivered') unless object.delivered?
+
+    object.updated_at.to_date
   end
 
-  def address
-    delivery_address = subject.address_id
+  def order_price
+    object.order_items.sum { |item| item.book[:price] * item.quantity }
+  end
+
+  def total_price
+    delivery_price - coupon_price
+  end
+
+  def delivery_price
+    order_price + object.delivery.price
+  end
+
+  def delivery_address
+    delivery_address = object.address_id
     Address.find(delivery_address)
   end
 
@@ -30,48 +44,41 @@ class OrderDecorator < ApplicationDecorator
   end
 
   def receiver_name
-    "#{delivery_address.first_name} #{delivery_address.last_name}"
+    I18n.t('checkout.complete.receiver_name', first_name: delivery_address.first_name,
+                                              last_name: delivery_address.last_name)
   end
 
   def full_address
-    "#{delivery_address.city} #{delivery_address.zip}"
+    I18n.t('checkout.complete.full_address', city: delivery_address.city, zip: delivery_address.zip)
   end
 
   def phone
-    "Phone #{delivery_address.phone}"
+    I18n.t('checkout.complete.phone', phone: delivery_address.phone)
   end
 
   def card_number
-    credit_card = CreditCard.find(subject.credit_card_id)
-    credit_card_number = credit_card.number
-    mask(credit_card_number)
-  end
-
-  def last_digits(number)
-    number.to_s.length <= 4 ? number : number.to_s.slice(-4..-1)
-  end
-
-  def mask(number)
-    "**** **** **** #{last_digits(number)}"
+    mask(object.credit_card.number)
   end
 
   def cvv
-    subject.credit_card.cvv.gsub!(/.(?=....)/, '*')
+    object.credit_card.cvv.gsub!(/[0-9]/, '*')
   end
 
-  def delivery
-    Delivery.find(subject.delivery_id)
+  def price_with_delivery
+    I18n.t('order.price', price: delivery_price)
   end
 
-  def find_book(current_item)
-    Book.find(current_item.book_id)
+  def coupon_price
+    object.coupon ? calculate_coupon_to_price : 0
   end
 
-  def subtotal_price(current_item)
-    current_item.quantity * find_book(current_item).price
+  private
+
+  def mask(number)
+    I18n.t('checkout.complete.masked_card_number', number: number.last(4))
   end
 
-  def price_with_delivery(order)
-    order_price(order) + delivery.price
+  def calculate_coupon_to_price
+    ((object.coupon.discount * order_price) / 100).round(2)
   end
 end

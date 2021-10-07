@@ -8,11 +8,14 @@ class Order < ApplicationRecord
   has_one :address, dependent: nil
   accepts_nested_attributes_for :address, reject_if: proc { |attributes| attributes.any.blank? }
 
-  scope :checkout_process, -> { where(status: %w[cart address delivery payment confirm]) }
-  scope :processing, -> { where(status: 'complete') }
-  scope :in_delivery, -> { where(status: 'in_delivery') }
-  scope :delivered, -> { where(status: 'delivered') }
-  scope :canceled, -> { where(status: 'canceled') }
+  enum status: { cart: 0, address: 1, delivery: 2, payment: 3, confirm: 4, complete: 5,
+                 in_delivery: 6, delivered: 7, canceled: 8 }
+
+  scope :processing, -> { where(status: [0, 1, 2, 3, 4]) }
+  scope :complete, -> { where(status: 5) }
+  scope :in_delivery, -> { where(status: 6) }
+  scope :delivered, -> { where(status: 7) }
+  scope :canceled, -> { where(status: 8) }
 
   has_many :order_items, dependent: :destroy
 
@@ -58,5 +61,17 @@ class Order < ApplicationRecord
     event :canceled do
       transitions from: %i[complete in_delivery delivered], to: :canceled
     end
+  end
+
+  def cancel!
+    update(status: :canceled)
+  end
+
+  def set_in_delivery!
+    update(status: :in_delivery)
+  end
+
+  def deliver!
+    update(status: :delivered)
   end
 end

@@ -1,13 +1,8 @@
 class CatalogPresenter < ApplicationPresenter
   NEW_BOOKS_COUNT = 3
-  BEST_SELLERS_COUNT = 4
 
   def categories
     Category.all
-  end
-
-  def best_sellers
-    subject.last(BEST_SELLERS_COUNT)
   end
 
   def carousel_newest_books

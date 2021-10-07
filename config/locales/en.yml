@@ -135,15 +135,25 @@ en:
     orders: 'My Orders'
     sorting:
       title: 'Sort by'
-      waiting: 'Waiting for processing'
+      all: 'All Orders'
+      waiting: 'Processing'
       processing: 'In Progress'
       in_delivery: 'In Delivery'
       delivered: 'Delivered'
       canceled: 'Canceled'
+    headers:
+      shipping_address: 'Shipping Address'
+      billing_address: 'Billing Address'
+      shipments: 'Shipments'
+      payment_info: 'Payment Information'
+      order_summary: 'Order Summary'
     item_number: 'Number'
     item_completed_at: 'Completed at'
     item_status: 'Status'
     item_total: 'Total'
+    price: '€%{price}'
+    order_number: 'Order %{number}'
+    not_delivered: 'not delivered'
   authorization:
     enter_email: 'Enter Email'
     enter_password: 'Password'
@@ -203,6 +213,7 @@ en:
     change_address_success: 'Your address was successfully changed'
     change_address_error: 'Your address was not changed.'
     review: 'Thanks for Review. It will be published as soon as Admin will approve it.'
+    no_access: 'You are not authorized to perform this action.'
   admin:
     price: "€%{price}"
     users: "Users: %{count}"
@@ -221,3 +232,8 @@ en:
       approved: 'Approved'
       rejected: 'Rejected'
       score: 'Score'
+    orders: 
+      complete: 'Complete'
+      in_delivery: 'In Delivery'
+      delivered: 'Delivered'
+      canceled: 'Canceled'

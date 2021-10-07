@@ -4,14 +4,14 @@
       %span{'aria-hidden': "true"} &times;
     .general-img-wrap-table
       %img.cart-img-shadow
-        = link_to image_tag(@cart_presenter.find_book(item).image_url(:small_image)), book_path(@cart_presenter.find_book(item))
-    %p= link_to @cart_presenter.book_info(item, :name), book_path(@cart_presenter.find_book(item)), class:'title in-gold-500' 
+        = link_to image_tag(item.book.image_url(:small_image)), book_path(item.book)
+    %p= link_to item.book[:name], book_path(item.book), class:'title in-gold-500' 
     %table.table
       %tr
         %td
           %span.in-grey-600= t('cart.price') 
         %td
-          %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.book_info(item, :price))
+          %span.font-16.in-gold-500= t('book_page.price', price: item.book.price)
       %tr
         %td.vertical-middle
           %span.in-grey-600= t('cart.quantity') 
@@ -27,5 +27,5 @@
         %td
           %span.in-grey-600= t('cart.subtotal')
         %td
-          %span.font-16.in-gold-500= t('book_page.price', price: @cart_presenter.subtotal_price(item))
+          %span.font-16.in-gold-500= t('book_page.price', price: item.order_item_price)
           
